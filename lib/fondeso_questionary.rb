@@ -1,9 +1,9 @@
 require_relative 'fondeso_questionary/data'
 require_relative 'fondeso_questionary/sector'
 require_relative 'fondeso_questionary/question'
-require_relative 'fondeso_questionary/ordinal_question'
-require_relative 'fondeso_questionary/unique_question'
-require_relative 'fondeso_questionary/unique_with_range_and_sector_question'
+require_relative 'fondeso_questionary/questions/ordinal_question'
+require_relative 'fondeso_questionary/questions/unique_question'
+require_relative 'fondeso_questionary/questions/unique_with_range_and_sector_question'
 require_relative 'fondeso_questionary/profile'
 require_relative 'fondeso_questionary/business'
 

@@ -1,5 +1,5 @@
 class FondesoQuestionary
-  class UniqueWithRangeAndSectorQuestion < UniqueQuestion
+  class UniqueWithRangeAndSectorQuestion < Question
     def add_points_for_answer(selected_option, business)
       negative_associations_for_option_and_business(selected_option, business).each do |profile_id|
         business.add_to_profile_score(profile_id, -1)
