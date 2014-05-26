@@ -76,14 +76,22 @@ class FondesoQuestionary
       'associations' => {
         'positive' => {
           { 'range' => 1 } => ['n1', 'l1'],
+          { 'range' => 2 } => ['t1', 'l1'],
+          { 'range' => 3..5 } => ['t1'],
+          { 'range' => 6..10 } => ['t1'],
           { 'range' => 11..30,  'sector' => 'B' } => ['t2'],
+          { 'range' => 31..100, 'sector' => 'B' } => ['t2'],
           { 'range' => 11..50,  'except_sector' => 'B' } => ['t2'],
           { 'range' => 51..100, 'except_sector' => 'B' } => ['t2'],
           { 'range' => 100..Float::INFINITY } => ['t3', 'h3']
         },
         'negative' => {
           { 'range' => 1 } => ['t2', 't3', 'l2', 'l3', 'c2', 'c3', 's2', 's3', 'h2', 'h3'],
+          { 'range' => 2 } => ['t2', 't3', 'c2', 'c3', 's2', 's3', 'h2', 'h3'],
+          { 'range' => 3..5 } => ['n1', 't2', 't3', 'c3', 's3', 'h2', 'h3'],
+          { 'range' => 6..10 } => ['n1', 't3', 'l1', 'c3', 's3', 'h3'],
           { 'range' => 11..30,  'sector' => 'B' } => ['n1', 't3', 'l1', 'l2', 'l3', 'c1', 's1', 'h1', 'h3'],
+          { 'range' => 31..100, 'sector' => 'B' } => ['n1', 't1', 'l1', 'l2', 'l3', 'c1', 'c2', 's1', 's2', 'h1'],
           { 'range' => 11..50,  'except_sector' => 'B' } => ['n1', 't3', 'l1', 'c1', 's1', 'h1', 'h3'],
           { 'range' => 51..100, 'except_sector' => 'B' } => ['n1', 't1', 'l1', 'l2', 'l3', 'c1', 'c2', 's1', 's2', 'h1'],
           { 'range' => 100..Float::INFINITY } => ['n1', 't1', 't2', 'l1', 'l2', 'l3', 'c1', 'c2', 's1', 's2', 'h1', 'h2']
