@@ -1,21 +1,21 @@
 class FondesoQuestionary
   PROFILES = [
-    { name: "need-startup", short: "ns" },
-    { name: "traditional-startup", short: "ts" },
-    { name: "traditional-growing", short: "tg" },
-    { name: "traditional-consolidation", short: "tc" },
-    { name: "lifestyle-startup", short: "ls" },
-    { name: "lifestyle-growing", short: "lg" },
-    { name: "lifestyle-consolidation", short: "lc" },
-    { name: "cultural-startup", short: "cs" },
-    { name: "cultural-growing", short: "cg" },
-    { name: "cultural-consolidation", short: "cc" },
-    { name: "social-startup", short: "ss" },
-    { name: "social-growing", short: "sg" },
-    { name: "social-consolidation", short: "sc" },
-    { name: "high_impact-startup", short: "hs" },
-    { name: "high_impact-growing", short: "hg" },
-    { name: "high_impact-consolidation", short: "hc" }
+    { name: "need-startup", profile_id: "ns" },
+    { name: "traditional-startup", profile_id: "ts" },
+    { name: "traditional-growing", profile_id: "tg" },
+    { name: "traditional-consolidation", profile_id: "tc" },
+    { name: "lifestyle-startup", profile_id: "ls" },
+    { name: "lifestyle-growing", profile_id: "lg" },
+    { name: "lifestyle-consolidation", profile_id: "lc" },
+    { name: "cultural-startup", profile_id: "cs" },
+    { name: "cultural-growing", profile_id: "cg" },
+    { name: "cultural-consolidation", profile_id: "cc" },
+    { name: "social-startup", profile_id: "ss" },
+    { name: "social-growing", profile_id: "sg" },
+    { name: "social-consolidation", profile_id: "sc" },
+    { name: "high_impact-startup", profile_id: "hs" },
+    { name: "high_impact-growing", profile_id: "hg" },
+    { name: "high_impact-consolidation", profile_id: "hc" }
   ]
 
   QUESTIONS = [
@@ -71,10 +71,10 @@ class FondesoQuestionary
     }
   ]
 
-  attr_reader :profiles
+  attr_reader :profiles, :questions
 
   def initialize
-    @profiles = Profiles.new
+    @profiles  = Profiles.new
   end
 
   def self.start
@@ -82,69 +82,104 @@ class FondesoQuestionary
   end
 
   def answer_question(question_id, answer)
-    case question_with_id(question_id).fetch('type')
-    when 'ordinal' then answer_ordinal_question(question_id, answer)
-    when 'unique' then answer_unique_question(question_id, answer)
-    end
+    question = Question.find(question_id)
+    question.add_points_for_answer(answer, profiles)
   end
 
   def current_profile_score(profile_name)
-    profiles.find_with(profile_name).score
+    profiles.find(profile_name).score
   end
 
-  private
+  class Question
+    attr_reader :type
 
-  def answer_ordinal_question(question_id, answers)
-    answers.each do |item, value|
-      positive_associations_for(question_id).fetch(item).each do |profile_short|
-        profiles.find_with(profile_short).add_to_score(1.0 / value)
+    def initialize(data)
+      @type = data.fetch('type')
+      @associations = data.fetch('associations')
+    end
+
+    def self.find(question_id)
+      build_type all_questions.fetch(question_id)
+    end
+
+    def positive_associations_for(item)
+      associations.fetch('positive', {}).fetch(item, [])
+    end
+
+    def negative_associations_for(item)
+      associations.fetch('negative', {}).fetch(item, [])
+    end
+
+    private
+
+    attr_reader :associations
+
+    def self.build_type(question_data)
+      case question_data.fetch('type')
+      when 'ordinal' then OrdinalQuestion.new(question_data)
+      when 'unique' then UniqueQuestion.new(question_data)
+      end
+    end
+
+    def self.all_questions
+      QUESTIONS.inject({}) do |hash, question|
+        hash[question.fetch('question_id')] = question
+        hash
       end
     end
   end
 
-  def answer_unique_question(question_id, answer)
-    negative_associations_for(question_id).fetch(answer, []).each do |profile_short|
-      profiles.find_with(profile_short).add_to_score(-1)
+  class OrdinalQuestion < Question
+    def add_points_for_answer(answer, profiles)
+      answer.each do |item, value|
+        positive_associations_for(item).each do |profile_id|
+          profiles.add_to_profile_score(profile_id, 1.0 / value)
+        end
+      end
     end
+  end
 
-    positive_associations_for(question_id).fetch(answer, []).each do |profile_short|
-      profiles.find_with(profile_short).add_to_score(1)
+  class UniqueQuestion < Question
+    def add_points_for_answer(answer, profiles)
+      negative_associations_for(answer).each do |profile_id|
+        profiles.add_to_profile_score(profile_id, -1)
+      end
+
+      positive_associations_for(answer).each do |profile_id|
+        profiles.add_to_profile_score(profile_id, 1)
+      end
     end
-  end
-
-  def positive_associations_for(question_id)
-    question_with_id(question_id).fetch('associations').fetch('positive', {})
-  end
-
-  def negative_associations_for(question_id)
-    question_with_id(question_id).fetch('associations').fetch('negative', {})
-  end
-
-  def question_with_id(question_id)
-    QUESTIONS.select { |question| question.fetch('question_id') == question_id }.first
   end
 
   class Profiles
-    attr_reader :all
     def initialize
       @all = PROFILES.map { |profile| Profile.new(profile) }
     end
 
-    def find_with(name_or_short)
-      all.select do |profile|
-        profile.name == name_or_short ||
-          profile.short == name_or_short
-      end.first
+    def find(name_or_profile_id)
+      all.select { |profile| profile.identifiable_by?(name_or_profile_id) }.first
     end
+
+    def add_to_profile_score(profile_id, points)
+      find(profile_id).add_to_score(points)
+    end
+
+    private
+
+    attr_reader :all
   end
 
   class Profile
-    attr_reader :name, :short, :score
+    attr_reader :score
 
     def initialize(args)
       @name  = args.fetch(:name)
-      @short = args.fetch(:short)
+      @profile_id = args.fetch(:profile_id)
       @score = 0
+    end
+
+    def identifiable_by?(identifier)
+      name == identifier || profile_id == identifier
     end
 
     def add_to_score(amount)
@@ -153,6 +188,7 @@ class FondesoQuestionary
 
     private
 
+    attr_reader :name, :profile_id
     attr_writer :score
   end
 end
