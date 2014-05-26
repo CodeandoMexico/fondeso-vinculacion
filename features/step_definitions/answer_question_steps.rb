@@ -53,28 +53,62 @@ class FondesoQuestionary
       'type' => 'unique',
       'associations' => {
         'positive' => {
-          'E' => ['cs', 'cg', 'cc'],
-          'F' => ['ss', 'sg', 'sc'],
-          'H' => ['hs', 'hg', 'hc']
+          'E' => ['c1', 'c2', 'c3'],
+          'F' => ['s1', 's2', 's3'],
+          'H' => ['h1', 'h2', 'h3']
         },
         'negative' => {
-          'A' => ['ns', 'ls', 'lg', 'lc', 'cs', 'cg', 'cc'],
-          'B' => ['cs', 'cg', 'cc', 'ss', 'sg', 'sc'],
-          'C' => ['cs', 'cg', 'cc', 'ss', 'sg', 'sc'],
-          'D' => ['ns'],
-          'E' => ['ns', 'ts', 'tg', 'tc'],
-          'F' => ['ns', 'ts', 'tg', 'tc', 'ls', 'lg', 'lc'],
-          'G' => ['ls', 'lg', 'lc', 'cs', 'cg', 'cc'],
-          'H' => ['ns', 'ts', 'tg', 'tc', 'cs', 'cg', 'ss', 'sg', 'sc']
+          'A' => ['n1', 'l1', 'l2', 'l3', 'c1', 'c2', 'c3'],
+          'B' => ['c1', 'c2', 'c3', 's1', 's2', 's3'],
+          'C' => ['c1', 'c2', 'c3', 's1', 's2', 's3'],
+          'D' => ['n1'],
+          'E' => ['n1', 't1', 't2', 't3'],
+          'F' => ['n1', 't1', 't2', 't3', 'l1', 'l2', 'l3'],
+          'G' => ['l1', 'l2', 'l3', 'c1', 'c2', 'c3'],
+          'H' => ['n1', 't1', 't2', 't3', 'c1', 'c2', 's1', 's2', 's3']
+        }
+      }
+    },
+
+    {
+      'question_id' => '2.A.4',
+      'type' => 'unique_with_range_and_sector',
+      'associations' => {
+        'positive' => {
+          { 'range' => 1 } => ['n1', 'l1'],
+          { 'range' => 11..30,  'sector' => 'B' } => ['t2'],
+          { 'range' => 11..50,  'except_sector' => 'B' } => ['t2'],
+          { 'range' => 51..100, 'except_sector' => 'B' } => ['t2'],
+          { 'range' => 100..Float::INFINITY } => ['t3', 'h3']
+        },
+        'negative' => {
+          { 'range' => 1 } => ['t2', 't3', 'l2', 'l3', 'c2', 'c3', 's2', 's3', 'h2', 'h3'],
+          { 'range' => 11..30,  'sector' => 'B' } => ['n1', 't3', 'l1', 'l2', 'l3', 'c1', 's1', 'h1', 'h3'],
+          { 'range' => 11..50,  'except_sector' => 'B' } => ['n1', 't3', 'l1', 'c1', 's1', 'h1', 'h3'],
+          { 'range' => 51..100, 'except_sector' => 'B' } => ['n1', 't1', 'l1', 'l2', 'l3', 'c1', 'c2', 's1', 's2', 'h1'],
+          { 'range' => 100..Float::INFINITY } => ['n1', 't1', 't2', 'l1', 'l2', 'l3', 'c1', 'c2', 's1', 's2', 'h1', 'h2']
         }
       }
     }
   ]
 
-  attr_reader :profiles, :questions
+  SECTORS = [
+    { 'sector_id' => 'A', 'display' => 'Industrias manufactureras' },
+    { 'sector_id' => 'B', 'display' => 'Comercio' },
+    { 'sector_id' => 'C', 'display' => 'Preparación de alimentos y hoteles' },
+    { 'sector_id' => 'D', 'display' => 'Servicios varios' },
+    { 'sector_id' => 'E', 'display' => 'Culturales y de esparcimiento, deportivos y recreativos' },
+    { 'sector_id' => 'F', 'display' => 'Organizaciones con fines de altruistas y medio ambiente' },
+    { 'sector_id' => 'G', 'display' => 'Agricultura, ganadería, aprovechamiento forestal' },
+    { 'sector_id' => 'H', 'display' => 'Tecnologías de la información y la comunicación' },
+    { 'sector_id' => 'I', 'display' => 'Otros' },
+    { 'sector_id' => 'J', 'display' => 'No sé' },
+  ]
+
+  attr_reader :business
 
   def initialize
-    @profiles  = Profiles.new
+    @business = Business.new
   end
 
   def self.start
@@ -82,12 +116,33 @@ class FondesoQuestionary
   end
 
   def answer_question(question_id, answer)
+    if Sector.defined_in_question?(question_id)
+      business.sector = Sector.new(answer)
+    end
+
     question = Question.find(question_id)
-    question.add_points_for_answer(answer, profiles)
+    question.add_points_for_answer(answer, business)
   end
 
-  def current_profile_score(profile_name)
-    profiles.find(profile_name).score
+  def current_profile_score(profile_id)
+    business.current_profile_score(profile_id)
+  end
+
+  class Sector
+    attr_reader :sector_id
+
+    def initialize(sector_id)
+      @sector_id = sector_id
+    end
+
+    def self.defined_in_question?(question_id)
+      question_id == '2.A.3'
+    end
+
+    def == sector
+      sector.is_a?(self.class) &&
+        sector.sector_id == sector_id
+    end
   end
 
   class Question
@@ -95,6 +150,7 @@ class FondesoQuestionary
 
     def initialize(data)
       @type = data.fetch('type')
+      @question_id = data.fetch('question_id')
       @associations = data.fetch('associations')
     end
 
@@ -102,22 +158,23 @@ class FondesoQuestionary
       build_type all_questions.fetch(question_id)
     end
 
-    def positive_associations_for(item)
-      associations.fetch('positive', {}).fetch(item, [])
+    def positive_associations_for_option(option)
+      associations.fetch('positive', {}).fetch(option, [])
     end
 
-    def negative_associations_for(item)
-      associations.fetch('negative', {}).fetch(item, [])
+    def negative_associations_for_option(option)
+      associations.fetch('negative', {}).fetch(option, [])
     end
 
     private
 
-    attr_reader :associations
+    attr_reader :associations, :question_id
 
     def self.build_type(question_data)
       case question_data.fetch('type')
-      when 'ordinal' then OrdinalQuestion.new(question_data)
       when 'unique' then UniqueQuestion.new(question_data)
+      when 'ordinal' then OrdinalQuestion.new(question_data)
+      when 'unique_with_range_and_sector' then UniqueWithRangeAndSectorQuestion.new(question_data)
       end
     end
 
@@ -130,43 +187,82 @@ class FondesoQuestionary
   end
 
   class OrdinalQuestion < Question
-    def add_points_for_answer(answer, profiles)
-      answer.each do |item, value|
-        positive_associations_for(item).each do |profile_id|
-          profiles.add_to_profile_score(profile_id, 1.0 / value)
+    def add_points_for_answer(answer, business)
+      answer.each do |option, value|
+        positive_associations_for_option(option).each do |profile_id|
+          business.add_to_profile_score(profile_id, 1.0 / value)
         end
       end
     end
   end
 
   class UniqueQuestion < Question
-    def add_points_for_answer(answer, profiles)
-      negative_associations_for(answer).each do |profile_id|
-        profiles.add_to_profile_score(profile_id, -1)
+    def add_points_for_answer(selected_option, business)
+      negative_associations_for_option(selected_option).each do |profile_id|
+        business.add_to_profile_score(profile_id, -1)
       end
 
-      positive_associations_for(answer).each do |profile_id|
-        profiles.add_to_profile_score(profile_id, 1)
+      positive_associations_for_option(selected_option).each do |profile_id|
+        business.add_to_profile_score(profile_id, 1)
       end
     end
   end
 
-  class Profiles
-    def initialize
-      @all = PROFILES.map { |profile| Profile.new(profile) }
-    end
+  class UniqueWithRangeAndSectorQuestion < UniqueQuestion
+    def add_points_for_answer(selected_option, business)
+      negative_associations_for_option_and_business(selected_option, business).each do |profile_id|
+        business.add_to_profile_score(profile_id, -1)
+      end
 
-    def find(name_or_profile_id)
-      all.select { |profile| profile.identifiable_by?(name_or_profile_id) }.first
-    end
-
-    def add_to_profile_score(profile_id, points)
-      find(profile_id).add_to_score(points)
+      positive_associations_for_option_and_business(selected_option, business).each do |profile_id|
+        business.add_to_profile_score(profile_id, 1)
+      end
     end
 
     private
 
-    attr_reader :all
+    def positive_associations_for_option_and_business(selected_option, business)
+      associations.fetch('positive').select do |key_with_range_and_sector|
+        match_associations_key(key_with_range_and_sector, selected_option, business)
+      end.values.first || :not_matched_key
+    end
+
+    def negative_associations_for_option_and_business(selected_option, business)
+      associations.fetch('negative').select do |key_with_range_and_sector|
+        match_associations_key(key_with_range_and_sector, selected_option, business)
+      end.values.first || :not_matched_key
+    end
+
+    def match_associations_key(key, selected_option, business)
+      range, sector, except_sector = key.values_at('range', 'sector', 'except_sector')
+
+      range === selected_option.to_i &&
+        (sector.nil? && except_sector.nil? ||
+         sector.present? && except_sector.nil? && business.sector == Sector.new(sector) ||
+         sector.nil? && except_sector.present? && business.sector != Sector.new(except_sector))
+    end
+  end
+
+  class Business
+    attr_accessor :sector
+
+    def find_profile(name_or_profile_id)
+      profiles.select { |profile| profile.identifiable_by?(name_or_profile_id) }.first
+    end
+
+    def current_profile_score(profile_id)
+      find_profile(profile_id).score
+    end
+
+    def add_to_profile_score(profile_id, points)
+      find_profile(profile_id).add_to_score(points)
+    end
+
+    private
+
+    def profiles
+      @profiles ||= PROFILES.map { |profile| Profile.new(profile) }
+    end
   end
 
   class Profile
@@ -195,6 +291,11 @@ end
 
 Given(/^an empty score$/) do
   @questionary = FondesoQuestionary.start
+end
+
+When(/^I answer the sector question with "(.*?)"$/) do |selected_option|
+  selected_option = selected_option.split("-").first.strip
+  @questionary.answer_question("2.A.3", selected_option)
 end
 
 When(/^I answer the ordinal question "(.*?)" with:$/) do |question, answers_table|
