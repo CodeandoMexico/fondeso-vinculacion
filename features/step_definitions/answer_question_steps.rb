@@ -1,21 +1,21 @@
 class FondesoQuestionary
   PROFILES = [
-    { name: "need-startup", profile_id: "ns" },
-    { name: "traditional-startup", profile_id: "ts" },
-    { name: "traditional-growing", profile_id: "tg" },
-    { name: "traditional-consolidation", profile_id: "tc" },
-    { name: "lifestyle-startup", profile_id: "ls" },
-    { name: "lifestyle-growing", profile_id: "lg" },
-    { name: "lifestyle-consolidation", profile_id: "lc" },
-    { name: "cultural-startup", profile_id: "cs" },
-    { name: "cultural-growing", profile_id: "cg" },
-    { name: "cultural-consolidation", profile_id: "cc" },
-    { name: "social-startup", profile_id: "ss" },
-    { name: "social-growing", profile_id: "sg" },
-    { name: "social-consolidation", profile_id: "sc" },
-    { name: "high_impact-startup", profile_id: "hs" },
-    { name: "high_impact-growing", profile_id: "hg" },
-    { name: "high_impact-consolidation", profile_id: "hc" }
+    { name: "need-startup", profile_id: "n1" },
+    { name: "traditional-startup", profile_id: "t1" },
+    { name: "traditional-growing", profile_id: "t2" },
+    { name: "traditional-consolidation", profile_id: "t3" },
+    { name: "lifestyle-startup", profile_id: "l1" },
+    { name: "lifestyle-growing", profile_id: "l2" },
+    { name: "lifestyle-consolidation", profile_id: "l3" },
+    { name: "cultural-startup", profile_id: "c1" },
+    { name: "cultural-growing", profile_id: "c2" },
+    { name: "cultural-consolidation", profile_id: "c3" },
+    { name: "social-startup", profile_id: "s1" },
+    { name: "social-growing", profile_id: "s2" },
+    { name: "social-consolidation", profile_id: "s3" },
+    { name: "high_impact-startup", profile_id: "h1" },
+    { name: "high_impact-growing", profile_id: "h2" },
+    { name: "high_impact-consolidation", profile_id: "h3" }
   ]
 
   QUESTIONS = [
@@ -24,12 +24,12 @@ class FondesoQuestionary
       'type' => 'ordinal',
       'associations' => {
         'positive' => {
-          'A' => ['ns'],
-          'B' => ['ts', 'tg', 'tc'],
-          'C' => ['ss', 'sg', 'sc'],
-          'D' => ['cs', 'cg', 'cc'],
-          'E' => ['ls', 'lg', 'lc'],
-          'F' => ['hs', 'hg', 'hc']
+          'A' => ['n1'],
+          'B' => ['t1', 't2', 't3'],
+          'C' => ['s1', 's2', 's3'],
+          'D' => ['c1', 'c2', 'c3'],
+          'E' => ['l1', 'l2', 'l3'],
+          'F' => ['h1', 'h2', 'h3']
         }
       }
     },
@@ -38,12 +38,12 @@ class FondesoQuestionary
       'type' => 'ordinal',
       'associations' => {
         'positive' => {
-          'A' => ['ns'],
-          'B' => ['ts', 'tg', 'tc'],
-          'C' => ['ls', 'lg', 'lc'],
-          'D' => ['cs', 'cg', 'cc'],
-          'E' => ['ss', 'sg', 'sc'],
-          'F' => ['hs', 'hg', 'hc']
+          'A' => ['n1'],
+          'B' => ['t1', 't2', 't3'],
+          'C' => ['l1', 'l2', 'l3'],
+          'D' => ['c1', 'c2', 'c3'],
+          'E' => ['s1', 's2', 's3'],
+          'F' => ['h1', 'h2', 'h3']
         }
       }
     },
