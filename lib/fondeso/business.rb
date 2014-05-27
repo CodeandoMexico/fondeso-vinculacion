@@ -8,6 +8,10 @@ module Fondeso
       profiles.select { |profile| profile.identifiable_by?(name_or_profile_id) }.first
     end
 
+    def current_score
+      profiles.map &:score
+    end
+
     def current_profile_score(profile_id)
       find_profile(profile_id).score
     end

@@ -19,5 +19,9 @@ module Fondeso
     def current_profile_score(profile_id)
       business.current_profile_score(profile_id)
     end
+
+    def current_score
+      business.current_score
+    end
   end
 end

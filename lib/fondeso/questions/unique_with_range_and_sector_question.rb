@@ -13,7 +13,7 @@ module Fondeso
 
       private
 
-      def match_associations_key(key, selected_option, business)
+      def match_associations_key?(key, selected_option, business)
         range, sector, except_sector = key.values_at('range', 'sector', 'except_sector')
 
         range === selected_option.to_i &&

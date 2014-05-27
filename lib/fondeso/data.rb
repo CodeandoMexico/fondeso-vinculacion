@@ -52,8 +52,13 @@ FONDESO_QUESTIONS = [
     'type' => 'unique',
     'associations' => {
       'positive' => {
+        'A' => [],
+        'B' => [],
+        'C' => [],
+        'D' => [],
         'E' => ['c1', 'c2', 'c3'],
         'F' => ['s1', 's2', 's3'],
+        'G' => [],
         'H' => ['h1', 'h2', 'h3']
       },
       'negative' => {
@@ -135,6 +140,103 @@ FONDESO_QUESTIONS = [
         'A' => %w(n1 t1 t2 t3),
         'B' => %w(n1 t1 t2 t3),
         'C' => %w(l1 c1 c2 c3 s1 s2 s3 h1 h2 h3)
+      }
+    }
+  },
+
+  {
+    'question_id' => '2.A.8',
+    'type' => 'unique',
+    'associations' => {
+      'positive' => {
+        'A' => %w(n1),
+        'B' => %w(t2 t3 l1 l2 l3 c1 c2 c3 s1 s2 s3 h1 h2 h3)
+      },
+      'negative' => {
+        'A' => %w(t2 t3 l1 l2 l3 c1 c2 c3 s1 s2 s3 h1 h2 h3),
+        'B' => %w(n1)
+      }
+    }
+  },
+
+  {
+    'question_id' => '3.A.1',
+    'type' => 'unique',
+    'associations' => {
+      'positive' => {
+        1..2 => %w(n1 t1 l1 c1 s1 h1),
+        3..4 => [],
+        5..6 => %w(t2 l2 l3 c2 s2 h2),
+        7..8 => %w(h3),
+        9..Float::INFINITY => %w(t3 l2 l3 c3 s3 h3)
+      },
+      'negative' => {
+        1..2 => %w(t2 t3 l2 l3 c2 c3 s2 s3 h3),
+        3..4 => %w(t3 c3 s3 h1),
+        5..6 => %w(n1 t1 t3 l1 c1 c3 s1 s3 h1),
+        7..8 => %w(n1 t1 l1 c1 s1 h1),
+        9..Float::INFINITY => %w(n1 t1 l1 c1 s1 h1)
+      }
+    }
+  },
+
+  {
+    'question_id' => '3.A.2',
+    'type' => 'multiple',
+    'associations' => {
+      'positive' => {
+        { 'A' => true } => %w(n1 t1),
+        { 'B' => true } => [],
+        { 'C' => true } => [],
+        { 'D' => true } => [],
+        { 'E' => true } => %w(t3 l1 l2 l3 c1 c2 c3 s1 s2 s3 h1 h2 h3),
+        { 'C' => true, 'D' => true } => %w(t3 c3 s3 h3),
+        { 'F' => true } => [],
+        { 'G' => true } => [],
+        { 'H' => true } => [],
+        { 'I' => true } => %w(t3 h3),
+        { 'F' => true, 'G' => true } => %w(t3 h1 h2 h3),
+        { 'H' => true, 'I' => true } => %w(t3 h2 h3),
+
+        { 'A' => false } => [],
+        { 'B' => false } => [],
+        { 'C' => false } => [],
+        { 'D' => false } => [],
+        { 'E' => false } => [],
+        { 'C' => false, 'D' => false } => [],
+        { 'F' => false } => [],
+        { 'G' => false } => [],
+        { 'H' => false } => [],
+        { 'I' => false } => %w(t3 h3),
+        { 'F' => false, 'G' => false } => %w(c1 c2 c3 s1 s2 s3),
+        { 'H' => false, 'I' => false } => %w(c1 c2 c3 s1 s2 s3)
+      },
+      'negative' => {
+        { 'A' => true } => [],
+        { 'B' => true } => %w(n1 t1),
+        { 'C' => true } => %w(n1 t1 t2 l1 c1 s1 h1),
+        { 'D' => true } => %w(n1 t1 l1 c1 c2 s1 s2 h1),
+        { 'E' => true } => %w(n1 t1),
+        { 'C' => true, 'D' => true } => [],
+        { 'F' => true } => [],
+        { 'G' => true } => %w(n1 t1 c1 c2 c3 s1 s2 s3),
+        { 'H' => true } => [],
+        { 'I' => true } => %w(n1 t1 l1 l2 l3 c1 c2 s1 s2),
+        { 'F' => true, 'G' => true } => %w(n1 t1 l1 l2 l3 c1 c2 s1 s2),
+        { 'H' => true, 'I' => true } => %w(n1 t1 l1 l2 l3 c1 c2 s1 s2),
+
+        { 'A' => false } => %w(n1 t1),
+        { 'B' => false } => [],
+        { 'C' => false } => [],
+        { 'D' => false } => [],
+        { 'E' => false } => %w(t3 l2 l3 c2 c3 s2 s3 h1 h2 h3),
+        { 'C' => false, 'D' => false } => %w(t3 c3 s3 h1 h2 h3),
+        { 'F' => false } => %w(n1 t1 c1 c2 c3 s1 s2 s3),
+        { 'G' => false } => [],
+        { 'H' => false } => %w(n1 t1),
+        { 'I' => false } => [],
+        { 'F' => false, 'G' => false } => [],
+        { 'H' => false, 'I' => false } => []
       }
     }
   }

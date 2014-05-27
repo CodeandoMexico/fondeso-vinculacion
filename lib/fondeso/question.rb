@@ -14,15 +14,23 @@ module Fondeso
       build_type all_questions.fetch(question_id)
     end
 
+    def positive_associations
+      associations.fetch('positive')
+    end
+
+    def negative_associations
+      associations.fetch('negative')
+    end
+
     def positive_associations_for_option(option, *other_params)
-      associations.fetch('positive').select do |key|
-        match_associations_key(key, option, *other_params)
+      positive_associations.select do |key|
+        match_associations_key?(key, option, *other_params)
       end.values.first || :not_matched_key
     end
 
     def negative_associations_for_option(option, *other_params)
-      associations.fetch('negative').select do |key|
-        match_associations_key(key, option, *other_params)
+      negative_associations.select do |key|
+        match_associations_key?(key, option, *other_params)
       end.values.first || :not_matched_key
     end
 
@@ -30,7 +38,7 @@ module Fondeso
 
     attr_reader :associations, :question_id
 
-    def match_associations_key(key, option, *other_params)
+    def match_associations_key?(key, option, *other_params)
       key === option
     end
 

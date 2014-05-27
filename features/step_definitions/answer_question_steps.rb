@@ -17,6 +17,10 @@ When(/^I answer the question "(.*?)" with the unique answer "(.*?)"$/) do |quest
   @questionary.answer_question(question, answer)
 end
 
+When(/^I answer the multiple answer question "(.*?)" with:$/) do |question, answers_table|
+  @questionary.answer_question(question, multiple_answer(answers_table))
+end
+
 Then(/^my current score should be:$/) do |table|
   table.raw.to_h.each { |profile, score| profile_score_should_eq(@questionary, profile, score) }
 end
@@ -29,6 +33,13 @@ end
 def ordinal_answer(answers_table)
   answers_table.raw.to_h.inject({}) do |hash, (key, value)|
     hash[key] = value.to_f
+    hash
+  end
+end
+
+def multiple_answer(answers_table)
+  answers_table.raw.to_h.inject({}) do |hash, (key, value)|
+    hash[key] = value == 'x'
     hash
   end
 end
