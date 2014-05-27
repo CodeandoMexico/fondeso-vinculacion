@@ -105,11 +105,6 @@ FONDESO_QUESTIONS = [
 
   {
     'question_id' => '2.A.5',
-    'type' => 'unique_informative'
-  },
-
-  {
-    'question_id' => '2.A.6',
     'type' => 'relatives_in_business',
     'associations' => {
       'positive' => {

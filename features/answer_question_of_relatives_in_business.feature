@@ -1,10 +1,9 @@
 Feature: Answer question of relatives in business
-  Scenario: 2.A.6, example 1
+  Scenario: 2.A.5, example 1
     Given an empty score
     When I answer the sector question with "A - Industrias Manufactureras"
     When I answer the question "2.A.4" with the unique answer "10"
-    When I answer the question "2.A.5" with the unique answer "3"
-    When I answer the question "2.A.6" with the unique answer "4"
+    When I answer the question "2.A.5" with the unique answer "7"
     Then my current score should be:
       | need-startup              |-2 |
       | traditional-startup       | 1 |
@@ -23,12 +22,11 @@ Feature: Answer question of relatives in business
       | high_impact-growing       |-1 |
       | high_impact-consolidation |-2 |
 
-  Scenario: 2.A.6, example 2
+  Scenario: 2.A.5, example 2
     Given an empty score
     When I answer the sector question with "A - Industrias Manufactureras"
     When I answer the question "2.A.4" with the unique answer "10"
-    When I answer the question "2.A.5" with the unique answer "1"
-    When I answer the question "2.A.6" with the unique answer "4"
+    When I answer the question "2.A.5" with the unique answer "4"
     Then my current score should be:
       | need-startup              |-2 |
       | traditional-startup       | 1 |
