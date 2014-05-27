@@ -1,7 +1,7 @@
-require_relative '../../lib/fondeso_questionary'
+require_relative '../../lib/fondeso'
 
 Given(/^an empty score$/) do
-  @questionary = FondesoQuestionary.start
+  @questionary = Fondeso::Questionary.new
 end
 
 When(/^I answer the sector question with "(.*?)"$/) do |selected_option|

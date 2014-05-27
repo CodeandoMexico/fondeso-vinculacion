@@ -1,4 +1,4 @@
-class FondesoQuestionary
+module Fondeso
   class Profile
     attr_reader :score
 

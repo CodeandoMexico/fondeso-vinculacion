@@ -1,4 +1,4 @@
-class FondesoQuestionary
+module Fondeso
   class Business
     attr_accessor :sector
 
@@ -14,7 +14,19 @@ class FondesoQuestionary
       find_profile(profile_id).add_to_score(points)
     end
 
+    def add_answer(question_id, answer)
+      answers[question_id] = answer
+    end
+
+    def answer_to_question(question_id)
+      answers.fetch(question_id)
+    end
+
     private
+
+    def answers
+      @answers ||= {}
+    end
 
     def profiles
       @profiles ||= FONDESO_PROFILES.map { |profile| Profile.new(profile) }

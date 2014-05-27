@@ -96,6 +96,30 @@ FONDESO_QUESTIONS = [
         { 'range' => 100..Float::INFINITY } => ['n1', 't1', 't2', 'l1', 'l2', 'l3', 'c1', 'c2', 's1', 's2', 'h1', 'h2']
       }
     }
+  },
+
+  {
+    'question_id' => '2.A.5',
+    'type' => 'unique_informative'
+  },
+
+  {
+    'question_id' => '2.A.6',
+    'type' => 'relatives_in_business',
+    'associations' => {
+      'positive' => {
+        0..0.25    => [],
+        0.25..0.50 => [],
+        0.50..0.75 => [],
+        0.75..1    => ['n1', 't1']
+      },
+      'negative' => {
+        0..0.25    => ['n1', 't1', 'l1'],
+        0.25..0.50 => ['t3', 'c3', 's3', 'h3'],
+        0.50..0.75 => ['t2', 't3', 'c2', 'c3', 's2', 's3', 'h2', 'h3'],
+        0.75..1    => ['t2', 't3', 'c2', 'c3', 's2', 's3', 'h2', 'h3']
+      }
+    }
   }
 ]
 

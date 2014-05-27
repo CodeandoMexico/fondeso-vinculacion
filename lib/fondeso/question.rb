@@ -1,11 +1,11 @@
-class FondesoQuestionary
+module Fondeso
   class Question
     attr_reader :type
 
     def initialize(data)
       @type = data.fetch('type')
       @question_id = data.fetch('question_id')
-      @associations = data.fetch('associations')
+      @associations = data.fetch('associations', {})
     end
 
     def self.find(question_id)
@@ -25,11 +25,7 @@ class FondesoQuestionary
     attr_reader :associations, :question_id
 
     def self.build_type(question_data)
-      case question_data.fetch('type')
-      when 'unique' then UniqueQuestion.new(question_data)
-      when 'ordinal' then OrdinalQuestion.new(question_data)
-      when 'unique_with_range_and_sector' then UniqueWithRangeAndSectorQuestion.new(question_data)
-      end
+      "Fondeso::Questions::#{question_data.fetch('type').camelize}Question".constantize.new(question_data)
     end
 
     def self.all_questions

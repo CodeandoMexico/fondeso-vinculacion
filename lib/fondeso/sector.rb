@@ -1,4 +1,4 @@
-class FondesoQuestionary
+module Fondeso
   class Sector
     attr_reader :sector_id
 
