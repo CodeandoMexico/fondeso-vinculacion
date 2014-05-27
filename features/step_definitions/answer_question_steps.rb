@@ -32,7 +32,7 @@ end
 
 def ordinal_answer(answers_table)
   answers_table.raw.to_h.inject({}) do |hash, (key, value)|
-    hash[key] = value.to_f
+    hash[key] = value
     hash
   end
 end

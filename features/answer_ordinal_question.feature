@@ -13,69 +13,69 @@ Feature: Answer ordinal question
       | traditional-startup       | 0.5  |
       | traditional-growing       | 0.5  |
       | traditional-consolidation | 0.5  |
-      | lifestyle-startup         | 0.2  |
-      | lifestyle-growing         | 0.2  |
-      | lifestyle-consolidation   | 0.2  |
-      | cultural-startup          | 0.25 |
-      | cultural-growing          | 0.25 |
-      | cultural-consolidation    | 0.25 |
+      | lifestyle-startup         | -1   |
+      | lifestyle-growing         | -1   |
+      | lifestyle-consolidation   | -1   |
+      | cultural-startup          | -1   |
+      | cultural-growing          | -1   |
+      | cultural-consolidation    | -1   |
       | social-startup            | 0.33 |
       | social-growing            | 0.33 |
       | social-consolidation      | 0.33 |
-      | high_impact-startup       | 0.16 |
-      | high_impact-growing       | 0.16 |
-      | high_impact-consolidation | 0.16 |
+      | high_impact-startup       | -1   |
+      | high_impact-growing       | -1   |
+      | high_impact-consolidation | -1   |
 
   Scenario: 2.A.1, example 2
     Given an empty score
     When I answer the ordinal question "2.A.1" with:
-      | A | 6 |
-      | B | 5 |
-      | C | 4 |
-      | D | 3 |
-      | E | 2 |
-      | F | 1 |
+      | A |   |
+      | B |   |
+      | C | 1 |
+      | D |   |
+      | E |   |
+      | F |   |
     Then my current score should be:
-      | need-startup              | 0.16 |
-      | traditional-startup       | 0.2  |
-      | traditional-growing       | 0.2  |
-      | traditional-consolidation | 0.2  |
-      | lifestyle-startup         | 0.5  |
-      | lifestyle-growing         | 0.5  |
-      | lifestyle-consolidation   | 0.5  |
-      | cultural-startup          | 0.33 |
-      | cultural-growing          | 0.33 |
-      | cultural-consolidation    | 0.33 |
-      | social-startup            | 0.25 |
-      | social-growing            | 0.25 |
-      | social-consolidation      | 0.25 |
-      | high_impact-startup       | 1    |
-      | high_impact-growing       | 1    |
-      | high_impact-consolidation | 1    |
+      | need-startup              |-1 |
+      | traditional-startup       |-1 |
+      | traditional-growing       |-1 |
+      | traditional-consolidation |-1 |
+      | lifestyle-startup         |-1 |
+      | lifestyle-growing         |-1 |
+      | lifestyle-consolidation   |-1 |
+      | cultural-startup          |-1 |
+      | cultural-growing          |-1 |
+      | cultural-consolidation    |-1 |
+      | social-startup            | 1 |
+      | social-growing            | 1 |
+      | social-consolidation      | 1 |
+      | high_impact-startup       |-1 |
+      | high_impact-growing       |-1 |
+      | high_impact-consolidation |-1 |
 
   Scenario: 2.A.2
     Given an empty score
     When I answer the ordinal question "2.A.2" with:
-      | A | 6 |
-      | B | 5 |
-      | C | 4 |
-      | D | 3 |
-      | E | 2 |
-      | F | 1 |
+      | A |   |
+      | B | 3 |
+      | C |   |
+      | D |   |
+      | E | 1 |
+      | F |   |
     Then my current score should be:
-      | need-startup              | 0.16 |
-      | traditional-startup       | 0.2  |
-      | traditional-growing       | 0.2  |
-      | traditional-consolidation | 0.2  |
-      | lifestyle-startup         | 0.25 |
-      | lifestyle-growing         | 0.25 |
-      | lifestyle-consolidation   | 0.25 |
-      | cultural-startup          | 0.33 |
-      | cultural-growing          | 0.33 |
-      | cultural-consolidation    | 0.33 |
-      | social-startup            | 0.5  |
-      | social-growing            | 0.5  |
-      | social-consolidation      | 0.5  |
-      | high_impact-startup       | 1    |
-      | high_impact-growing       | 1    |
-      | high_impact-consolidation | 1    |
+      | need-startup              | -1   |
+      | traditional-startup       | 0.33 |
+      | traditional-growing       | 0.33 |
+      | traditional-consolidation | 0.33 |
+      | lifestyle-startup         | -1   |
+      | lifestyle-growing         | -1   |
+      | lifestyle-consolidation   | -1   |
+      | cultural-startup          | -1   |
+      | cultural-growing          | -1   |
+      | cultural-consolidation    | -1   |
+      | social-startup            |  1   |
+      | social-growing            |  1   |
+      | social-consolidation      |  1   |
+      | high_impact-startup       | -1   |
+      | high_impact-growing       | -1   |
+      | high_impact-consolidation | -1   |
