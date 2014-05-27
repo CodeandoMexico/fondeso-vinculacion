@@ -1,3 +1,5 @@
+require_relative 'data'
+
 module Fondeso
   class Question
     attr_reader :type

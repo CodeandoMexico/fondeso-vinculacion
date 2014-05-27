@@ -1,3 +1,5 @@
+require_relative 'data'
+
 module Fondeso
   class Business
     attr_accessor :sector

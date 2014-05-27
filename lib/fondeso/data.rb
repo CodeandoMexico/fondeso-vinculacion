@@ -120,6 +120,23 @@ FONDESO_QUESTIONS = [
         0.75..1    => ['t2', 't3', 'c2', 'c3', 's2', 's3', 'h2', 'h3']
       }
     }
+  },
+
+  {
+    'question_id' => '2.A.7',
+    'type' => 'unique',
+    'associations' => {
+      'positive' => {
+        'A' => ['c1', 'c2', 'c3', 'h1', 'h2', 'h3'],
+        'B' => ['l1', 'l2', 'l3', 's1', 's2', 's3'],
+        'C' => ['n1', 't1', 't2', 't3']
+      },
+      'negative' => {
+        'A' => %w(n1 t1 t2 t3),
+        'B' => %w(n1 t1 t2 t3),
+        'C' => %w(l1 c1 c2 c3 s1 s2 s3 h1 h2 h3)
+      }
+    }
   }
 ]
 
