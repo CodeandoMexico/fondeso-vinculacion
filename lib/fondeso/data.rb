@@ -343,6 +343,21 @@ FONDESO_QUESTIONS = [
       }
     }
   },
+
+  {
+    'question_id' => '3.A.8',
+    'type' => 'unique',
+    'associations' => {
+      'positive' => {
+        'A' => %w(t2 t3 l2 l3 h1 h2 h3),
+        'B' => %w(n1 t1 c1 s1 s2 s3)
+      },
+      'negative' => {
+        'A' => %w(n1 t1 c1 s1 s2 s3),
+        'B' => %w(t3 c3 h3)
+      }
+    }
+  },
 ]
 
 FONDESO_SECTORS = [
