@@ -4,9 +4,9 @@ Feature: User answers the questionary for an established business
     When I answer the ordinal question "2.A.1" with:
       | A |   |
       | B |   |
-      | C |   |
+      | C | 1 |
       | D |   |
-      | E | 1 |
+      | E |   |
       | F |   |
     Then the partial score for the question "2.A.1" should be:
       | need-startup              |-1 |

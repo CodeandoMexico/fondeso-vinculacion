@@ -13,15 +13,15 @@ Feature: Answer ordinal question
       | traditional-startup       | 0.5  |
       | traditional-growing       | 0.5  |
       | traditional-consolidation | 0.5  |
-      | lifestyle-startup         | -1   |
-      | lifestyle-growing         | -1   |
-      | lifestyle-consolidation   | -1   |
+      | lifestyle-startup         | 0.33 |
+      | lifestyle-growing         | 0.33 |
+      | lifestyle-consolidation   | 0.33 |
       | cultural-startup          | -1   |
       | cultural-growing          | -1   |
       | cultural-consolidation    | -1   |
-      | social-startup            | 0.33 |
-      | social-growing            | 0.33 |
-      | social-consolidation      | 0.33 |
+      | social-startup            | -1   |
+      | social-growing            | -1   |
+      | social-consolidation      | -1   |
       | high_impact-startup       | -1   |
       | high_impact-growing       | -1   |
       | high_impact-consolidation | -1   |
@@ -31,9 +31,9 @@ Feature: Answer ordinal question
     When I answer the ordinal question "2.A.1" with:
       | A |   |
       | B |   |
-      | C | 1 |
+      | C |   |
       | D |   |
-      | E |   |
+      | E | 1 |
       | F |   |
     Then my current score should be:
       | need-startup              |-1 |
