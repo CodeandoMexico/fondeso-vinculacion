@@ -18,6 +18,10 @@ module Fondeso
       scores.sum
     end
 
+    def score_for_question(question)
+      scores[question]
+    end
+
     def initialize_score_for_question(question)
       scores.initialize_for_question(question)
     end
@@ -42,6 +46,10 @@ module Fondeso
 
       def sum
         all.values.sum
+      end
+
+      def [] question
+        all.fetch(question.question_id) { 0 }
       end
 
       private

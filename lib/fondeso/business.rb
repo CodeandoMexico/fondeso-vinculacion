@@ -16,6 +16,10 @@ module Fondeso
       find_profile(profile_id).score
     end
 
+    def profile_score_for_question(question, profile_id)
+      find_profile(profile_id).score_for_question(question)
+    end
+
     def add_to_profile_score(profile_id, question, points)
       find_profile(profile_id).add_to_score(question, points)
     end

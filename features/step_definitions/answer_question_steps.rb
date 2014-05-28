@@ -22,11 +22,19 @@ When(/^I answer the multiple answer question "(.*?)" with:$/) do |question, answ
 end
 
 Then(/^my current score should be:$/) do |table|
-  table.raw.to_h.each { |profile, score| profile_score_should_eq(@questionary, profile, score) }
+  table.raw.to_h.each do |profile, score|
+    profile_score_should_eq(profile, @questionary.current_profile_score(profile), score)
+  end
 end
 
-def profile_score_should_eq(questionary, profile, score)
-  actual_score = (questionary.current_profile_score(profile) * 100).to_i / 100.0
+Then(/^the partial score for the question "(.*?)" should be:$/) do |question, table|
+  table.raw.to_h.each do |profile, score|
+    profile_score_should_eq(profile, @questionary.profile_score_for_question(question, profile), score)
+  end
+end
+
+def profile_score_should_eq(profile, profile_score, score)
+  actual_score = (profile_score * 100).to_i / 100.0
   actual_score.should eq(score.to_f), "Profile #{profile} should have score #{score.to_f} and got #{actual_score}"
 end
 
