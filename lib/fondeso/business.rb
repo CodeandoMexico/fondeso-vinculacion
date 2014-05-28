@@ -26,7 +26,7 @@ module Fondeso
 
     def answer_question(question, answer)
       add_answer(question, answer)
-      initialize_profile_scores_for_question(question)
+      initialize_profiles_scores_for_question(question)
       question.add_points_for_answer(answer, self)
     end
 
@@ -36,7 +36,7 @@ module Fondeso
 
     private
 
-    def initialize_profile_scores_for_question(question)
+    def initialize_profiles_scores_for_question(question)
       profiles.each do |profile|
         profile.initialize_score_for_question(question)
       end
