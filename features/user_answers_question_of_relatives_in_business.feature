@@ -10,8 +10,8 @@ Feature: Answer question of relatives in business
       | traditional-growing       |-1 |
       | traditional-consolidation |-2 |
       | lifestyle-startup         |-2 |
-      | lifestyle-growing         |-1 |
-      | lifestyle-consolidation   |-1 |
+      | lifestyle-growing         |-2 |
+      | lifestyle-consolidation   |-2 |
       | cultural-startup          |-1 |
       | cultural-growing          |-2 |
       | cultural-consolidation    |-3 |
