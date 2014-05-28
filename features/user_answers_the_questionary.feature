@@ -139,3 +139,21 @@ Feature: User answers the questionary
       | high_impact-startup       | 0 |
       | high_impact-growing       | 0 |
       | high_impact-consolidation | 0 |
+    When I answer the question "2.A.8" with the unique answer "B"
+    Then the partial score for the question "2.A.8" should be:
+      | need-startup              |-1 |
+      | traditional-startup       | 0 |
+      | traditional-growing       | 1 |
+      | traditional-consolidation | 1 |
+      | lifestyle-startup         | 1 |
+      | lifestyle-growing         | 1 |
+      | lifestyle-consolidation   | 1 |
+      | cultural-startup          | 1 |
+      | cultural-growing          | 1 |
+      | cultural-consolidation    | 1 |
+      | social-startup            | 1 |
+      | social-growing            | 1 |
+      | social-consolidation      | 1 |
+      | high_impact-startup       | 1 |
+      | high_impact-growing       | 1 |
+      | high_impact-consolidation | 1 |
