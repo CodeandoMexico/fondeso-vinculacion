@@ -35,7 +35,8 @@ end
 
 def profile_score_should_eq(profile, profile_score, score)
   actual_score = (profile_score * 100).to_i / 100.0
-  actual_score.should eq(score.to_f), "Profile #{profile} should have score #{score.to_f} and got #{actual_score}"
+  message = "Profile #{profile} should have score #{score.to_f} and got #{actual_score}"
+  actual_score.should eq(score.to_f), message
 end
 
 def ordinal_answer(answers_table)

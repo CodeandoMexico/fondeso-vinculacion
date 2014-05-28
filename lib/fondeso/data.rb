@@ -358,6 +358,36 @@ FONDESO_QUESTIONS = [
       }
     }
   },
+
+  {
+    'question_id' => '2.C.1',
+    'type' => 'ordinal',
+    'associations' => {
+      'positive' => {
+        'A' => ['n1'],
+        'B' => ['t1'],
+        'C' => ['s1'],
+        'D' => ['c1'],
+        'E' => ['l1'],
+        'F' => ['h1']
+      }
+    }
+  },
+
+  {
+    'question_id' => '2.C.2',
+    'type' => 'ordinal',
+    'associations' => {
+      'positive' => {
+        'A' => ['n1'],
+        'B' => ['t1'],
+        'C' => ['l1'],
+        'D' => ['c1'],
+        'E' => ['s1'],
+        'F' => ['h1']
+      }
+    }
+  }
 ]
 
 FONDESO_SECTORS = [
