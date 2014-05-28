@@ -144,14 +144,12 @@ FONDESO_QUESTIONS = [
     'type' => 'unique',
     'associations' => {
       'positive' => {
-        'A' => ['c1', 'c2', 'c3', 'h1', 'h2', 'h3'],
-        'B' => ['l1', 'l2', 'l3', 's1', 's2', 's3'],
-        'C' => ['n1', 't1', 't2', 't3']
+        'A' => %w(n1 t1),
+        'B' => %w(c1 c2 c3 s1 s2 s3)
       },
       'negative' => {
-        'A' => %w(n1 t1 t2 t3),
-        'B' => %w(n1 t1 t2 t3),
-        'C' => %w(l1 c1 c2 c3 s1 s2 s3 h1 h2 h3)
+        'A' => %w(c1 c2 c3 s1 s2 s3),
+        'B' => %w(n1 t1)
       }
     }
   },
