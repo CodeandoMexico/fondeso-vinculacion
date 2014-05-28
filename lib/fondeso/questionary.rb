@@ -12,8 +12,7 @@ module Fondeso
       end
 
       question = Question.find(question_id)
-      business.add_answer(question_id, answer)
-      question.add_points_for_answer(answer, business)
+      business.answer_question(question, answer)
     end
 
     def current_profile_score(profile_id)

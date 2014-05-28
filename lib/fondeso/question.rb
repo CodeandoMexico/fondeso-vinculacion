@@ -2,7 +2,7 @@ require_relative 'data'
 
 module Fondeso
   class Question
-    attr_reader :type
+    attr_reader :type, :question_id
 
     def initialize(data)
       @type = data.fetch('type')
@@ -36,7 +36,11 @@ module Fondeso
 
     private
 
-    attr_reader :associations, :question_id
+    attr_reader :associations
+
+    def add_points_to_profile(business, profile_id, points)
+      business.add_to_profile_score(profile_id, self, points)
+    end
 
     def match_associations_key?(key, option, *other_params)
       key === option

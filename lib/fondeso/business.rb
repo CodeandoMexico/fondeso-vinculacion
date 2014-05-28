@@ -16,12 +16,14 @@ module Fondeso
       find_profile(profile_id).score
     end
 
-    def add_to_profile_score(profile_id, points)
-      find_profile(profile_id).add_to_score(points)
+    def add_to_profile_score(profile_id, question, points)
+      find_profile(profile_id).add_to_score(question, points)
     end
 
-    def add_answer(question_id, answer)
-      answers[question_id] = answer
+    def answer_question(question, answer)
+      add_answer(question, answer)
+      initialize_profile_scores_for_question(question)
+      question.add_points_for_answer(answer, self)
     end
 
     def answer_to_question(question_id)
@@ -29,6 +31,16 @@ module Fondeso
     end
 
     private
+
+    def initialize_profile_scores_for_question(question)
+      profiles.each do |profile|
+        profile.initialize_score_for_question(question)
+      end
+    end
+
+    def add_answer(question, answer)
+      answers[question.question_id] = answer
+    end
 
     def answers
       @answers ||= {}

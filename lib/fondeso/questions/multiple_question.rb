@@ -5,7 +5,7 @@ module Fondeso
         positive_associations.each do |associations_key, associations|
           if match_associations_key?(associations_key, answer)
             associations.each do |profile_id|
-              business.add_to_profile_score(profile_id, 1)
+              add_points_to_profile(business, profile_id, 1)
             end
           end
         end
@@ -13,7 +13,7 @@ module Fondeso
         negative_associations.each do |associations_key, associations|
           if match_associations_key?(associations_key, answer)
             associations.each do |profile_id|
-              business.add_to_profile_score(profile_id, -1)
+              add_points_to_profile(business, profile_id, -1)
             end
           end
         end
