@@ -217,7 +217,7 @@ FONDESO_QUESTIONS = [
         { 'F' => false } => [],
         { 'G' => false } => [],
         { 'H' => false } => [],
-        { 'I' => false } => %w(t3 h3),
+        { 'I' => false } => [],
         { 'F' => false, 'G' => false } => %w(c1 c2 c3 s1 s2 s3),
         { 'H' => false, 'I' => false } => %w(c1 c2 c3 s1 s2 s3)
       },
