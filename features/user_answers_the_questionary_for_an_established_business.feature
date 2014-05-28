@@ -228,8 +228,8 @@ Feature: User answers the questionary for an established business
       | traditional-growing       | 0 |
       | traditional-consolidation | 1 |
       | lifestyle-startup         |-1 |
-      | lifestyle-growing         | 1 |
-      | lifestyle-consolidation   | 1 |
+      | lifestyle-growing         | 0 |
+      | lifestyle-consolidation   | 0 |
       | cultural-startup          |-1 |
       | cultural-growing          | 0 |
       | cultural-consolidation    | 1 |

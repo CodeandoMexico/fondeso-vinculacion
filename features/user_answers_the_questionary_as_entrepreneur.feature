@@ -45,3 +45,21 @@ Feature: User answers the questionary as entrepreneur
       | cultural-startup          |-1 |
       | social-startup            |-1 |
       | high_impact-startup       |-1 |
+    When I answer the multiple answer question "2.C.5" with:
+      | A |   |
+      | B |   |
+      | C | x |
+      | D | x |
+      | E |   |
+      | F |   |
+      | G | x |
+      | H | x |
+      | I | x |
+      | J |   |
+    Then the partial score for the question "2.C.5" should be:
+      | need-startup              | 1 |
+      | traditional-startup       | 0 |
+      | lifestyle-startup         |-1 |
+      | cultural-startup          |-1 |
+      | social-startup            |-1 |
+      | high_impact-startup       |-1 |
