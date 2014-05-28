@@ -28,8 +28,7 @@ module Fondeso
 
     private
 
-    attr_reader :name, :profile_id
-    attr_reader :scores
+    attr_reader :name, :profile_id, :scores
 
     class Scores
       def initialize
