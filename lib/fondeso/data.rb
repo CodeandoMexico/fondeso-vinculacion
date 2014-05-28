@@ -249,7 +249,26 @@ FONDESO_QUESTIONS = [
         { 'H' => false, 'I' => false } => []
       }
     }
-  }
+  },
+
+  {
+    'question_id' => '3.A.3',
+    'type' => 'unique',
+    'associations' => {
+      'positive' => {
+        'A' => %w(n1 t1),
+        'B' => [],
+        'C' => [],
+        'D' => %w(t3 l2 l3 c3 s3 h2 h3)
+      },
+      'negative' => {
+        'A' => %w(t2 t3 l2 l3 c2 c3 s2 s3 h1 h2 h3),
+        'B' => %w(t3 l2 l3 c2 c3 s2 s3 h1 h2 h3),
+        'C' => %w(n1 t1 t3 c3 s3 h2 h3),
+        'D' => %w(n1 t1 l1 c1 s1)
+      }
+    }
+  },
 ]
 
 FONDESO_SECTORS = [
