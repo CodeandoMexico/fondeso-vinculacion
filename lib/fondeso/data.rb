@@ -171,7 +171,7 @@ FONDESO_QUESTIONS = [
 
   {
     'question_id' => '3.A.1',
-    'type' => 'unique',
+    'type' => 'unique_with_range',
     'associations' => {
       'positive' => {
         1..2 => %w(n1 t1 l1 c1 s1 h1),
