@@ -275,3 +275,25 @@ Feature: User answers the questionary
       | high_impact-startup       | 1 |
       | high_impact-growing       | 1 |
       | high_impact-consolidation | 1 |
+    When I answer the multiple answer question "3.A.7" with:
+      | A |   |
+      | B |   |
+      | C |   |
+      | D | x |
+    Then the partial score for the question "3.A.7" should be:
+      | need-startup              | 3 |
+      | traditional-startup       | 2 |
+      | traditional-growing       | 0 |
+      | traditional-consolidation |-3 |
+      | lifestyle-startup         |-1 |
+      | lifestyle-growing         |-3 |
+      | lifestyle-consolidation   |-3 |
+      | cultural-startup          | 0 |
+      | cultural-growing          |-2 |
+      | cultural-consolidation    |-3 |
+      | social-startup            | 0 |
+      | social-growing            |-2 |
+      | social-consolidation      |-3 |
+      | high_impact-startup       |-3 |
+      | high_impact-growing       |-3 |
+      | high_impact-consolidation |-3 |

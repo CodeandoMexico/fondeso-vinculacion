@@ -318,6 +318,31 @@ FONDESO_QUESTIONS = [
       }
     }
   },
+
+  {
+    'question_id' => '3.A.7',
+    'type' => 'multiple',
+    'associations' => {
+      'positive' => {
+        { 'A' => true } => %w(t3 l2 l3 c2 c3 s2 s3 h1 h2 h3),
+        { 'B' => true } => %w(t3 l1 l2 l3 c2 c3 s2 s3 h1 h2 h3),
+        { 'C' => true } => %w(t3 l2 l3 c3 s3 h1 h2 h3),
+
+        { 'A' => false } => %w(n1 t1),
+        { 'B' => false } => %w(n1 t1),
+        { 'C' => false } => %w(n1)
+      },
+      'negative' => {
+        { 'A' => true } => %w(n1 t1),
+        { 'B' => true } => %w(n1 t1),
+        { 'C' => true } => %w(n1),
+
+        { 'A' => false } => %w(t3 l2 l3 c2 c3 s2 s3 h1 h2 h3),
+        { 'B' => false } => %w(t3 l1 l2 l3 c2 c3 s2 s3 h1 h2 h3),
+        { 'C' => false } => %w(t3 l2 l3 c3 s3 h1 h2 h3)
+      }
+    }
+  },
 ]
 
 FONDESO_SECTORS = [
