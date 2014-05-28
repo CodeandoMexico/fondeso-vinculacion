@@ -406,6 +406,21 @@ FONDESO_QUESTIONS = [
         'D' => ['n1']
       }
     }
+  },
+
+  {
+    'question_id' => '2.C.4',
+    'type' => 'unique',
+    'associations' => {
+      'positive' => {
+        'A' => ['n1'],
+        'B' => ['l1', 'c1', 's1', 'h1']
+      },
+      'negative' => {
+        'A' => ['l1', 'c1', 's1', 'h1'],
+        'B' => ['n1']
+      }
+    }
   }
 ]
 

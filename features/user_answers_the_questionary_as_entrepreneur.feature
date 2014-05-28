@@ -37,3 +37,11 @@ Feature: User answers the questionary as entrepreneur
       | cultural-startup          | 0 |
       | social-startup            | 0 |
       | high_impact-startup       | 0 |
+    When I answer the question "2.C.4" with the unique answer "A"
+    Then the partial score for the question "2.C.4" should be:
+      | need-startup              | 1 |
+      | traditional-startup       | 0 |
+      | lifestyle-startup         |-1 |
+      | cultural-startup          |-1 |
+      | social-startup            |-1 |
+      | high_impact-startup       |-1 |
