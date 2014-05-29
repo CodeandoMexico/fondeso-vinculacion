@@ -315,29 +315,29 @@ Feature: User answers the questionary for an established business
       | high_impact-startup       | 1 |
       | high_impact-growing       | 1 |
       | high_impact-consolidation | 1 |
-    #When I answer the ordinal question "4.A.1" with:
-      #| A |   |
-      #| B |   |
-      #| C | 1 |
-      #| D |   |
-      #| E |   |
-      #| F |   |
-      #| G | 2 |
-      #| H | 3 |
-    #Then the partial score for the question "4.A.1" should be:
-      #| need-startup              | 0 |
-      #| traditional-startup       | 0 |
-      #| traditional-growing       | 1 |
-      #| traditional-consolidation | 1 |
-      #| lifestyle-startup         | 0 |
-      #| lifestyle-growing         | 1 |
-      #| lifestyle-consolidation   | 1 |
-      #| cultural-startup          | 0 |
-      #| cultural-growing          | 1 |
-      #| cultural-consolidation    | 1 |
-      #| social-startup            | 0 |
-      #| social-growing            | 1 |
-      #| social-consolidation      | 1 |
-      #| high_impact-startup       | 0 |
-      #| high_impact-growing       | 1 |
-      #| high_impact-consolidation | 1 |
+    When I answer the ordinal question "4.A.1" with:
+      | A |   |
+      | B |   |
+      | C | 1 |
+      | D |   |
+      | E |   |
+      | F |   |
+      | G | 2 |
+      | H | 3 |
+    Then the partial score for the question "4.A.1" should be:
+      | need-startup              |-1 |
+      | traditional-startup       | 0 |
+      | traditional-growing       | 3 |
+      | traditional-consolidation | 3 |
+      | lifestyle-startup         | 0 |
+      | lifestyle-growing         | 2 |
+      | lifestyle-consolidation   | 2 |
+      | cultural-startup          | 0 |
+      | cultural-growing          | 3 |
+      | cultural-consolidation    | 3 |
+      | social-startup            | 0 |
+      | social-growing            | 3 |
+      | social-consolidation      | 3 |
+      | high_impact-startup       | 0 |
+      | high_impact-growing       | 3 |
+      | high_impact-consolidation | 3 |

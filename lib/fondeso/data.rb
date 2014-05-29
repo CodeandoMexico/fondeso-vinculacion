@@ -360,6 +360,33 @@ FONDESO_QUESTIONS = [
   },
 
   {
+    'question_id' => '4.A.1',
+    'type' => 'ordinal_as_multiple',
+    'associations' => {
+      'positive' => {
+        { 'A' => true } => %w(n1 t1 l1 c1 s1 h1),
+        { 'B' => true } => %w(n1 t1 l1 c1 s1 h1),
+        { 'C' => true } => %w(t2 t3 l2 l3 c2 c3 s2 s3 h2 h3),
+        { 'D' => true } => %w(n1 t1 t2 c1 s1),
+        { 'E' => true } => %w(t2 l2 l3 c2 s2 h2),
+        { 'F' => true } => %w(t2 t3 l2 l3 c2 c3 s2 s3 h2 h3),
+        { 'G' => true } => %w(t2 t3 c2 c3 s2 s3 h2 h3),
+        { 'H' => true } => %w(t2 t3 l2 l3 c2 c3 s2 s3 h2 h3)
+      },
+      'negative' => {
+        { 'A' => true } => [],
+        { 'B' => true } => %w(t3 c3 s3 h3),
+        { 'C' => true } => [],
+        { 'D' => true } => %w(t3 c2 c3 s2 s3 h2 h3),
+        { 'E' => true } => %w(n1),
+        { 'F' => true } => %w(n1),
+        { 'G' => true } => [],
+        { 'H' => true } => %w(n1)
+      }
+    }
+  },
+
+  {
     'question_id' => '2.C.1',
     'type' => 'ordinal',
     'associations' => {
