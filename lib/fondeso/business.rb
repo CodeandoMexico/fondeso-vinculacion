@@ -1,5 +1,3 @@
-require_relative 'data'
-
 module Fondeso
   class Business
     attr_accessor :sector
@@ -51,7 +49,7 @@ module Fondeso
     end
 
     def profiles
-      @profiles ||= FONDESO_PROFILES.map { |profile| Profile.new(profile) }
+      @profiles ||= Fondeso::Data::PROFILES.map { |profile| Profile.new(profile) }
     end
   end
 end

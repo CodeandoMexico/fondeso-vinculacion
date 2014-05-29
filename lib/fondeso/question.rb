@@ -1,5 +1,3 @@
-require_relative 'data'
-
 module Fondeso
   class Question
     attr_reader :type, :question_id
@@ -51,7 +49,7 @@ module Fondeso
     end
 
     def self.all_questions
-      FONDESO_QUESTIONS.inject({}) do |hash, question|
+      Fondeso::Data::QUESTIONS.inject({}) do |hash, question|
         hash[question.fetch('question_id')] = question
         hash
       end
