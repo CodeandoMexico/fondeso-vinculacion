@@ -509,6 +509,31 @@ FONDESO_QUESTIONS = [
         'C' => %w(n1 t1)
       }
     }
+  },
+
+  {
+    'question_id' => '4.C.1',
+    'type' => 'ordinal_as_multiple',
+    'associations' => {
+      'positive' => {
+        { 'A' => true } => %w(n1 t1 l1 c1 s1 h1),
+        { 'B' => true } => %w(n1 t1 l1 c1 s1 h1),
+        { 'C' => true } => [],
+        { 'D' => true } => %w(n1 t1 c1 s1),
+        { 'E' => true } => [],
+        { 'F' => true } => [],
+        { 'G' => true } => []
+      },
+      'negative' => {
+        { 'A' => true } => [],
+        { 'B' => true } => [],
+        { 'C' => true } => [],
+        { 'D' => true } => [],
+        { 'E' => true } => %w(n1),
+        { 'F' => true } => [],
+        { 'G' => true } => %w(n1)
+      }
+    }
   }
 ]
 

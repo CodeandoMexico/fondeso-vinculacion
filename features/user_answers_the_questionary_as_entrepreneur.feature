@@ -69,3 +69,18 @@ Feature: User answers the questionary as entrepreneur
       | cultural-startup          | 0 |
       | social-startup            | 0 |
       | high_impact-startup       |-1 |
+    When I answer the ordinal question "4.C.1" with:
+      | A |   |
+      | B |   |
+      | C |   |
+      | D | 1 |
+      | E |   |
+      | F |   |
+      | G |   |
+    Then the partial score for the question "4.C.1" should be:
+      | need-startup              | 1 |
+      | traditional-startup       | 1 |
+      | lifestyle-startup         | 0 |
+      | cultural-startup          | 1 |
+      | social-startup            | 1 |
+      | high_impact-startup       | 0 |
