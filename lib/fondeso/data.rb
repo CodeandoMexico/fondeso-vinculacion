@@ -448,6 +448,23 @@ FONDESO_QUESTIONS = [
         'H' => %w(n1 t1 c1 s1)
       }
     }
+  },
+
+  {
+    'question_id' => '2.C.6',
+    'type' => 'unique',
+    'associations' => {
+      'positive' => {
+        'A' => %w(c1 h1),
+        'B' => %w(l1 s1),
+        'C' => %w(n1 t1)
+      },
+      'negative' => {
+        'A' => %w(n1 t1),
+        'B' => %w(n1 t1),
+        'C' => %w(l1 c1 s1 h1)
+      }
+    }
   }
 ]
 
