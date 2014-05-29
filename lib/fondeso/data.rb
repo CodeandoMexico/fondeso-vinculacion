@@ -421,6 +421,33 @@ FONDESO_QUESTIONS = [
         'B' => ['n1']
       }
     }
+  },
+
+  {
+    'question_id' => '2.C.5',
+    'type' => 'unique',
+    'associations' => {
+      'positive' => {
+        'A' => [],
+        'B' => [],
+        'C' => [],
+        'D' => [],
+        'E' => %w(c1),
+        'F' => %w(s1),
+        'G' => [],
+        'H' => %w(h1)
+      },
+      'negative' => {
+        'A' => %w(n1 l1 c1),
+        'B' => %w(c1 s1),
+        'C' => %w(c1 s1),
+        'D' => %w(n1),
+        'E' => %w(n1 t1),
+        'F' => %w(n1 t1 l1),
+        'G' => %w(l1 c1),
+        'H' => %w(n1 t1 c1 s1)
+      }
+    }
   }
 ]
 
