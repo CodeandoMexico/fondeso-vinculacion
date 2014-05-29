@@ -20,6 +20,15 @@ module Fondeso
     ]
 
     QUESTIONS = [
+      { 'question_id' => '1.B.1', 'type' => 'unique_informative' },
+      { 'question_id' => '1.B.2', 'type' => 'unique_informative' },
+      { 'question_id' => '1.B.3', 'type' => 'unique_informative' },
+      { 'question_id' => '1.B.4', 'type' => 'unique_informative' },
+      { 'question_id' => '1.B.4.2', 'type' => 'unique_informative' },
+      { 'question_id' => '1.B.5', 'type' => 'unique_informative' },
+      { 'question_id' => '1.B.5.2', 'type' => 'unique_informative' },
+      { 'question_id' => '1.B.6', 'type' => 'unique_informative' },
+
       {
         'question_id' => '2.A.1',
         'type' => 'ordinal',
