@@ -1,6 +1,6 @@
 module Fondeso
-  class Business
-    attr_accessor :sector
+  class User
+    attr_accessor :business_sector
 
     def find_profile(name_or_profile_id)
       profiles.select { |profile| profile.identifiable_by?(name_or_profile_id) }.first

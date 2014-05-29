@@ -36,8 +36,8 @@ module Fondeso
 
     attr_reader :associations
 
-    def add_points_to_profile(business, profile_id, points)
-      business.add_to_profile_score(profile_id, self, points)
+    def add_points_to_profile(user, profile_id, points)
+      user.add_to_profile_score(profile_id, self, points)
     end
 
     def match_associations_key?(key, option, *other_params)
