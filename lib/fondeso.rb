@@ -1,2 +1,3 @@
-module Fondeso
-end
+require 'fondeso/fund'
+# module Fondeso
+# end
