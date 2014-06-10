@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'funds', to: 'funds#index'
-  get 'funds/category/:name', to: 'funds#category'
+  get 'fondos', to: 'funds#index'
+  get 'fondos/categoria/:name', to: 'funds#category'
+  match 'fondos', to: 'fondos#index', via: [:options]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
