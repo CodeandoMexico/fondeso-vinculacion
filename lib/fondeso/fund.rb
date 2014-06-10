@@ -42,7 +42,6 @@ class Fondeso::Fund
   end
 
   def find(name)
-    # [].to_json
     funds.map.select { |f| f[name] == '1'}
   end
 
