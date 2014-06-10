@@ -19,6 +19,8 @@ class FundsController < ApplicationController
   end
 
   def answers
+    # c = params["1.B"]
+    # puts c
     render nothing: true
   end
 
