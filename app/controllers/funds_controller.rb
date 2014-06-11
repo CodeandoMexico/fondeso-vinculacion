@@ -27,6 +27,7 @@ class FundsController < ApplicationController
       puts '---------------------------------------------- controller logic ----------------------------------------------'
       # remove unecessary keys
       answers.parse(params[:_json])
+      # we need to save everything to the database
     end
     render nothing: true
   end
