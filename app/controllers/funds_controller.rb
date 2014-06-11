@@ -21,6 +21,12 @@ class FundsController < ApplicationController
   def answers
     # c = params["1.B"]
     # puts c
+    if request.post?
+      answers = Fondeso::Answer.new
+      puts '---------------------------------------------- controller logic ----------------------------------------------'
+      # remove unecessary keys
+      answers.parse(params)
+    end
     render nothing: true
   end
 
