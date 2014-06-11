@@ -17,7 +17,9 @@ module Fondeso
         current_section = sections[k.to_s] # get current section
         questions = current_section["questions"] # questions from the current section
         questions.each do |q|
-          current_answer = q["title"]
+          # create an answer hash for further processing
+          current_answer = { title: q["title"], body: q["body"] }
+          # puts current_answer
           answers.push current_answer
         end
       end
