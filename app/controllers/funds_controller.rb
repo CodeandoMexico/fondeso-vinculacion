@@ -15,7 +15,8 @@ class FundsController < ApplicationController
     funds = Fondeso::Fund.new
     # look for funds in this category
     category_funds = funds.find(params[:name])
-    render json: category_funds
+    options = category_funds.length > 0 ? { json: category_funds } : { json: [], status: 404 }
+    render options
   end
 
   def answers

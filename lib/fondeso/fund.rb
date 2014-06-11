@@ -13,7 +13,7 @@ module Fondeso
           "Nombre del Programa" => "nombre",
           "Nombre de la modalidad/Categoría (si aplica) " => "categoria",
           "Institución a cargo" => "institucion",
-          "Características del apoyo" => "carateristicas",
+          "Características del apoyo" => "caracteristicas",
           "Entrega del apoyo" => "entrega",
           "Descripción del programa" => "descripcion",
           "Dato de contacto para pedir informes" => "informes",
