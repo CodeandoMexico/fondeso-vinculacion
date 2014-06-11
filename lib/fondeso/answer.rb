@@ -11,27 +11,29 @@ module Fondeso
     def parse(sections)
       # puts sections
       # let's parse the answer question to a readable format
-      keys = sections.except(:action, :controller, :fund).keys
-      # puts keys
-      keys.each do |k|
-        current_section = sections[k.to_s] # get current section
-        questions = current_section["questions"] # questions from the current section
+      sections.each do |current_section|
+        questions = current_section["questions"]
         questions.each do |q|
-          # create an answer hash for further processing
-          current_answer = { title: q["title"], body: q["body"] }
-          # puts current_answer
+          # check for an answer
+          tmp = { id: q["id"], type: q["type"], body: q["body"] }
+          current_answer = extract_question_data_from tmp # let's extract the info
+          puts current_answer
           answers.push current_answer
         end
       end
 
-      puts answers
-
     end
 
-    # protected
-    # def extract_question_data(question)
-    #
-    # end
+    protected
+    def extract_question_data_from(question)
+      answer = case question[:type]
+        when "number" then question[:body][:value]
+        when "radio" then question[:body][:selected_value]
+        when "checkbox" then question[:body][:options]
+        when "select" then question[:body][:selected_value]
+        when "prioritize" then question[:body][:options]
+      end
+    end
 
   end
 end
