@@ -15,7 +15,7 @@ class FundsController < ApplicationController
     funds = Fondeso::Fund.new
     # look for funds in this category
     category_funds = funds.find(params[:name])
-    options = category_funds.length > 0 ? { json: category_funds } : { json: [], status: 404 }
+    options = category_funds.length > 0 ? { json: category_funds } : { json: [], status: :not_found }
     render options
   end
 
@@ -26,7 +26,7 @@ class FundsController < ApplicationController
       answers = Fondeso::Answer.new
       puts '---------------------------------------------- controller logic ----------------------------------------------'
       # remove unecessary keys
-      answers.parse(params)
+      answers.parse(params[:_json])
     end
     render nothing: true
   end

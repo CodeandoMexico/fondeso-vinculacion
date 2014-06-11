@@ -11,20 +11,15 @@ module Fondeso
     def parse(sections)
       # puts sections
       # let's parse the answer question to a readable format
-      keys = sections.except(:action, :controller, :fund).keys
-      # puts keys
-      keys.each do |k|
-        current_section = sections[k.to_s] # get current section
-        questions = current_section["questions"] # questions from the current section
+      sections.each do |current_section|
+        questions = current_section["questions"]
         questions.each do |q|
-          # create an answer hash for further processing
-          current_answer = { title: q["title"], body: q["body"] }
-          # puts current_answer
+          # check for an answer
+          current_answer = { id: q["id"], title: q["title"], body: q["body"] }
+          puts current_answer[:id]
           answers.push current_answer
         end
       end
-
-      puts answers
 
     end
 
