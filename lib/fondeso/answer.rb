@@ -27,11 +27,22 @@ module Fondeso
     protected
     def extract_question_data_from(question)
       answer = case question[:type]
-        when "number" then question[:body][:value]
-        when "radio" then question[:body][:selected_value]
-        when "checkbox" then question[:body][:options]
-        when "select" then question[:body][:selected_value]
-        when "prioritize" then question[:body][:options]
+        when "number"
+          puts "---number---"
+          question[:body][:value]
+        when "radio"
+          puts "---radio---"
+          question[:body][:selected_value]
+        when "checkbox"
+          puts "---checkbox---"
+          checked = question[:body][:options].select { |option| option[:checked] == true }
+          checked.map { |option| option[:value] }
+        when "select"
+          puts "---select---"
+          question[:body][:selected_value][:label]
+        when "prioritize"
+          puts "---prioritize---"
+          priorities = question[:body][:options].map { |option| option[:priority] }
       end
     end
 
