@@ -25,9 +25,11 @@ class FundsController < ApplicationController
     if request.post?
       answers = Fondeso::Answer.new
       puts '---------------------------------------------- controller logic ----------------------------------------------'
-      # remove unecessary keys
-      answers.parse(params[:_json])
       # we need to save everything to the database
+      # parse the data from the questionary
+      answers.extract_question_data_from(params[:_json])
+      # let's process the questionary answers
+      answers.process_questionary
     end
     render nothing: true
   end
