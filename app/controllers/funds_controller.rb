@@ -29,7 +29,7 @@ class FundsController < ApplicationController
       # parse the data from the questionary
       answers.extract_question_data_from(params[:_json])
       # let's process the questionary answers
-      answers.process_questionary
+      # answers.process_questionary
     end
     render nothing: true
   end
