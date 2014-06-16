@@ -42,10 +42,10 @@ module Fondeso
           question[:body][:selected_value].upcase
         when "checkbox"
           # puts "---checkbox---"
-          checked = hashify(question[:body][:options], label="value", value="checked")
+          checked = hashify(question[:body][:options], key="value", value="checked")
         when "select"
           # puts "---select---"
-          question[:body][:selected_value][:label]
+          question[:body][:selected_value][:value].upcase
         when "prioritize"
           # puts "---prioritize---"
           # priorities = question[:body][:options].map { |option| option[:priority] }
@@ -54,6 +54,8 @@ module Fondeso
     end
 
     def hashify(elements, label, value)
+      # puts "#{label} #{value}"
+      # puts elements
       new_hash = elements.inject({}) do |hash, e|
         key = e[label].upcase
         hash[key] = e[value]
