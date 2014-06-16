@@ -473,7 +473,9 @@ module Fondeso
             'E' => %w(c1),
             'F' => %w(s1),
             'G' => [],
-            'H' => %w(h1)
+            'H' => %w(h1),
+            'I' => [],
+            'J' => []
           },
           'negative' => {
             'A' => %w(n1 l1 c1),
@@ -483,7 +485,9 @@ module Fondeso
             'E' => %w(n1 t1),
             'F' => %w(n1 t1 l1),
             'G' => %w(l1 c1),
-            'H' => %w(n1 t1 c1 s1)
+            'H' => %w(n1 t1 c1 s1),
+            'I' => [],
+            'J' => []
           }
         }
       },
