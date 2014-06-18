@@ -10,19 +10,26 @@ When(/^I answer the sector question with "(.*?)"$/) do |selected_option|
 end
 
 When(/^I answer the ordinal question "(.*?)" with:$/) do |question, answers_table|
+  x = ordinal_answer(answers_table)
+  puts "#{question} and #{x}"
   @questionary.answer_question(question, ordinal_answer(answers_table))
 end
 
 When(/^I answer the question "(.*?)" with the unique answer "(.*?)"$/) do |question, answer|
+  puts "#{question} and #{answer}"
   @questionary.answer_question(question, answer)
 end
 
 When(/^I answer the multiple answer question "(.*?)" with:$/) do |question, answers_table|
+  x = multiple_answer(answers_table)
+  puts "#{question} and #{x}"
   @questionary.answer_question(question, multiple_answer(answers_table))
 end
 
 Then(/^my current score should be:$/) do |table|
   table.raw.to_h.each do |profile, score|
+    # puts "----------"
+    # puts profile
     profile_score_should_eq(profile, @questionary.current_profile_score(profile), score)
   end
 end
