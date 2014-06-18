@@ -15,7 +15,7 @@ module Fondeso
       profiles.map do |p|
         k = { id: p.name, score: p.score }
         puts k
-        max = (p.score > max.score) ? p.score : max
+        max = (p.score > max.score) ? p : max
       end
       puts "max score #{max.name} with #{max.score}"
       max
