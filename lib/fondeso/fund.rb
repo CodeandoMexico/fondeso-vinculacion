@@ -41,8 +41,12 @@ module Fondeso
       funds
     end
 
-    def find(name)
-      funds.map.select { |f| f[name] == '1'}
+    def find(category, stage)
+      if stage.nil?
+        funds.map.select { |f| f[category] == '1'}
+      else
+        funds.map.select { |f| f[category] == '1' and f[stage] == '1'}
+      end
     end
   end
 

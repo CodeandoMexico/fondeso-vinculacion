@@ -1,7 +1,9 @@
 module Fondeso
   class Profile
+    attr_reader :name, :uri
     def initialize(args)
       @name  = args.fetch(:name)
+      @uri  = args.fetch(:uri)
       @profile_id = args.fetch(:profile_id)
       @scores = Scores.new
     end
@@ -28,7 +30,7 @@ module Fondeso
 
     private
 
-    attr_reader :name, :profile_id, :scores
+    attr_reader :profile_id, :scores
 
     class Scores
       def initialize

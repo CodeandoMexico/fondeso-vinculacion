@@ -10,6 +10,17 @@ module Fondeso
       profiles.map &:score
     end
 
+    def winner_profile
+      max = profiles.first
+      profiles.map do |p|
+        k = { id: p.name, score: p.score }
+        puts k
+        max = (p.score > max.score) ? p.score : max
+      end
+      puts "max score #{max.name} with #{max.score}"
+      max
+    end
+
     def current_profile_score(profile_id)
       find_profile(profile_id).score
     end
