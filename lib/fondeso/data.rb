@@ -1,22 +1,22 @@
 module Fondeso
   module Data
     PROFILES = [
-      { name: "need-startup", profile_id: "n1" },
-      { name: "traditional-startup", profile_id: "t1" },
-      { name: "traditional-growing", profile_id: "t2" },
-      { name: "traditional-consolidation", profile_id: "t3" },
-      { name: "lifestyle-startup", profile_id: "l1" },
-      { name: "lifestyle-growing", profile_id: "l2" },
-      { name: "lifestyle-consolidation", profile_id: "l3" },
-      { name: "cultural-startup", profile_id: "c1" },
-      { name: "cultural-growing", profile_id: "c2" },
-      { name: "cultural-consolidation", profile_id: "c3" },
-      { name: "social-startup", profile_id: "s1" },
-      { name: "social-growing", profile_id: "s2" },
-      { name: "social-consolidation", profile_id: "s3" },
-      { name: "high_impact-startup", profile_id: "h1" },
-      { name: "high_impact-growing", profile_id: "h2" },
-      { name: "high_impact-consolidation", profile_id: "h3" }
+      { name: "need-startup", profile_id: "n1", uri:"/necesidad/" },
+      { name: "traditional-startup", profile_id: "t1", uri:"/tradicional/startup/" },
+      { name: "traditional-growing", profile_id: "t2", uri:"/tradicional/crecimiento/" },
+      { name: "traditional-consolidation", profile_id: "t3", uri:"/tradicional/consolidacion/" },
+      { name: "lifestyle-startup", profile_id: "l1", uri:"/lifestyle/startup/" },
+      { name: "lifestyle-growing", profile_id: "l2", uri:"/lifestyle/crecimiento/" },
+      { name: "lifestyle-consolidation", profile_id: "l3", uri:"/lifestyle/consolidacion/" },
+      { name: "cultural-startup", profile_id: "c1", uri:"/cultural/startup/" },
+      { name: "cultural-growing", profile_id: "c2", uri:"/cultural/crecimiento/" },
+      { name: "cultural-consolidation", profile_id: "c3", uri:"/cultural/consolidacion/" },
+      { name: "social-startup", profile_id: "s1", uri:"/social/startup/" },
+      { name: "social-growing", profile_id: "s2", uri:"/social/crecimiento/" },
+      { name: "social-consolidation", profile_id: "s3", uri:"/social/consolidacion/" },
+      { name: "high_impact-startup", profile_id: "h1", uri:"/altoimpacto/startup/" },
+      { name: "high_impact-growing", profile_id: "h2", uri:"/altoimpacto/crecimiento/" },
+      { name: "high_impact-consolidation", profile_id: "h3", uri:"/altoimpacto/consolidacion/" }
     ]
 
     QUESTIONS = [

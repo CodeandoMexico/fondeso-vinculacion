@@ -31,6 +31,7 @@ module Fondeso
           questionary.answer_question(ans[:id], ans[:answer])
           # questionary.profile_score_for_question(ans[:id], ans[:answer])
       end
+      # show information from partial/complete scores
       answers.each do |ans|
         Fondeso::Data::PROFILES.map do |e|
           score = questionary.profile_score_for_question(ans[:id], e[:profile_id])
@@ -39,12 +40,9 @@ module Fondeso
         end
         puts ""
       end
-      puts "------ final score ------"
-      Fondeso::Data::PROFILES.map do |e|
-        s = questionary.current_profile_score(e[:name])
-        k = { id: e[:name], score: s }
-        puts k
-      end
+      # retrieve the winner profile to the controllerller
+      winner_profile = questionary.winner_profile
+      winner_profile
     end
 
     protected

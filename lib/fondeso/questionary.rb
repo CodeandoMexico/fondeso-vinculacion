@@ -27,5 +27,9 @@ module Fondeso
     def current_score
       user.current_score
     end
+
+    def winner_profile
+      user.winner_profile
+    end
   end
 end

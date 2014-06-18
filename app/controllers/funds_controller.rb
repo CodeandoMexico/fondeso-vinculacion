@@ -14,8 +14,10 @@ class FundsController < ApplicationController
   def category
     funds = Fondeso::Fund.new
     # look for funds in this category
-    category_funds = funds.find(params[:name])
-    options = category_funds.length > 0 ? { json: category_funds } : { json: [], status: :not_found }
+    category = params[:name]
+    stage = params[:stage]
+    results = funds.find(category, stage)
+    options = results.length > 0 ? { json: results } : { json: [], status: :not_found }
     render options
   end
 
@@ -29,9 +31,10 @@ class FundsController < ApplicationController
       # parse the data from the questionary
       answers.extract_question_data_from(params[:_json])
       # let's process the questionary answers
-      answers.process_questionary
+      winning_profile = answers.process_questionary
+      # puts "lets redirect to #{uri}"
     end
-    render nothing: true
+    render json: winning_profile
   end
 
 end
