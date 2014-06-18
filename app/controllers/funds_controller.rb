@@ -32,7 +32,7 @@ class FundsController < ApplicationController
       answers.extract_question_data_from(params[:_json])
       # let's process the questionary answers
       winning_profile = answers.process_questionary
-      # puts "lets redirect to #{uri}"
+      puts "lets redirect to #{winning_profile.uri}"
     end
     render json: winning_profile
   end
