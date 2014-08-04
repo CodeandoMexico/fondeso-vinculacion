@@ -11,15 +11,17 @@ def extract_funds_from_csv(file_name='lib/fondeso/funds/programas.csv')
       raw_data = csv_obj.to_hash
       # let's rename the fields
       new_fund = Hash[raw_data.map {|k, v| [mappings[k] || k, v] }]
+      # puts new_fund
       f = Fund.new
-      f.name = new_fund[:nombre]
-      f.institution = new_fund[:institucion]
-      f.characteristics = fetch_array_from new_fund[:caracteristicas]
-      f.description = new_fund[:descripcion]
+      f.name = new_fund["nombre"]
+      f.institution = new_fund["institucion"]
+      f.characteristics = fetch_array_from new_fund["caracteristicas"]
+      puts f.characteristics.inspect
+      f.description = new_fund["descripcion"]
       # f.deliver_method = array_from_deliver_method new_fund[:entrega]
       # f.clasification = hashify_categories_from new_fund
       # f.special_filters = hashify_categories_from new_fund
-      f.save
+      f.save!
       print '.'
     end
   end
@@ -28,8 +30,8 @@ end
 
 def fetch_array_from(str)
   return nil unless str.present?
-  puts str.split if str.split.length > 1
-  str.split
+  # puts str.split("\n").inspect if str.split.length > 1
+  str.split("\n")
 end
 
 def mappings
