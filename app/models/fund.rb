@@ -7,7 +7,7 @@ class Fund < ActiveRecord::Base
   # serialize :clasification, Array
   # serialize :special_filters, Array
 
-  # validates :name, presence: true
+  validates :name, presence: true
   # validates :description, presence: true
   # validates :institution, presence: true
 

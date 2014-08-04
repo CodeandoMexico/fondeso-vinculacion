@@ -1,13 +1,21 @@
-<%= button_to "Nuevo Fondo", new_fund_path, method: :get %>
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Instituci&oacute;n</th>
-  </tr>
-<% @funds.each do |f| %>
-  <tr>
-    <td><%= f.name %></td>
-    <td><%= f.institution %></td>
-  </tr>
-<% end %>
-</table>
+<div class="container main-container">
+  <!-- <h1>Fondos</h1> -->
+  <%= button_to "Nuevo Fondo", new_fund_path, method: :get, class: "btn btn-default margin-bottom-normal pull-right" %>
+  <table class="table">
+    <tr>
+      <th><strong>Nombre</strong></th>
+      <th><strong>Instituci&oacute;n</strong></th>
+      <th><strong>Propiedad 3</strong></th>
+      <th><strong>Propiedad 4</strong></th>
+    </tr>
+  <% @funds.each do |f| %>
+    <tr>
+      <td><%= f.name %></td>
+      <td><%= f.institution %></td>
+      <td>bla bla ...</td>
+      <td>bla bla ...</td>
+    </tr>
+  <% end %>
+
+  </table>
+</div>

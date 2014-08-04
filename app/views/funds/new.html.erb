@@ -1,5 +1,57 @@
-<%= form_for @fund do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :institution %>
-  <%= f.submit "Crear fondo" %>
-<% end %>
+<div class="container container-medium">
+  <h3 class="text-center margin-bottom-large">Nuevo fondo</h3>
+  <%= form_for @fund, class: "form-horizontal" do |f| %>
+    <div class="form-group">
+      <%= label_tag :name, "Nombre", class: "col-md-3 control-label" %>
+      <div class="col-md-9 margin-bottom-normal">
+        <%= f.text_field :name, class: "form-control", placeholder: "e.j. Beca a los emprendedores" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :institution, "Institución", class: "col-md-3 control-label" %>
+      <div class="col-md-9 margin-bottom-normal">
+        <%= f.text_field :institution, class: "form-control", placeholder: "e.j. INADEM" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :description, "Descripción", class: "col-md-3 control-label" %>
+      <div class="col-md-9 margin-bottom-normal">
+        <%= f.text_area :description, class: "form-control", placeholder: "e.j. Escribe aquí la descripción del fondo" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :characteristics, "Características de apoyo", class: "col-md-3 control-label" %>
+      <div class="col-md-9 margin-bottom-normal">
+        <%= f.select :characteristics, options_for_select(["Asst", "dir", "pres"]), {}, { multiple: true, class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :deliver_method, "Mecanismo de entrega de apoyo", class: "col-md-3 control-label" %>
+      <div class="col-md-9 margin-bottom-normal">
+        <%= f.select :deliver_method, options_for_select(["Asst", "dir", "pres"]), {}, { multiple: true, class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :clasification, "Clasificación del Programa", class: "col-md-3 control-label" %>
+      <div class="col-md-9 margin-bottom-normal">
+        <%= f.select :clasification, options_for_select(["Asst", "dir", "pres"]), {}, { multiple: true, class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :special_filters, "Filtros especiales", class: "col-md-3 control-label" %>
+      <div class="col-md-9 margin-bottom-normal">
+        <%= f.select :special_filters, options_for_select(["Asst", "dir", "pres"]), {}, { multiple: true, class: "form-control" } %>
+      </div>
+    </div>
+
+
+
+    <%= f.submit "Crear fondo", class: "btn btn-default pull-right", style: "margin-right:15px;" %>
+  <% end %>
+</div>
