@@ -25,28 +25,28 @@
     <div class="form-group">
       <%= label_tag :characteristics, "Características de apoyo", class: "col-md-3 control-label" %>
       <div class="col-md-9 margin-bottom-normal">
-        <%= f.select :characteristics, options_for_select(["Asst", "dir", "pres"]), {}, { multiple: true, class: "form-control" } %>
+        <%= f.select :characteristics, options_for_select(CHARACTERISTICS), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
 
     <div class="form-group">
       <%= label_tag :deliver_method, "Mecanismo de entrega de apoyo", class: "col-md-3 control-label" %>
       <div class="col-md-9 margin-bottom-normal">
-        <%= f.select :deliver_method, options_for_select(["Asst", "dir", "pres"]), {}, { multiple: true, class: "form-control" } %>
+        <%= f.select :deliver_method, options_for_select(DELIVER_METHODS), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
 
     <div class="form-group">
       <%= label_tag :clasification, "Clasificación del Programa", class: "col-md-3 control-label" %>
       <div class="col-md-9 margin-bottom-normal">
-        <%= f.select :clasification, options_for_select(["Asst", "dir", "pres"]), {}, { multiple: true, class: "form-control" } %>
+        <%= f.select :clasification, options_for_select(CLASIFICATION), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
 
     <div class="form-group">
       <%= label_tag :special_filters, "Filtros especiales", class: "col-md-3 control-label" %>
       <div class="col-md-9 margin-bottom-normal">
-        <%= f.select :special_filters, options_for_select(["Asst", "dir", "pres"]), {}, { multiple: true, class: "form-control" } %>
+        <%= f.select :special_filters, options_for_select(SPECIAL_FILTERS), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
 
