@@ -15,8 +15,8 @@ def extract_funds_from_csv(file_name='lib/fondeso/funds/programas.csv')
       f = Fund.new
       f.name = new_fund["nombre"]
       f.institution = new_fund["institucion"]
-      f.characteristics = fetch_array_from new_fund["caracteristicas"]
-      puts f.characteristics.inspect
+      # f.characteristics = fetch_array_from new_fund["caracteristicas"]
+      # puts f.characteristics.inspect
       f.description = new_fund["descripcion"]
       # f.deliver_method = array_from_deliver_method new_fund[:entrega]
       # f.clasification = hashify_categories_from new_fund

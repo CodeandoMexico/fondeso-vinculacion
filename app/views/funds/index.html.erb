@@ -5,15 +5,13 @@
     <tr>
       <th><strong>Nombre</strong></th>
       <th><strong>Instituci&oacute;n</strong></th>
-      <th><strong>Propiedad 3</strong></th>
-      <th><strong>Propiedad 4</strong></th>
+      <th><strong>Descripci&oacute;n</strong></th>
     </tr>
   <% @funds.each do |f| %>
     <tr>
       <td><%= f.name %></td>
       <td><%= f.institution %></td>
-      <td>bla bla ...</td>
-      <td>bla bla ...</td>
+      <td><%= f.description %></td>
     </tr>
   <% end %>
 
