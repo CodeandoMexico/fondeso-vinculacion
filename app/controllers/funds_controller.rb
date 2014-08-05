@@ -1,7 +1,7 @@
 class FundsController < ApplicationController
 
   def index
-    @funds = Fund.all
+    @funds = Fund.all.page(params[:page])
   end
 
   def new
@@ -77,5 +77,4 @@ class FundsController < ApplicationController
       special_filters: []
     )
   end
-
 end
