@@ -1,56 +1,70 @@
 <div class="container container-medium">
   <h3 class="text-center margin-bottom-large">Nuevo fondo</h3>
-  <%= form_for @fund, class: "form-horizontal" do |f| %>
+  <%= form_for @fund, html: { class: "form-horizontal" } do |f| %>
     <div class="form-group">
       <%= label_tag :name, "Nombre", class: "col-md-3 control-label" %>
-      <div class="col-md-9 margin-bottom-normal">
-        <%= f.text_field :name, class: "form-control", placeholder: "e.j. Beca a los emprendedores" %>
+      <div class="col-md-9">
+        <%= f.text_field :name, class: "form-control", placeholder: "ej. Beca a los emprendedores" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= label_tag :institution, "Institución", class: "col-md-3 control-label" %>
-      <div class="col-md-9 margin-bottom-normal">
-        <%= f.text_field :institution, class: "form-control", placeholder: "e.j. INADEM" %>
+      <div class="col-md-9">
+        <%= f.text_field :institution, class: "form-control", placeholder: "ej. INADEM" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= label_tag :description, "Descripción", class: "col-md-3 control-label" %>
-      <div class="col-md-9 margin-bottom-normal">
-        <%= f.text_area :description, class: "form-control", placeholder: "e.j. Escribe aquí la descripción del fondo" %>
+      <div class="col-md-9">
+        <%= f.text_area :description, class: "form-control", placeholder: "ej. Escribe aquí la descripción del fondo" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= label_tag :characteristics, "Características de apoyo", class: "col-md-3 control-label" %>
-      <div class="col-md-9 margin-bottom-normal">
+      <div class="col-md-9">
         <%= f.select :characteristics, options_for_select(CHARACTERISTICS), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
 
     <div class="form-group">
       <%= label_tag :deliver_method, "Mecanismo de entrega de apoyo", class: "col-md-3 control-label" %>
-      <div class="col-md-9 margin-bottom-normal">
+      <div class="col-md-9">
         <%= f.select :deliver_method, options_for_select(DELIVER_METHODS), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
 
     <div class="form-group">
       <%= label_tag :clasification, "Clasificación del Programa", class: "col-md-3 control-label" %>
-      <div class="col-md-9 margin-bottom-normal">
+      <div class="col-md-9">
         <%= f.select :clasification, options_for_select(CLASIFICATION), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
 
     <div class="form-group">
       <%= label_tag :special_filters, "Filtros especiales", class: "col-md-3 control-label" %>
-      <div class="col-md-9 margin-bottom-normal">
+      <div class="col-md-9">
         <%= f.select :special_filters, options_for_select(SPECIAL_FILTERS), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
 
+    <h3>Delegaci&oacute;n</h3>
 
+    <div class="form-group">
+      <%= label_tag :home_delegation, "Domicilio", class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= f.select :home_delegation, options_for_select(DELEGATIONS), {}, { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :business_delegation, "Negocio", class: "col-md-3 control-label" %>
+      <div class="col-md-9">
+        <%= f.select :business_delegation, options_for_select(DELEGATIONS), {}, { class: "form-control" } %>
+      </div>
+    </div>
 
     <%= f.submit "Crear fondo", class: "btn btn-default pull-right", style: "margin-right:15px;" %>
   <% end %>
