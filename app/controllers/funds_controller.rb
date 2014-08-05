@@ -1,4 +1,32 @@
 class FundsController < ApplicationController
+
+  def index
+    @funds = Fund.all
+  end
+
+  def new
+    @fund = Fund.new
+  end
+
+  def create
+    @fund = Fund.new(fund_params)
+    
+    if @fund.save
+      redirect_to funds_path, notice: 'Fund was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
   # establish a connection with the server
   def handshake
     render nothing: true
@@ -35,6 +63,12 @@ class FundsController < ApplicationController
       puts "lets redirect to #{winning_profile.uri}"
     end
     render json: winning_profile
+  end
+
+  private
+
+  def fund_params
+    params.require(:fund).permit(:name, :institution)
   end
 
 end

@@ -1,0 +1,13 @@
+<%= button_to "Nuevo Fondo", new_fund_path, method: :get %>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Instituci&oacute;n</th>
+  </tr>
+<% @funds.each do |f| %>
+  <tr>
+    <td><%= f.name %></td>
+    <td><%= f.institution %></td>
+  </tr>
+<% end %>
+</table>
