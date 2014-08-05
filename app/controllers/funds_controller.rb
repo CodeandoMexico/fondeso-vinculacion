@@ -68,7 +68,14 @@ class FundsController < ApplicationController
   private
 
   def fund_params
-    params.require(:fund).permit(:name, :institution)
+    params.require(:fund).permit(
+      :name,
+      :institution,
+      characteristics: [],
+      deliver_method: [],
+      clasification: [],
+      special_filters: []
+    )
   end
 
 end

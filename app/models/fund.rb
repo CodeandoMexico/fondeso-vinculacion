@@ -1,15 +1,14 @@
 class Fund < ActiveRecord::Base
-  # attr_accessor :name, :description, :institution, :characteristics, :deliver_method,
-  #                 :clasification, :special_filters
-
-  # serialize :characteristics, Array
-  # serialize :deliver_method, Array
-  # serialize :clasification, Array
-  # serialize :special_filters, Array
+  serialize :characteristics, Array
+  serialize :deliver_method, Array
+  serialize :clasification, Array
+  serialize :special_filters, Array
+  serialize :home_delegation, Array
+  serialize :business_delegation, Array
 
   validates :name, presence: true
-  # validates :description, presence: true
-  # validates :institution, presence: true
+  validates :description, presence: true
+  validates :institution, presence: true
 
   # def self.find(category, stage)
   #   if stage.nil?
