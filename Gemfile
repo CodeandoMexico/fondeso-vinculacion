@@ -41,3 +41,6 @@ gem 'spring',        group: :development
 gem 'cucumber-rails', require: false, group: :test
 gem 'database_cleaner', group: :test
 gem 'rspec-rails', group: [:test, :development]
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'

@@ -10,9 +10,9 @@ class FundsController < ApplicationController
 
   def create
     @fund = Fund.new(fund_params)
-    
+
     if @fund.save
-      redirect_to funds_path, notice: 'Fund was successfully created.'
+      redirect_to funds_path
     else
       render :new
     end
