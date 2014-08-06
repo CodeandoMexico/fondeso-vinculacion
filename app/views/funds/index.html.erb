@@ -15,7 +15,7 @@
       <td><%= f.description %></td>
       <td>
         <%= link_to "Editar", edit_fund_path(f) %> |
-        <%= link_to "Borrar", fund_path(f) %>
+        <%= link_to "Borrar", fund_path(f), method: :delete %>
         </td>
     </tr>
   <% end %>

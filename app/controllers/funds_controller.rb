@@ -84,6 +84,7 @@ class FundsController < ApplicationController
     params.require(:fund).permit(
       :name,
       :institution,
+      :description,
       characteristics: [],
       deliver_method: [],
       clasification: [],

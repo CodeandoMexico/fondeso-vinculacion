@@ -1,15 +1,15 @@
 <%= form_for @fund, html: { class: "form-horizontal" } do |f| %>
     <% if @fund.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger" role="alert">
-      <h2>Revisa por favor los siguientes errores:</h2>
+      <div id="error_explanation" class="alert alert-danger" role="alert">
+        <h2>Revisa por favor los siguientes errores:</h2>
 
-      <ul>
-      <% @fund.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% @fund.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
   <div class="form-group">
     <%= label_tag :name, "Nombre", class: "col-md-3 control-label" %>
