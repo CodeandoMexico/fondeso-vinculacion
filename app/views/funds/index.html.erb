@@ -1,5 +1,22 @@
-<!-- <h1>Fondos</h1> -->
-<%= button_to "Nuevo Fondo", new_fund_path, method: :get, class: "btn btn-default margin-bottom-normal pull-right" %>
+<h3>Fondos</h3>
+<div class="row">
+  <div class="col-sm-11 col-md-10">
+    <%= form_tag funds_path, method: "get", class: "" do %>
+      <div class="row form-group">
+        <div class="col-sm-8 col-md-10">
+          <%= text_field_tag :search, params[:search], placeholder: "busca fondos por nombre o institución", class: "form-control" %>
+        </div>
+        <div class="col-sm-4 col-md-2">
+          <%= submit_tag "Buscar", class: "btn btn-default" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-sm-1 col-md-2">
+    <%= button_to "Nuevo Fondo", new_fund_path, method: :get, class: "btn btn-default pull-right" %>
+  </div>
+</div>
+
 <table class="table">
   <tr>
     <th><strong>Nombre</strong></th>
