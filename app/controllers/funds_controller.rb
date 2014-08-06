@@ -13,7 +13,7 @@ class FundsController < ApplicationController
     @fund = Fund.new(fund_params)
 
     if @fund.save
-      redirect_to funds_path, notice: "El fondo fue creado satisfactoriamente"
+      redirect_to funds_path, notice: "El fondo fue creado satisfactoriamente."
     else
       render :new, alert: @fund.errors
     end
@@ -25,7 +25,7 @@ class FundsController < ApplicationController
 
   def update
     if @fund.update_attributes(fund_params)
-      redirect_to funds_path
+      redirect_to funds_path, notice: "El fondo fue actualizado satisfactoriamente."
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class FundsController < ApplicationController
 
   def destroy
     @fund.destroy
-    redirect_to funds_path
+    redirect_to funds_path, alert: "El fondo seleccionado fue borrado."
   end
 
   # establish a connection with the server
