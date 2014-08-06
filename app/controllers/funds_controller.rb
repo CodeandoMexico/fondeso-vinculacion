@@ -2,7 +2,11 @@ class FundsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @funds = Fund.all.page(params[:page])
+    if search_params.present?
+      @funds = Fund.search(search_params).order('created_at DESC').page(params[:page])
+    else
+      @funds = Fund.all.order('created_at DESC').page(params[:page])
+    end
   end
 
   def new
@@ -90,5 +94,9 @@ class FundsController < ApplicationController
       clasification: [],
       special_filters: []
     )
+  end
+
+  def search_params
+    params[:search]
   end
 end

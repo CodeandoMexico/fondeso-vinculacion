@@ -17,4 +17,8 @@ class Fund < ActiveRecord::Base
   #     funds.map.select { |f| f[category] == '1' and f[stage] == '1'}
   #   end
   # end
+
+  def self.search(value)
+      where('name ILIKE ? OR institution ILIKE ?', "%#{value}%", "%#{value}%")
+  end
 end
