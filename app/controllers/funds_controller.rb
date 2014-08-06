@@ -89,10 +89,12 @@ class FundsController < ApplicationController
       :name,
       :institution,
       :description,
+      :home_delegation,
+      :business_delegation,
       characteristics: [],
       deliver_method: [],
       clasification: [],
-      special_filters: []
+      special_filters: [],
     )
   end
 

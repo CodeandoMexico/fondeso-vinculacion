@@ -3,8 +3,6 @@ class Fund < ActiveRecord::Base
   serialize :deliver_method, Array
   serialize :clasification, Array
   serialize :special_filters, Array
-  serialize :home_delegation, Array
-  serialize :business_delegation, Array
 
   validates :name, presence: true
   validates :description, presence: true
