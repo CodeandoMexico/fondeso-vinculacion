@@ -1,4 +1,5 @@
 class FundsController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @funds = Fund.all.page(params[:page])
@@ -12,19 +13,27 @@ class FundsController < ApplicationController
     @fund = Fund.new(fund_params)
 
     if @fund.save
-      redirect_to funds_path
+      redirect_to funds_path, notice: "El fondo fue creado satisfactoriamente"
     else
-      render :new
+      render :new, alert: @fund.errors
     end
   end
 
   def edit
+    @fund = Fund.find(params[:id])
   end
 
   def update
+    if @fund.update_attributes(fund_params)
+      redirect_to funds_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @fund.destroy
+    redirect_to funds_path
   end
 
   # establish a connection with the server
@@ -66,6 +75,10 @@ class FundsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @fund = Fund.find(params[:id])
+  end
 
   def fund_params
     params.require(:fund).permit(

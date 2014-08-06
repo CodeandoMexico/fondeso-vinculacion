@@ -6,12 +6,17 @@
       <th><strong>Nombre</strong></th>
       <th><strong>Instituci&oacute;n</strong></th>
       <th><strong>Descripci&oacute;n</strong></th>
+      <th><strong>Acciones</strong></th>
     </tr>
   <% @funds.each do |f| %>
     <tr>
       <td><%= f.name %></td>
       <td><%= f.institution %></td>
       <td><%= f.description %></td>
+      <td>
+        <%= link_to "Editar", edit_fund_path(f) %> |
+        <%= link_to "Borrar", fund_path(f) %>
+        </td>
     </tr>
   <% end %>
   </table>
