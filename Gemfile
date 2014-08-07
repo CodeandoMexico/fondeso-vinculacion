@@ -46,6 +46,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
 gem 'kaminari'
+gem 'chosen-rails'
 
 group :development do
   gem "better_errors"
