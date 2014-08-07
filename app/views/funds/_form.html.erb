@@ -78,3 +78,12 @@
 
   <%= f.submit "Guardar", class: "btn btn-default pull-right", style: "margin-right:15px;" %>
 <% end %>
+
+<script charset="utf-8">
+  $('.chosen-select').chosen({
+    allow_single_deselect: true,
+    no_results_text: 'No hay resultados',
+    placeholder_text: 'Selecciona algunas opciones',
+    width: '200px'
+  });
+</script>
