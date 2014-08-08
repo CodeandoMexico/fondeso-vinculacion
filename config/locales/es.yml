@@ -1,0 +1,21 @@
+es:
+  errors:
+    format: "%{message}"
+  activerecord:
+      models:
+        fund: Fondo
+      attributes:
+        fund:
+          name: "nombre"
+          institution: "institución"
+          description: "descripción"
+      errors:
+        models:
+          fund:
+            attributes:
+              name:
+                blank: "El %{attribute} del fondo no puede estar vacío"
+              institution:
+                blank: "La %{attribute} a la cual pertenece el fondo no puede estar vacía"
+              description:
+                blank: "La %{attribute} del fondo no puede estar vacía"
