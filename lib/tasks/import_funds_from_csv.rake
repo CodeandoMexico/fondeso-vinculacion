@@ -21,7 +21,12 @@ def extract_funds_from_csv(file_name='lib/fondeso/funds/programas.csv')
       # f.deliver_method = array_from_deliver_method new_fund[:entrega]
       # f.clasification = hashify_categories_from new_fund
       # f.special_filters = hashify_categories_from new_fund
-      f.save!
+      begin
+        f.save!
+      rescue
+        f.errors
+      end
+
       print '.'
     end
   end
