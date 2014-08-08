@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :funds
+
+  root to: "funds#index"
 end
