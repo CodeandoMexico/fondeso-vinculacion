@@ -3,7 +3,7 @@ es:
     format: "%{message}"
   activerecord:
       models:
-        fund: Fondo
+        fund: Programa
       attributes:
         fund:
           name: "nombre"
@@ -14,8 +14,8 @@ es:
           fund:
             attributes:
               name:
-                blank: "El %{attribute} del fondo no puede estar vacío"
+                blank: "El %{attribute} del programa no puede estar vacío"
               institution:
-                blank: "La %{attribute} a la cual pertenece el fondo no puede estar vacía"
+                blank: "La %{attribute} a la cual pertenece el programa no puede estar vacía"
               description:
-                blank: "La %{attribute} del fondo no puede estar vacía"
+                blank: "La %{attribute} del programa no puede estar vacía"
