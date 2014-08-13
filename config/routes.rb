@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   namespace :api do
     match '/', to: 'funds#handshake', via: [:get, :options]
     match 'submit', to: 'funds#answers', via: [:post, :options]

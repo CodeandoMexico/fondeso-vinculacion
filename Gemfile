@@ -47,6 +47,7 @@ gem 'autoprefixer-rails'
 
 gem 'kaminari'
 gem 'chosen-rails'
+gem 'devise'
 
 group :development do
   gem "better_errors"
