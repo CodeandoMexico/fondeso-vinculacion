@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fondeso</title>
+  <title><%= t("brand") %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -18,7 +18,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Sistema de Vinculaci&oacute;n</a>
+        <a class="navbar-brand" href="#"><%= t("brand") %></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,19 +29,21 @@
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form> -->
-        <ul class="nav navbar-nav navbar-right">
-          <!-- <li><a href="#">Link</a></li> -->
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Raúl Jiménez <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <!-- <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li> -->
-              <li><a href="#">Cerrar Sesi&oacute;n</a></li>
-            </ul>
-          </li>
-        </ul>
+        <% if current_admin %>
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li><a href="#">Link</a></li> -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_admin.email %><span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <!-- <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li> -->
+                <li><%= link_to t(".sign_out"), destroy_admin_session_path, method: :delete %></li>
+              </ul>
+            </li>
+          </ul>
+        <% end %>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
