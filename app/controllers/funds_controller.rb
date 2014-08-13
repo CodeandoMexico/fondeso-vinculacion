@@ -1,12 +1,19 @@
 class FundsController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: [:index]
   before_action :set_fund, only: [:show, :edit, :update, :destroy]
 
   def index
-    if search_params.present?
-      @funds = Fund.search(search_params).order('created_at DESC').page(params[:page])
-    else
-      @funds = Fund.all.order('created_at DESC').page(params[:page])
+    respond_to do |format|
+      format.html {
+        if authenticate_admin! && search_params.present?
+          @funds = Fund.search(search_params).order('created_at DESC').page(params[:page])
+        else
+          @funds = Fund.all.order('created_at DESC').page(params[:page])
+        end
+      }
+      format.json {
+        render json: Fund.all
+      }
     end
   end
 
