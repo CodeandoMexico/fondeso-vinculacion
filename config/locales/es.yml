@@ -1,4 +1,5 @@
 es:
+  brand: "Fondéame"
   errors:
     format: "%{message}"
   activerecord:
@@ -22,3 +23,8 @@ es:
   layouts:
     application:
       sign_out: "Cerrar sesión"
+  devise:
+    sessions:
+      new:
+        first_login: "Inicia sesión"
+        sign_in_button: "Entrar"
