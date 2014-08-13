@@ -1,6 +1,6 @@
 class FundsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_fund, only: [:show, :edit, :update, :destroy]
 
   def index
     if search_params.present?
@@ -41,47 +41,9 @@ class FundsController < ApplicationController
     redirect_to funds_path, alert: "El programa seleccionado fue borrado."
   end
 
-  # establish a connection with the server
-  def handshake
-    render nothing: true
-  end
-
-  def show
-    if request.get?
-      funds = Fondeso::Fund.new
-      render json: funds.all
-    end
-  end
-
-  def category
-    funds = Fondeso::Fund.new
-    # look for funds in this category
-    category = params[:name]
-    stage = params[:stage]
-    results = funds.find(category, stage)
-    options = results.length > 0 ? { json: results } : { json: [], status: :not_found }
-    render options
-  end
-
-  def answers
-    # c = params["1.B"]
-    # puts c
-    if request.post?
-      answers = Fondeso::Answer.new
-      puts '---------------------------------------------- controller logic ----------------------------------------------'
-      # we need to save everything to the database
-      # parse the data from the questionary
-      answers.extract_question_data_from(params[:_json])
-      # let's process the questionary answers
-      winning_profile = answers.process_questionary
-      puts "lets redirect to #{winning_profile.uri}"
-    end
-    render json: winning_profile
-  end
-
   private
 
-  def set_user
+  def set_fund
     @fund = Fund.find(params[:id])
   end
 
