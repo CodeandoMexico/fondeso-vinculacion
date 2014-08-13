@@ -6,7 +6,6 @@ class ProfilesController < ApplicationController
 
   def show
     if request.get?
-      # funds = Fondeso::Fund.new
       render json: Fund.all
     end
   end
@@ -24,14 +23,4 @@ class ProfilesController < ApplicationController
     end
     render json: winning_profile
   end
-
-  # def category
-  #   funds = Fondeso::Fund.new
-  #   # look for funds in this category
-  #   category = params[:name]
-  #   stage = params[:stage]
-  #   results = funds.find(category, stage)
-  #   options = results.length > 0 ? { json: results } : { json: [], status: :not_found }
-  #   render options
-  # end
 end
