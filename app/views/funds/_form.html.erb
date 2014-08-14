@@ -12,49 +12,61 @@
     <% end %>
 
   <div class="form-group">
-    <%= label_tag :name, "Nombre", class: "col-md-3 control-label" %>
+    <%= f.label :name, "Nombre", class: "col-md-3 control-label" do %>
+      Nombre <span class="text-red">*</span>
+    <% end %>
     <div class="col-md-9">
       <%= f.text_field :name, class: "form-control", placeholder: "ej. Beca a los emprendedores" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag :institution, "Institución", class: "col-md-3 control-label" %>
+    <%= f.label :institution, "Institución", class: "col-md-3 control-label" do %>
+      Institución <span class="text-red">*</span>
+    <% end %>
     <div class="col-md-9">
       <%= f.text_field :institution, class: "form-control", placeholder: "ej. INADEM" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag :description, "Descripción", class: "col-md-3 control-label" %>
+    <%= f.label :description, "Descripción", class: "col-md-3 control-label" do %>
+      Descripción <span class="text-red">*</span>
+    <% end %>
     <div class="col-md-9">
       <%= f.text_area :description, class: "form-control", placeholder: "ej. Escribe aquí la descripción del programa" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag :characteristics, "Características de apoyo", class: "col-md-3 control-label" %>
+    <%= f.label :characteristics, "Características de apoyo", class: "col-md-3 control-label" do %>
+      Características de apoyo <span class="text-red">*</span>
+    <% end %>
     <div class="col-md-9">
       <%= f.select :characteristics, options_for_select(CHARACTERISTICS, selected=@fund.characteristics), {}, { multiple: true, class: "chosen-select" } %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag :deliver_method, "Mecanismo de entrega de apoyo", class: "col-md-3 control-label" %>
+    <%= f.label :deliver_method, "Mecanismo de entrega de apoyo", class: "col-md-3 control-label" do %>
+      Mecanismo de entrega de apoyo <span class="text-red">*</span>
+    <% end %>
     <div class="col-md-9">
       <%= f.select :deliver_method, options_for_select(DELIVER_METHODS, selected=@fund.deliver_method), {}, { multiple: true, class: "chosen-select" } %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag :clasification, "Clasificación del Programa", class: "col-md-3 control-label" %>
+    <%= f.label :clasification, "Clasificación del Programa", class: "col-md-3 control-label" do %>
+      Clasificación del Programa <span class="text-red">*</span>
+    <% end %>
     <div class="col-md-9">
       <%= f.select :clasification, options_for_select(CLASIFICATION, selected=@fund.clasification), {}, { multiple: true, class: "chosen-select" } %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag :special_filters, "Filtros especiales", class: "col-md-3 control-label" %>
+    <%= f.label :special_filters, "Filtros especiales", class: "col-md-3 control-label" %>
     <div class="col-md-9">
       <%= f.select :special_filters, options_for_select(SPECIAL_FILTERS, selected=@fund.special_filters), {}, { multiple: true, class: "chosen-select" } %>
     </div>
@@ -63,14 +75,14 @@
   <h3>Delegaci&oacute;n</h3>
 
   <div class="form-group">
-    <%= label_tag :home_delegation, "Domicilio", class: "col-md-3 control-label" %>
+    <%= f.label :home_delegation, "Domicilio", class: "col-md-3 control-label" %>
     <div class="col-md-9">
       <%= f.select :home_delegation, options_for_select(DELEGATIONS, selected=@fund.home_delegation), {}, { class: "chosen-select" } %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag :business_delegation, "Negocio", class: "col-md-3 control-label" %>
+    <%= f.label :business_delegation, "Negocio", class: "col-md-3 control-label" %>
     <div class="col-md-9">
       <%= f.select :business_delegation, options_for_select(DELEGATIONS, selected=@fund.business_delegation), {}, { class: "chosen-select" } %>
     </div>
