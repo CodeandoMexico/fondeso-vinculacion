@@ -18,3 +18,14 @@ DELEGATIONS = [
   "Xochimilco",
   "Fuera del DF",
 ]
+
+SPECIAL_DELEGATIONS = [
+  "No aplica",
+  "Delegación Rural",
+  "Cruzada Hambre"
+]
+
+GEOGRAPHIC_OPERATORS = [
+  "Filtra por negocio \"y\" domicilio (en caso de haber una delegación en estos campos)",
+  "Filtra por negocio \"ó\" domicilio (en caso de haber una delegación en estos campos)"
+]

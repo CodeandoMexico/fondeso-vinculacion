@@ -3,6 +3,7 @@ class Fund < ActiveRecord::Base
   serialize :deliver_method, Array
   serialize :clasification, Array
   serialize :special_filters, Array
+  serialize :custom_delegation, Array
 
   validates :name, presence: true
   validates :description, presence: true
@@ -10,14 +11,6 @@ class Fund < ActiveRecord::Base
   validates_each :characteristics, :deliver_method, :clasification do |record, attr, value|
     record.errors.add(attr, :blank) if array_field_is_empty value
   end
-
-  # def self.find(category, stage)
-  #   if stage.nil?
-  #     funds.map.select { |f| f[category] == '1'}
-  #   else
-  #     funds.map.select { |f| f[category] == '1' and f[stage] == '1'}
-  #   end
-  # end
 
   def self.search(value)
       where('name ILIKE ? OR institution ILIKE ?', "%#{value}%", "%#{value}%")
