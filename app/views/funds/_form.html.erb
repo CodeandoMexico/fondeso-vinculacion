@@ -102,6 +102,44 @@
     </div>
   </div>
 
+  <h3>Contacto</h3>
+
+  <div class="form-group">
+    <%= f.label :contact, "Persona(s)", class: "col-md-3 control-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :contact, class: "form-control", placeholder: "ej. Juan Pérez" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address, "Dirección", class: "col-md-3 control-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :address, class: "form-control", placeholder: "ej. Colinas del Valle, Colonia Industrial #400, CP 64064, Monterrey, Nuevo León" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone, "Teléfono", class: "col-md-3 control-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :phone, class: "form-control", placeholder: "ej. 81-1611-4798" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :other_phone, "Otro Teléfono", class: "col-md-3 control-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :other_phone, class: "form-control", placeholder: "ej. 81-1611-2732 ext.2" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, "Correo electrónico", class: "col-md-3 control-label" %>
+    <div class="col-md-9">
+      <%= f.text_field :email, class: "form-control", placeholder: "ej. juan@fondeso.gob.mx" %>
+    </div>
+  </div>
+
+
   <%= f.submit "Guardar", class: "btn btn-default pull-right", style: "margin-right:15px;" %>
 <% end %>
 
