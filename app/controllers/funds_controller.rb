@@ -61,10 +61,12 @@ class FundsController < ApplicationController
       :description,
       :home_delegation,
       :business_delegation,
+      :geographic_operator,
       characteristics: [],
       deliver_method: [],
       clasification: [],
       special_filters: [],
+      custom_delegation: [],
     )
   end
 
