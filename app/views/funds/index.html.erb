@@ -31,7 +31,7 @@
     <td><%= f.description %></td>
     <td>
       <%= link_to "Editar", edit_fund_path(f) %> |
-      <%= link_to "Borrar", fund_path(f), method: :delete %>
+      <%= link_to "Borrar", fund_path(f), method: :delete, data: { confirm: "¿Seguro que deseas borrar este fondo?" } %>
       </td>
   </tr>
 <% end %>
