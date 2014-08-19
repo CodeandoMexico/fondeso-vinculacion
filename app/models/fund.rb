@@ -10,7 +10,7 @@ class Fund < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
   validates :institution, presence: true
-  validates_each :characteristics, :deliver_method, :clasification do |record, attr, value|
+  validates_each :characteristics, :deliver_method, :clasification, on: :update do |record, attr, value|
     record.errors.add(attr, :blank) if array_field_is_empty value
   end
 
