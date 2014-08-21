@@ -5,9 +5,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    if request.get?
-      render json: Fund.all
-    end
+    render json: Fund.search_with_category(profile_params[:category_name])
   end
 
   def answers
@@ -20,5 +18,11 @@ class ProfilesController < ApplicationController
     winning_profile = answers.process_questionary
     puts "lets redirect to #{winning_profile.uri}"
     render json: winning_profile
+  end
+
+  private
+
+  def profile_params
+    params.permit(:category_name)
   end
 end

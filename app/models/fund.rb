@@ -24,7 +24,7 @@ class Fund < ActiveRecord::Base
     value.length <= 1
   end
 
-  def self.search_fund(category_name)
+  def self.search_with_category(category_name)
     # this can and should be optimized, it's because we're using serialize on the classification
     all.select { |fund| fund_has_category_name(fund, category_name) }
   end
