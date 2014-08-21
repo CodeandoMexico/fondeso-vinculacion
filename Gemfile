@@ -49,6 +49,8 @@ gem 'kaminari'
 gem 'chosen-rails'
 gem 'devise'
 
+gem 'rack-cors'
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
