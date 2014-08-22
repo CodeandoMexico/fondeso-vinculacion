@@ -39,8 +39,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :characteristics, "Características de apoyo", class: "col-md-3 control-label" do %>
-      Características de apoyo <span class="text-red">*</span>
+    <%= f.label :characteristics, "Destino del apoyo", class: "col-md-3 control-label" do %>
+      Destino del apoyo <span class="text-red">*</span>
     <% end %>
     <div class="col-md-9">
       <%= f.select :characteristics, options_for_select(CHARACTERISTICS, selected=@fund.characteristics), {}, { multiple: true, class: "chosen-select" } %>
@@ -57,8 +57,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :clasification, "Clasificación del Programa", class: "col-md-3 control-label" do %>
-      Clasificación del Programa <span class="text-red">*</span>
+    <%= f.label :clasification, "Perfil(es) del Programa", class: "col-md-3 control-label" do %>
+      Perfil(es) del Programa <span class="text-red">*</span>
     <% end %>
     <div class="col-md-9">
       <%= f.select :clasification, options_for_select(CLASIFICATION, selected=@fund.clasification), {}, { multiple: true, class: "chosen-select" } %>
