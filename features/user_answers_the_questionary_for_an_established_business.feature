@@ -38,15 +38,15 @@ Feature: User answers the questionary for an established business
       | traditional-startup       |-1 |
       | traditional-growing       |-1 |
       | traditional-consolidation |-1 |
-      | lifestyle-startup         | 1 |
-      | lifestyle-growing         | 1 |
-      | lifestyle-consolidation   | 1 |
+      | lifestyle-startup         |-1 |
+      | lifestyle-growing         |-1 |
+      | lifestyle-consolidation   |-1 |
       | cultural-startup          |-1 |
       | cultural-growing          |-1 |
       | cultural-consolidation    |-1 |
-      | social-startup            |-1 |
-      | social-growing            |-1 |
-      | social-consolidation      |-1 |
+      | social-startup            | 1 |
+      | social-growing            | 1 |
+      | social-consolidation      | 1 |
       | high_impact-startup       |-1 |
       | high_impact-growing       |-1 |
       | high_impact-consolidation |-1 |
