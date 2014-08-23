@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     devise_for :admins
   end
 
-  match 'profile', to: 'profiles#handshake', via: [:get, :options]
   match 'profile/submit', to: 'profiles#answers', via: [:post, :options]
   match 'profile/:category_name', to: 'profiles#show', via: [:get, :options]
 
