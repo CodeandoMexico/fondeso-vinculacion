@@ -13,7 +13,9 @@ class ProfilesController < ApplicationController
     puts '---------------------------------------------- controller logic ----------------------------------------------'
     # we need to save everything to the database
     # parse the data from the questionary
-    answers.extract_question_data_from(params[:_json])
+    questionary_answers = params[:answers]
+    questionary_filters = params[:filters]
+    answers.extract_question_data_from(questionary_answers)
     # let's process the questionary answers
     winning_profile = answers.process_questionary
     puts "lets redirect to #{winning_profile.uri}"
