@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   match 'profile/submit', to: 'profiles#answers', via: [:post, :options]
-  match 'profile/:category_name', to: 'profiles#show', via: [:get, :options]
+  match 'profile/:category_name', to: 'profiles#show', via: [:post, :options]
 
   resources :funds
 

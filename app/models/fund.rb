@@ -24,9 +24,12 @@ class Fund < ActiveRecord::Base
     value.length <= 1
   end
 
-  def self.search_with_category(category_name)
+  def self.search_with_category_and_filters(category_name, questionary_activated_filters)
     # this can and should be optimized, it's because we're using serialize on the classification
-    all.select { |fund| fund_has_category_name(fund, category_name) }
+    all.select do |fund|
+      fund_has_category_name(fund, category_name) &&
+      fund_responds_to_filters(fund, questionary_activated_filters)
+    end
   end
 
   private
@@ -34,5 +37,16 @@ class Fund < ActiveRecord::Base
   def self.fund_has_category_name(fund, category_name)
     categories = fund.clasification.map { |c| c.gsub(/\s+/, "").downcase.parameterize.to_s } # convert as uri
     categories.include? category_name
+  end
+
+  def self.fund_responds_to_filters(fund, questionary_activated_filters)
+    fund.special_filters.each do |filter_full_name|
+      filter_short_name = LOOK_FOR_SHORT_NAME_OF_FILTER[filter_full_name]
+      next if filter_short_name.blank?
+
+      return false if questionary_activated_filters[filter_short_name] == false
+    end
+    puts 'Fullfills the fund'
+    true
   end
 end
