@@ -36,8 +36,8 @@ FILTER_KEYS = [
   "TIC"
 ]
 
-LOOK_FOR_FILTER_BY = {}
+LOOK_FOR_SHORT_NAME_OF_FILTER = {}
 
-FILTER_KEYS.each_with_index do |key, index|
-    LOOK_FOR_FILTER_BY[key] = SPECIAL_FILTERS[index]
+SPECIAL_FILTERS.each_with_index do |key, index|
+    LOOK_FOR_SHORT_NAME_OF_FILTER[key] = FILTER_KEYS[index]
 end

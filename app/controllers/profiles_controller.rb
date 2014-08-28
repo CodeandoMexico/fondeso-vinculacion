@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
 
   def show
     puts '---------------------------------------------- funds & filters ----------------------------------------------'
-    render json: Fund.search_with_category(category_params[:category_name])
+    render json: Fund.search_with_category_and_filters(category_params[:category_name], filter_params)
   end
 
   def answers
