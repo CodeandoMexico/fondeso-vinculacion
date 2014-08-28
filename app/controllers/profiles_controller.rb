@@ -5,7 +5,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    render json: Fund.search_with_category(profile_params[:category_name])
+    puts '---------------------------------------------- funds & filters ----------------------------------------------'
+    render json: Fund.search_with_category_and_filters(category_params[:category_name], filter_params)
   end
 
   def answers
@@ -13,16 +14,38 @@ class ProfilesController < ApplicationController
     puts '---------------------------------------------- controller logic ----------------------------------------------'
     # we need to save everything to the database
     # parse the data from the questionary
-    answers.extract_question_data_from(params[:_json])
+    questionary_answers = params[:answers]
+    questionary_filters = params[:filters]
+    answers.extract_question_data_from(questionary_answers)
     # let's process the questionary answers
     winning_profile = answers.process_questionary
     puts "lets redirect to #{winning_profile.uri}"
-    render json: winning_profile
+    render json: { profile: winning_profile, filters: questionary_filters }
   end
 
   private
 
-  def profile_params
+  def category_params
     params.permit(:category_name)
+  end
+
+  def filter_params
+    params.require(:filters).permit(
+      :MUJ,
+      :RUR,
+      :JOV,
+      :TER,
+      :ART,
+      :TAB,
+      :BAC,
+      :EXP,
+      :MAN,
+      :PIN,
+      :CON,
+      :TUR,
+      :ATI,
+      :IND,
+      :TIC
+    )
   end
 end
