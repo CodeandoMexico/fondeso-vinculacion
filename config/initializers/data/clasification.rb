@@ -1,4 +1,6 @@
 CLASIFICATION = [
+  "Profesionista - Aún no existe",
+  "Necesidad - Aún no existe",
   "Necesidad - Startup",
   "Tradicional - Startup",
   "Tradicional - Crecimiento",
