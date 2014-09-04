@@ -33,7 +33,7 @@
       <%= f.name %>
     </td>
     <td><%= f.institution %></td>
-    <td><%= f.description %></td>
+    <td><%= truncate(f.description, length: 100) %></td>
     <td>
       <%= link_to t(".edit"), edit_fund_path(f) %> |
       <%= link_to t(".delete"), fund_path(f), method: :delete, data: { confirm: "¿Seguro que deseas borrar este fondo?" } %>
