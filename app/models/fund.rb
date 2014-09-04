@@ -18,6 +18,14 @@ class Fund < ActiveRecord::Base
       where('name ILIKE ? OR institution ILIKE ?', "%#{value}%", "%#{value}%")
   end
 
+  def has_complete_information?
+    characteristics.length > 1 && deliver_method.length > 1 && clasification.length > 1
+  end
+
+  def has_incomplete_information?
+    characteristics.length <= 1 && deliver_method.length <= 1 && clasification.length <= 1
+  end
+
   private
 
   def self.array_field_is_empty(value)
@@ -31,8 +39,6 @@ class Fund < ActiveRecord::Base
       fund_responds_to_filters(fund, questionary_activated_filters)
     end
   end
-
-  private
 
   def self.fund_has_category_name(fund, category_name)
     categories = fund.clasification.map { |c| c.gsub(/\s+/, "").downcase.parameterize.to_s } # convert as uri
