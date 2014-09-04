@@ -5,40 +5,56 @@ task import_funds_from_csv: :environment do
 end
 
 def extract_funds_from_csv(file_name='lib/fondeso/funds/programas.csv')
-  funds = Array.new
-  Fund.transaction do
-    CSV.foreach(file_name, :headers => true) do |csv_obj|
-      raw_data = csv_obj.to_hash
-      # let's rename the fields
-      new_fund = Hash[raw_data.map {|k, v| [mappings[k] || k, v] }]
-      # puts new_fund
-      f = Fund.new
-      f.name = new_fund["nombre"]
-      f.institution = new_fund["institucion"]
-      f.description = new_fund["descripcion"]
-      f.clasification = get_valid_classifications_from(new_fund)
-      # puts "#{f.clasification}"
-      # f.characteristics = fetch_array_from new_fund["caracteristicas"]
-      # f.deliver_method = fetch_array_from new_fund["entrega"]
-      f.characteristics = validate_data(new_fund["caracteristicas"], CHARACTERISTICS)
-      f.deliver_method = validate_data(new_fund["entrega"], DELIVER_METHODS)
-      puts "--------"
-      puts "#{f.characteristics} #{f.deliver_method}"
+  funds = []
+  saved = 0
+  completely_saved = 0
+  not_saved = 0
 
-      # if there's an issue go to the next fund
-      begin
-        f.save!
-      rescue
-        f.errors
+  CSV.foreach(file_name, :headers => true) do |csv_obj|
+    raw_data = csv_obj.to_hash
+    # let's rename the fields
+    new_fund = Hash[raw_data.map {|k, v| [mappings[k] || k, v] }]
+
+    # get the data to necessary to create a new fund
+    f = Fund.new
+
+    f.name = new_fund["nombre"]
+    f.institution = new_fund["institucion"]
+    f.description = new_fund["descripcion"]
+
+    begin
+      f.save!
+      saved = saved + 1
+    rescue
+      puts "#{f.name} #{f.institution} #{f.description}"
+      not_saved = not_saved + 1
+      next
+    end
+
+    f.clasification = get_valid_classifications_from(new_fund)
+    f.characteristics = validate_data(new_fund["caracteristicas"], CHARACTERISTICS)
+    f.deliver_method = validate_data(new_fund["entrega"], DELIVER_METHODS)
+
+    begin
+      f.save!
+      completely_saved = completely_saved + 1
+    rescue
+      puts "#{f.clasification} #{f.characteristics} #{f.deliver_method}"
+      f.errors.full_messages.each do |message|
+        puts message
       end
+      puts "-----------------------------------------------------------------"
     end
   end
-  puts ''
+
+  # let's wrap up
+  puts "\n#{saved} programa(s) dados de alta correctamente."
+  puts "#{completely_saved} programa(s) guardados completos correctamente."
+  puts "#{not_saved} programa(s) fallaron al ser guardados.\n"
 end
 
 def fetch_array_from(str)
   return nil unless str.present?
-  # puts str.split("\n").inspect if str.split.length > 1
   str.split("\n")
 end
 
@@ -69,7 +85,7 @@ end
 def get_valid_classifications_from(fund)
   classification = [""]
 
-  return false unless classification_values_are_correct?(fund)
+  return classification unless classification_values_are_correct?(fund)
 
   if activated?(fund["profesionista"], fund["noexiste"], fund)
     classification << "Profesionista - Aún no existe"
