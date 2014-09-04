@@ -26,13 +26,18 @@
   </tr>
 <% @funds.each do |f| %>
   <tr>
-    <td><%= f.name %></td>
-    <td><%= f.institution %></td>
-    <td><%= f.description %></td>
     <td>
-      <%= link_to "Editar", edit_fund_path(f) %> |
-      <%= link_to "Borrar", fund_path(f), method: :delete, data: { confirm: "¿Seguro que deseas borrar este fondo?" } %>
-      </td>
+      <% if f.has_incomplete_information? %>
+        <span class="label label-danger">incompleto</span>
+      <% end %>
+      <%= f.name %>
+    </td>
+    <td><%= f.institution %></td>
+    <td><%= truncate(f.description, length: 100) %></td>
+    <td>
+      <%= link_to t(".edit"), edit_fund_path(f) %> |
+      <%= link_to t(".delete"), fund_path(f), method: :delete, data: { confirm: "¿Seguro que deseas borrar este fondo?" } %>
+    </td>
   </tr>
 <% end %>
 </table>

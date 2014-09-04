@@ -40,3 +40,7 @@ es:
       new:
         first_login: "Inicia sesión"
         sign_in_button: "Entrar"
+  funds:
+    index:
+      edit: "Editar"
+      delete: "Borrar"
