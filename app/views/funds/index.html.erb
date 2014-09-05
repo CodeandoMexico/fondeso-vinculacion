@@ -30,6 +30,9 @@
       <% if f.has_incomplete_information? %>
         <span class="label label-danger">incompleto</span>
       <% end %>
+      <% if f.has_incomplete_contact_information? %>
+        <span class="label label-warning">contacto</span>
+      <% end %>
       <%= f.name %>
     </td>
     <td><%= f.institution %></td>
