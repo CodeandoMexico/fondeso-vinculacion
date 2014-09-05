@@ -26,6 +26,10 @@ class Fund < ActiveRecord::Base
     characteristics.length <= 1 && deliver_method.length <= 1 && clasification.length <= 1
   end
 
+  def has_incomplete_contact_information?
+    contact_details[:contact].blank? && contact_details[:address].blank? && contact_details[:phone].blank?
+  end
+
   private
 
   def self.array_field_is_empty(value)
