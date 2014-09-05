@@ -72,6 +72,13 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <%= f.label :priority, "Prioridad", class: "col-md-3 control-label" %>
+    <div class="col-md-9">
+      <%= f.select :priority, options_for_select(PRIORITIES, selected=@fund.priority), {}, { class: "chosen-select" } %>
+    </div>
+  </div>
+
   <h3>Delegaci&oacute;n</h3>
 
   <div class="form-group">
