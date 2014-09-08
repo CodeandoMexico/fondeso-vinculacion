@@ -60,11 +60,12 @@ end
 
 def mappings
   {
+    "ID" => "id",
     "Nombre del Programa" => "nombre",
     "Nombre de la modalidad/Categoría (si aplica) " => "categoria",
     "Institución a cargo" => "institucion",
     "Características del apoyo" => "caracteristicas",
-    "Entrega del apoyo" => "entrega",
+    "Mecanismo de entrega" => "entrega",
     "Descripción del programa" => "descripcion",
     "Dato de contacto para pedir informes" => "informes",
     "Clasificación por prioridad" => "prioridad",
