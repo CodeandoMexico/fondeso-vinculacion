@@ -18,6 +18,7 @@ def extract_funds_from_csv(file_name='lib/fondeso/funds/programas.csv')
     # get the data to necessary to create a new fund
     f = Fund.new
 
+    f.friendly_id = new_fund["id"]
     f.name = new_fund["nombre"]
     f.institution = new_fund["institucion"]
     f.description = new_fund["descripcion"]
@@ -26,7 +27,7 @@ def extract_funds_from_csv(file_name='lib/fondeso/funds/programas.csv')
       f.save!
       saved = saved + 1
     rescue
-      puts "#{f.name} #{f.institution} #{f.description}"
+      puts "#{f.friendly_id}: #{f.name} #{f.institution} #{f.description}"
       not_saved = not_saved + 1
       next
     end
@@ -39,7 +40,7 @@ def extract_funds_from_csv(file_name='lib/fondeso/funds/programas.csv')
       f.save!
       completely_saved = completely_saved + 1
     rescue
-      puts "#{f.clasification} #{f.characteristics} #{f.deliver_method}"
+      puts "#{f.friendly_id}: #{f.clasification} #{f.characteristics} #{f.deliver_method}"
       f.errors.full_messages.each do |message|
         puts message
       end
@@ -171,7 +172,7 @@ def classification_values_are_correct?(fund)
      fund["crecimiento"].length > 1 ||
      fund["consolidacion"].length > 1
 
-    puts "El siguiente programa no tiene clasificación válida (ej.1d): #{fund["nombre"]}"
+    puts "El siguiente programa no tiene clasificación válida (ej.1d): #{fund["id"]}"
     return false
   end
   true
