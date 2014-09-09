@@ -59,6 +59,7 @@ class FundsController < ApplicationController
       :name,
       :institution,
       :description,
+      :priority,
       :home_delegation,
       :business_delegation,
       :geographic_operator,
