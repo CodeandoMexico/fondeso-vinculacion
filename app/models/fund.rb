@@ -102,7 +102,7 @@ class Fund < ActiveRecord::Base
     puts "(20)------------------------------"
     puts order["20"].each {|f| puts "#{f.name} #{f.clasification} #{f.priority}" }
 
-    order["1"] + order["2"] + order["3"] + order["4"] + order["5"] + order["6"] + order["20"]
+    order["0"] + order["1"] + order["2"] + order["3"] + order["4"] + order["5"] + order["6"] + order["20"]
   end
 
   def self.fund_priority_is_the_same_as_questionary_results_first_priority?(fund, priorities)
@@ -128,23 +128,24 @@ class Fund < ActiveRecord::Base
   end
 
   def self.fund_is_social_and_current_profile_is_social?(fund, user_profile_name)
-    user_and_fund_category_are_a_match(fund, user_profile_name, ["Social - Startup", "Social - Crecimiento", "Social - Consolidación"])
+    user_and_fund_category_are_a_match(fund, user_profile_name, ["Social - Startup", "Social - Crecimiento", "Social - Consolidacion"])
   end
 
   def self.fund_is_cultural_and_current_profile_is_cultural?(fund, user_profile_name)
-      user_and_fund_category_are_a_match(fund, user_profile_name, ["Cultural - Startup", "Cultural - Crecimiento", "Cultural - Consolidación"])
+      user_and_fund_category_are_a_match(fund, user_profile_name, ["Cultural - Startup", "Cultural - Crecimiento", "Cultural - Consolidacion"])
   end
 
-  def self.user_and_fund_category_are_a_match(fund, user_profile_name, classification_in_stage)
+  def self.user_and_fund_category_are_a_match(fund, user_profile_name, classification_and_stage)
+    puts "#{fund.clasification} #{classification_and_stage[0]} #{user_profile_name}" if fund.name == "Registro electrónico de código de barras"
     (
-      fund.has_classification?(classification_in_stage[0]) ||
-      fund.has_classification?(classification_in_stage[1]) ||
-      fund.has_classification?(classification_in_stage[2])
+      fund.has_classification?(classification_and_stage[0]) ||
+      fund.has_classification?(classification_and_stage[1]) ||
+      fund.has_classification?(classification_and_stage[2])
     ) &&
     (
-      user_profile_name == (classification_in_stage[0]) ||
-      user_profile_name == (classification_in_stage[1]) ||
-      user_profile_name == (classification_in_stage[2])
+      user_profile_name == (classification_and_stage[0].gsub(/\s+/, "").downcase.parameterize.to_s) ||
+      user_profile_name == (classification_and_stage[1].gsub(/\s+/, "").downcase.parameterize.to_s) ||
+      user_profile_name == (classification_and_stage[2].gsub(/\s+/, "").downcase.parameterize.to_s)
     )
   end
 
