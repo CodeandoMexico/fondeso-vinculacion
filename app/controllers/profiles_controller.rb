@@ -51,6 +51,6 @@ class ProfilesController < ApplicationController
   end
 
   def priority_params
-    params.require(:priorities)
+    return params.require(:priorities) if params[:priorities].present?
   end
 end

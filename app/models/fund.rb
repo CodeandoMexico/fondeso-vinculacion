@@ -37,7 +37,7 @@ class Fund < ActiveRecord::Base
     false
   end
 
-  def it_is_from_fondeso?
+  def is_it_from_fondeso?
     priority == "Fondeso"
   end
 
@@ -66,7 +66,7 @@ class Fund < ActiveRecord::Base
       "20" => [],
     }
     funds.each do |f|
-      if f.it_is_from_fondeso?
+      if f.is_it_from_fondeso?
         order["0"] << f
       elsif f.has_classification?("Necesidad - Aún no existe")
         order["1"] << f
@@ -74,11 +74,11 @@ class Fund < ActiveRecord::Base
         order["2"] << f
       elsif fund_is_cultural_and_current_profile_is_cultural? f, user_profile_name
         order["3"] << f
-      elsif fund_priority_is_the_same_as_questionary_results_first_priority? f, priorities
+      elsif priorities.present? && fund_priority_is_the_same_as_questionary_results_first_priority?(f, priorities)
         order["4"] << f
-      elsif fund_priority_is_the_same_as_questionary_results_second_priority? f, priorities
+      elsif priorities.present? && fund_priority_is_the_same_as_questionary_results_second_priority?(f, priorities)
         order["5"] << f
-      elsif fund_priority_is_the_same_as_questionary_results_third_priority? f, priorities
+      elsif priorities.present? && fund_priority_is_the_same_as_questionary_results_third_priority?(f, priorities)
         order["6"] << f
       else
         order["20"] << f
@@ -101,6 +101,8 @@ class Fund < ActiveRecord::Base
     puts order["6"].each {|f| puts "#{f.name} #{f.clasification} #{f.priority}" }
     puts "(20)------------------------------"
     puts order["20"].each {|f| puts "#{f.name} #{f.clasification} #{f.priority}" }
+
+    order["1"] + order["2"] + order["3"] + order["4"] + order["5"] + order["6"] + order["20"]
   end
 
   def self.fund_priority_is_the_same_as_questionary_results_first_priority?(fund, priorities)
