@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
 
   def show
     puts '---------------------------------------------- funds & filters ----------------------------------------------'
-    render json: Fund.search_with_category_and_filters(category_params[:category_name], filter_params)
+    render json: Fund.search_with_category_and_filters(category_params[:category_name], filter_params, priority_params)
   end
 
   def answers
@@ -16,11 +16,12 @@ class ProfilesController < ApplicationController
     # parse the data from the questionary
     questionary_answers = params[:answers]
     questionary_filters = params[:filters]
+    questionary_priorities = params[:priorities]
     answers.extract_question_data_from(questionary_answers)
     # let's process the questionary answers
     winning_profile = answers.process_questionary
     puts "lets redirect to #{winning_profile.uri}"
-    render json: { profile: winning_profile, filters: questionary_filters }
+    render json: { profile: winning_profile, filters: questionary_filters, priorities: questionary_priorities }
   end
 
   private
@@ -47,5 +48,9 @@ class ProfilesController < ApplicationController
       :IND,
       :TIC
     )
+  end
+
+  def priority_params
+    params.require(:priorities)
   end
 end

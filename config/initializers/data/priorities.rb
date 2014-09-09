@@ -1,7 +1,6 @@
 PRIORITIES = [
   "Este programa no tiene prioridad",
   "Fondeso",
-  "Necesidad - Aún no existe",
   "Culturales",
   "Sociales",
   "Conseguir financiamiento / Acceder a instrumentos financieros.",
