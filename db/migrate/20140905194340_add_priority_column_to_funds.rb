@@ -1,5 +1,5 @@
 class AddPriorityColumnToFunds < ActiveRecord::Migration
   def change
-    add_column :funds, :priority, :integer
+    remove_column :funds, :priority
   end
 end
