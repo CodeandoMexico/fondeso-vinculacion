@@ -7,6 +7,7 @@ class Fund < ActiveRecord::Base
 
   store :contact_details, accessors: [ :contact, :address, :phone, :other_phone, :email ], coder: JSON
 
+  validates :friendly_id, presence: true
   validates :name, presence: true
   validates :description, presence: true
   validates :institution, presence: true

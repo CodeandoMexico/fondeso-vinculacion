@@ -56,6 +56,7 @@ class FundsController < ApplicationController
 
   def fund_params
     params.require(:fund).permit(
+      :friendly_id,
       :name,
       :institution,
       :description,
