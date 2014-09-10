@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905194609) do
+ActiveRecord::Schema.define(version: 20140909231522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140905194609) do
     t.string   "geographic_operator"
     t.text     "contact_details"
     t.string   "priority"
+    t.string   "friendly_id"
   end
 
 end
