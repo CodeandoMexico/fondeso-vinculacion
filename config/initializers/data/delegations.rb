@@ -20,7 +20,6 @@ DELEGATIONS = [
 ]
 
 SPECIAL_DELEGATIONS = [
-  "No aplica",
   "Delegación Rural",
   "Cruzada Hambre"
 ]
