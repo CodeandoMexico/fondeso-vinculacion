@@ -20,9 +20,25 @@ DELEGATIONS = [
 ]
 
 SPECIAL_DELEGATIONS = [
-  "No aplica",
   "Delegación Rural",
   "Cruzada Hambre"
+]
+
+RURAL_DELEGATIONS = [
+  "Álvaro Obregón",
+  "Cuajimalpa de Morelos",
+  "Magdalena Contreras",
+  "Milpa Alta",
+  "Tláhuac",
+  "Tlalpan",
+  "Xochimilco"
+]
+
+CRUZADA_HAMBRE = [
+  "Álvaro Obregón",
+  "Gustavo A. Madero",
+  "Iztapalapa",
+  "Tlalpan",
 ]
 
 GEOGRAPHIC_OPERATORS = [

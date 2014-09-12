@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909231522) do
+ActiveRecord::Schema.define(version: 20140910174105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20140909231522) do
     t.string   "custom_delegation"
     t.string   "geographic_operator"
     t.text     "contact_details"
-    t.string   "priority"
     t.string   "friendly_id"
+    t.string   "priority"
   end
 
 end
