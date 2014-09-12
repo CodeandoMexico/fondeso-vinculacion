@@ -46,9 +46,24 @@ class Fund < ActiveRecord::Base
     delegation != "No hay restricción por delegación" && delegation.present?
   end
 
+  def is_in_rural_delegation?
+    custom_delegation.include?("Delegación Rural")
+  end
+
+  def is_in_cruzada_hambre?
+    custom_delegation.include?("Cruzada Hambre")
+  end
+
+  def has_special_geographic_filter?
+    is_in_rural_delegation? || is_in_cruzada_hambre?
+  end
+
   def responds_to_delegation_filters?(delegations)
     # puts "#{home_delegation}, #{business_delegation}: #{delegation?(business_delegation)}"
-    if delegation?(home_delegation) && delegation?(business_delegation)
+    if has_special_geographic_filter?
+      # the special geographic filter are: cruzada del hambre, delegaciones rurales
+      return fund_and_user_are_in_cruzada_por_el_hambre?(delegations) || fund_and_user_are_in_rural_delegation?(delegations)
+    elsif delegation?(home_delegation) && delegation?(business_delegation)
       # they're both delegations, now we have to determine if they both are the same or different
       # if they are the same it's an 'AND', or else, it's an 'OR'
 
@@ -211,5 +226,15 @@ class Fund < ActiveRecord::Base
 
   def fund_and_user_home_OR_business_are_in_the_same_delegation?(fund_delegations, user_delegations)
     fund_delegations[:home] == user_delegations[:home] || fund_delegations[:business] == user_delegations[:business]
+  end
+
+  def fund_and_user_are_in_cruzada_por_el_hambre?(delegations)
+    return false unless is_in_cruzada_hambre?
+    CRUZADA_HAMBRE.include? delegations[:business]
+  end
+
+  def fund_and_user_are_in_rural_delegation?(delegations)
+    return false unless is_in_rural_delegation?
+    RURAL_DELEGATIONS.include?(delegations[:home]) || RURAL_DELEGATIONS.include?(delegations[:business])
   end
 end

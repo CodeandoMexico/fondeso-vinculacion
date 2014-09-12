@@ -24,6 +24,23 @@ SPECIAL_DELEGATIONS = [
   "Cruzada Hambre"
 ]
 
+RURAL_DELEGATIONS = [
+  "Álvaro Obregón",
+  "Cuajimalpa de Morelos",
+  "Magdalena Contreras",
+  "Milpa Alta",
+  "Tláhuac",
+  "Tlalpan",
+  "Xochimilco"
+]
+
+CRUZADA_HAMBRE = [
+  "Álvaro Obregón",
+  "Gustavo A. Madero",
+  "Iztapalapa",
+  "Tlalpan",
+]
+
 GEOGRAPHIC_OPERATORS = [
   "Filtra por negocio \"y\" domicilio (en caso de haber una delegación en estos campos)",
   "Filtra por negocio \"ó\" domicilio (en caso de haber una delegación en estos campos)"
