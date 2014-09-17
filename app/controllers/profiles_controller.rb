@@ -12,9 +12,9 @@ class ProfilesController < ApplicationController
     questionary_answers = params[:answers]
 
     answers.extract_question_data_from(questionary_answers)
-    # let's process the questionary answers
+    # Process the questionary answers. If this returns an array, it's a tie, between those profiles
     winning_profile = answers.process_questionary
-    puts "lets redirect to #{winning_profile.uri}"
+
     render json: { profile: winning_profile, filters: filter_params, priorities: priority_params, delegations: delegation_params }
   end
 

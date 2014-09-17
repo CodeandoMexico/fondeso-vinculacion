@@ -12,13 +12,18 @@ module Fondeso
 
     def winner_profile
       max = profiles.first
-      profiles.map do |p|
-        k = { id: p.name, score: p.score }
-        puts k
-        max = (p.score > max.score) ? p : max
+
+      sort_by_descending_scores_in profiles
+      if there_is_a_tie?(profiles)
+        # look_for_max_score_from_the profiles
+        # puts "max score #{max.name} with #{max.score}"
+        max_profile_score = profiles.first.score
+        profiles.select do |p|
+          p.score == max_profile_score
+        end
+      else
+        profiles.first
       end
-      puts "max score #{max.name} with #{max.score}"
-      max
     end
 
     def current_profile_score(profile_id)
@@ -44,6 +49,34 @@ module Fondeso
     end
 
     private
+
+    def sort_by_descending_scores_in(profiles)
+      profiles.sort! { |x,y| y.score <=> x.score }
+    end
+
+    def there_is_a_tie?(profiles, minimum_tie_probability=0.20)
+      # Ties according the business requirements are as follows:
+      #
+      # If difference between first and second max profiles is less
+      # than 20% AND at least one of the following criteria is met:
+      #
+      # 1. Profiles are from different categories (necessity, traditional).
+      # 2. Profile category stages are opposing (necessity-startup, necessity-consolidation)
+      #
+      first_profile = profiles[0]
+      second_profile = profiles[1]
+
+      tie_detected?(first_profile, second_profile, minimum_tie_probability) &&
+      first_profile.is_from_a_different_category?(second_profile) || first_profile.same_category_opposing_stage?(second_profile)
+    end
+
+    def tie_detected?(first_profile, second_profile, minimum_tie_probability)
+      percentage_difference_between_two_profiles(first_profile, second_profile) < minimum_tie_probability
+    end
+
+    def percentage_difference_between_two_profiles(first_profile, second_profile)
+      ( (first_profile.score - second_profile.score) / first_profile.score )
+    end
 
     def initialize_profiles_scores_for_question(question)
       profiles.each do |profile|
