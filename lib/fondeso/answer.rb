@@ -11,16 +11,12 @@ module Fondeso
 
     # Get the contents from the front end questions and instantiates it's objects
     def extract_question_data_from(sections)
-      # puts sections
       # let's parse the answer question to a readable format
       sections.each do |current_section|
         questions = current_section["questions"]
         questions.each do |q|
           # check for an answer
-          # tmp = { id: q["id"], type: q["type"], body: q["body"] }
-          ans = parse q # let's extract the info
-          puts ans
-          answers.push ans
+          answers.push << parse(q) # let's extract the info
         end
       end
     end
@@ -29,20 +25,16 @@ module Fondeso
       questionary = Questionary.new
       answers.each do |ans|
           questionary.answer_question(ans[:id], ans[:answer])
-          # questionary.profile_score_for_question(ans[:id], ans[:answer])
       end
       # show information from partial/complete scores
       answers.each do |ans|
         Fondeso::Data::PROFILES.map do |e|
           score = questionary.profile_score_for_question(ans[:id], e[:profile_id])
           k = { id: ans[:id], profile: e[:name], score: score }
-          puts k
         end
-        puts ""
       end
-      # retrieve the winner profile to the controllerller
-      winner_profile = questionary.winner_profile
-      winner_profile
+      # retrieve the winner profile to the controller
+      questionary.winner_profile
     end
 
     protected
@@ -57,7 +49,6 @@ module Fondeso
         when "select"
           question[:body][:selected_value][:value].upcase
         when "prioritize"
-          # priorities = question[:body][:options].map { |option| option[:priority] }
           hashify(question[:body][:options], label="value", value="priority")
       end
       { id: question[:id], type: question[:type], answer: parsed_answer }
