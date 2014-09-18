@@ -37,6 +37,18 @@ module Fondeso
       questionary.winner_profile
     end
 
+    def solve_tie_in(profiles, answers)
+      answer = answers.first[:answer].downcase
+      new_profile_list = profiles.select { |p| p[:profile_id].first == answer }
+
+      # if new_profile_list.count == 1
+      #   new_profile_list.first
+      # else
+      #   new_profile_list
+      # end
+      new_profile_list.count == 1 ? new_profile_list.first : new_profile_list
+    end
+
     protected
     def parse(question)
       parsed_answer = case question[:type]
