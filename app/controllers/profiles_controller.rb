@@ -5,16 +5,23 @@ class ProfilesController < ApplicationController
   end
 
   def answers
-    answers = Fondeso::Answer.new
     puts '---------------------------------------------- controller logic ----------------------------------------------'
-    # we need to save "everything" to the database
-    # parse the data from the questionary
-    questionary_answers = params[:answers]
 
-    answers.extract_question_data_from(questionary_answers)
-    # let's process the questionary answers
-    winning_profile = answers.process_questionary
-    puts "lets redirect to #{winning_profile.uri}"
+    if tie_params.present?
+      tie = Fondeso::Answer.new
+      # solve the tie first
+      tie.extract_question_data_from(tie_params)
+      winning_profile = tie.solve_tie_in(profile_params, tie.answers)
+    else
+      # we need to save "everything" to the database
+      # parse the data from the questionary
+      questionary_answers = params[:answers]
+
+      answers = Fondeso::Answer.new
+      answers.extract_question_data_from(questionary_answers)
+      # Process the questionary answers. If this returns an array, it's a tie, between those profiles
+      winning_profile = answers.process_questionary
+    end
     render json: { profile: winning_profile, filters: filter_params, priorities: priority_params, delegations: delegation_params }
   end
 
@@ -51,4 +58,11 @@ class ProfilesController < ApplicationController
     params.require(:delegations).permit(:home, :business) if params[:delegations].present?
   end
 
+  def tie_params
+    params[:tie]
+  end
+
+  def profile_params
+    params[:profiles]
+  end
 end

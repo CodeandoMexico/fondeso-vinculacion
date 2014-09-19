@@ -1,6 +1,6 @@
 module Fondeso
   class Profile
-    attr_reader :name, :uri
+    attr_reader :name, :uri, :profile_id
     def initialize(args)
       @name  = args.fetch(:name)
       @uri  = args.fetch(:uri)
@@ -28,9 +28,18 @@ module Fondeso
       scores.initialize_for_question(question)
     end
 
+    def is_from_a_different_category?(another_profile)
+      profile_id.first != another_profile.profile_id.first
+    end
+
+    def same_category_opposing_stage?(another_profile)
+      profile_id.first == another_profile.profile_id.first &&
+      Integer(profile_id.last) + Integer(another_profile.profile_id.last) == 4 # math trick start-up = 1, consolidation = 3
+    end
+
     private
 
-    attr_reader :profile_id, :scores
+    attr_reader :scores
 
     class Scores
       def initialize
