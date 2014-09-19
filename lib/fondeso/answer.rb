@@ -38,14 +38,16 @@ module Fondeso
     end
 
     def solve_tie_in(profiles, answers)
-      answer = answers.first[:answer].downcase
-      new_profile_list = profiles.select { |p| p[:profile_id].first == answer }
+      new_profile_list = nil
+      answers.each do |a|
+        ans = a[:answer].downcase
+        new_profile_list = if a[:id] == '5.A.1'
+          profiles.select { |p| p[:profile_id].first == ans }
+        else
+          profiles.select { |p| p[:profile_id].last == ans }
+        end
+      end
 
-      # if new_profile_list.count == 1
-      #   new_profile_list.first
-      # else
-      #   new_profile_list
-      # end
       new_profile_list.count == 1 ? new_profile_list.first : new_profile_list
     end
 

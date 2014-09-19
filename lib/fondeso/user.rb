@@ -15,8 +15,6 @@ module Fondeso
 
       sort_by_descending_scores_in profiles
       if there_is_a_tie?(profiles)
-        # look_for_max_score_from_the profiles
-        # puts "max score #{max.name} with #{max.score}"
         max_profile_score = profiles.first.score
         profiles.select do |p|
           p.score == max_profile_score

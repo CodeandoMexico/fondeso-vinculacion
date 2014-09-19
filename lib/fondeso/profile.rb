@@ -29,12 +29,12 @@ module Fondeso
     end
 
     def is_from_a_different_category?(another_profile)
-      profile_id != another_profile.profile_id
+      profile_id.first != another_profile.profile_id.first
     end
 
     def same_category_opposing_stage?(another_profile)
-      profile_id == another_profile &&
-      profile_id[1] + another_profile[1] == 4 # math trick start-up = 1, consolidation = 3
+      profile_id.first == another_profile.profile_id.first &&
+      Integer(profile_id.last) + Integer(another_profile.profile_id.last) == 4 # math trick start-up = 1, consolidation = 3
     end
 
     private
