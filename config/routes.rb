@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   if Rails.env.production?
     devise_for :admins, controllers: { registrations: "registrations" }
   else
