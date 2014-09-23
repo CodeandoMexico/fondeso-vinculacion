@@ -40,6 +40,7 @@ es:
       new:
         first_login: "Inicia sesión"
         sign_in_button: "Entrar"
+        remember_me: "Recuérdame"
   funds:
     index:
       edit: "Editar"
