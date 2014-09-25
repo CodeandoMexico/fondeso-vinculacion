@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers, :set_csrf_cookie_for_ng
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
     # For all responses in this controller, return the CORS access control headers.
 
@@ -55,4 +56,7 @@ class ApplicationController < ActionController::Base
       super || form_authenticity_token == request.headers['X_XSRF_TOKEN']
     end
 
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up) << :name
+    end
 end
