@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   # match 'users/current', to: 'users/sessions#show_current_user', via: [:get]
 
   resources :funds
+  resources :questionary
 
   # root to: 'funds#index'
   # root to: "admins/sessions#new"

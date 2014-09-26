@@ -1,17 +1,38 @@
-<h2>Sign in</h2>
+<div class="page__title">
+  <span class="title__text">APP FONDESO</span>
+</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+<div class="page__content">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "question--input" %></div>
+        </div>
+      </div>
+    </div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "question--input" %></div>
+        </div>
+      </div>
+    </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+    <% if devise_mapping.rememberable? -%>
+      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <% end -%>
 
-<%= render "users/shared/links" %>
+    <div><%= f.submit "ENTRAR", class: "button--full" %></div>
+  <% end %>
+</div>
+
+<div class="page__content">
+  <p>o si a&uacute;n no tienes cuenta...</p>
+  <%= render "users/shared/links" %>
+  <!-- <a class="button--full" href="/#/usuario/crear/">REG&Iacute;STRATE</a> -->
+</div>

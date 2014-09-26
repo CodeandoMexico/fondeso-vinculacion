@@ -14,11 +14,8 @@
  *= require_self
  */
 
-// third party
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "fondeso-chosen";
-
 // fondeso app styles
 @import "base";
 @import "signin";
+@import "fondeso-webapp";
+@import "style.min";

@@ -1,0 +1,179 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+//
+// @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+//
+// bower:scss
+// endbower
+//
+// $contentBackgroundColor: white;
+
+.select--control {
+  width: 100%;
+}
+
+// .browsehappy {
+//     margin: 0.2em 0;
+//     background: #ccc;
+//     color: #000;
+//     padding: 0.2em 0;
+// }
+
+// /* Space out content a bit */
+// body {
+//     padding-top: 20px;
+//     padding-bottom: 20px;
+//     background: #ededed;
+// }
+//
+// /* Everything but the jumbotron gets side spacing for mobile first views */
+// .header,
+// .marketing,
+// .footer {
+//     padding-left: 15px;
+//     padding-right: 15px;
+// }
+//
+// /* Custom page header */
+// .header {
+//     border-bottom: 1px solid #e5e5e5;
+// }
+//
+// /* Make the masthead heading the same height as the navigation */
+// .header h3 {
+//     margin-top: 0;
+//     margin-bottom: 0;
+//     line-height: 40px;
+//     padding-bottom: 19px;
+// }
+//
+// /* Custom page footer */
+// .footer {
+//     padding-top: 19px;
+//     color: #777;
+//     border-top: 1px solid #e5e5e5;
+// }
+//
+// .container-narrow > hr {
+//     margin: 30px 0;
+// }
+//
+// /* Main marketing message and sign up button */
+// .jumbotron {
+//     // text-align: center;
+//     border-bottom: 1px solid #e5e5e5;
+// }
+//
+// .jumbotron .btn {
+//     font-size: 21px;
+//     padding: 14px 24px;
+// }
+//
+// /* Supporting marketing content */
+// .marketing {
+//     margin: 40px 0;
+//     background: white;
+//     border: 1px solid #DCDCDC;
+// }
+//
+// .marketing p + h4 {
+//     margin-top: 28px;
+// }
+//
+// // questionary custom css
+// .questionary-container {
+//     margin: 40px;
+// }
+//
+// .question-container {
+//     margin-top: 20px;
+//     margin-bottom: 20px;
+// }
+//
+// .question-title {
+//     font-size: 18px;
+// }
+//
+// .question-description {
+//     font-size: 14px;
+// }
+//
+//
+// .navigation-container a{
+//     // margin-top: 20px;
+//     margin-bottom: 20px;
+//     text-decoration: none;
+//     font-size: 25px;
+//     cursor: pointer;
+//     cursor: hand;
+// }
+//
+// // prioritize field
+// .prioritization-option {
+//     margin: 10px;
+//     list-style-type: none;
+// }
+
+/* validations */
+// numbers
+.ng-invalid .ng-invalid-unique-priority {
+    // @extend .has-error;
+    border-color: red;
+}
+
+// .gridStyle {
+//     margin: 0px;
+//     padding: 0px;
+//     // border: 1px solid rgb(212,212,212);
+//     // width: auto;
+//     // float: left;
+// }
+//
+// .ngViewport {
+//     height: 200px;
+// }
+//
+// .no-bullets {
+//     list-style-type: none;
+//     padding-left: 0;
+// }
+//
+// #fund-description {
+//     margin: 20px;
+// }
+//
+// .navigation-control {
+//     margin-bottom: 20px;
+// }
+//
+// .cell-background {
+//     border: 1px solid #DCDCDC;
+//     background-color: $contentBackgroundColor;
+// }
+
+// error section
+.text-error {
+    color: red;
+}
+
+/* Responsive: Portrait tablets and up */
+// @media screen and (min-width: 768px) {
+//     .container {
+//         max-width: 730px;
+//     }
+//
+//     /* Remove the padding we set earlier */
+//     .header,
+//     .marketing,
+//     .footer {
+//         padding-left: 0;
+//         padding-right: 0;
+//     }
+//     /* Space out the masthead */
+//     .header {
+//         margin-bottom: 30px;
+//     }
+//     /* Remove the bottom border on the jumbotron for visual effect */
+//     .jumbotron {
+//         border-bottom: 0;
+//     }
+// }

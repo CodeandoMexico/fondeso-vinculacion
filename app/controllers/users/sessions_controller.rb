@@ -3,7 +3,16 @@ class Users::SessionsController < Devise::SessionsController
     render json: current_user
   end
 
-  # protected
+  protected
+    def after_sign_in_path_for(resource)
+      questionary_path
+    end
+
+    def after_sign_out_path_for(resource)
+      root_path
+    end
+
+
   #   def after_sign_in_path_for(resource)
   #     render json: resource
   #     return
