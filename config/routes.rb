@@ -8,8 +8,12 @@ Rails.application.routes.draw do
     devise_for :admins, controllers: { sessions: 'admins/sessions' }
   end
 
-  devise_scope :admin do
-    get "/" => "admins/sessions#new"
+  # devise_scope :admin do
+  #   get "/" => "admins/sessions#new"
+  # end
+
+  devise_scope :user do
+    get "/" => "users/sessions#new"
   end
 
   devise_scope :user do
@@ -23,5 +27,6 @@ Rails.application.routes.draw do
   resources :funds
 
   # root to: 'funds#index'
-  root to: "admins/sessions#new"
+  # root to: "admins/sessions#new"
+  root to: "users/sessions#new"
 end

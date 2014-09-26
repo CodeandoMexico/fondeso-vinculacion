@@ -1,0 +1,54 @@
+<div class="page__title">
+  <span class="title__text">APP FONDESO</span>
+</div>
+
+<div class="page__content">
+  <form name="signUpForm" ng-submit="registration.createAccount( registration.newUser, signUpForm.$valid )" novalidate>
+    <span class="text-error" ng-show="errors.submitted && errors.message">{{ errors.message }}</span>
+    <div class="question-container">
+      <div class="question-header">
+        <p>Nombre</p>
+        <span class="text-error" ng-show="errors.submitted && signUpForm.name.$error.required">este campo es requerido</span>
+      </div>
+      <div class="question-body">
+        <input class="question--input" name="name" type="text" ng-required="true" ng-model="registration.newUser.name" />
+      </div>
+    </div>
+    <div class="question-container">
+      <div class="question-header">
+        <p>Correo Electrónico</p>
+        <span class="text-error" ng-show="errors.submitted && signUpForm.email.$error.required">este campo es requerido</span>
+        <span class="text-error" ng-show="errors.submitted && signUpForm.email.$error.email">correo inv&aacute;lido</span>
+      </div>
+      <div class="question-body">
+        <input class="question--input" name="email"  type="email" ng-required="true" ng-model="registration.newUser.email" />
+      </div>
+    </div>
+    <div class="question-container">
+      <div class="question-header">
+        <p>Contrase&ntilde;a</p>
+        <span class="text-error" ng-show="errors.submitted && signUpForm.password.$error.required">este campo es requerido</span>
+        <span class="text-error" ng-show="errors.submitted && signUpForm.password.$error.minlength">contrase&ntilde;a debe contener al menos 6 caracteres</span>
+      </div>
+      <div class="question-body">
+        <input class="question--input" name="password" type="password" ng-required="true" ng-model="registration.newUser.password" ng-minlength="6" />
+      </div>
+    </div>
+    <div class="question-container">
+      <div class="question-header">
+        <p>Confirma tu contrase&ntilde;a</p>
+        <span class="text-error" ng-show="errors.submitted && signUpForm.passwordConfirmation.$error.required">este campo es requerido</span>
+        <span class="text-error" ng-show="errors.submitted && ( registration.newUser.passwordConfirmation !== registration.newUser.password ) && !signUpForm.passwordConfirmation.$error.required">las contrase&ntilde;as no coinciden</span>
+      </div>
+      <div class="question-body">
+        <input class="question--input" name="passwordConfirmation" type="password" ng-required="true" ng-model="registration.newUser.passwordConfirmation" ng-required="true" />
+      </div>
+    </div>
+    <button class="button--full" type="submit">CREAR CUENTA</button>
+  </form>
+</div>
+
+<div class="page__content">
+  <p>o si ya tienes cuenta...</p>
+  <a class="button--full" href="/">INICIA SES&Oacute;N</a>
+</div>
