@@ -15,20 +15,9 @@ angular
   }])
   .config(['$routeProvider', '$httpProvider', '$locationProvider', function ($routeProvider, $httpProvider, $locationProvider) {
     $routeProvider
-    //   // .when('/usuario/login/', {
-    //   .when('/', {
-    //     // templateUrl: '..assets/fondesowebapp-templates/login.html',
-    //     controller: 'SessionCtrl',
-    //     controllerAs: 'session'
-    //   })
       .when('/questionary/', {
         templateUrl: 'intro.html',
       })
-    //   .when('/usuario/crear/', {
-    //     templateUrl: '..assets/fondesowebapp-templates/signup.html',
-    //     controller: 'RegistrationCtrl',
-    //     controllerAs: 'registration'
-    //   })
       .when('/questionary/test/', {
         templateUrl: 'main.html',
         controller: 'MainCtrl'
@@ -46,9 +35,9 @@ angular
         controller: 'TieCtrl',
         controllerAs: 'tie'
       })
-      .when('/404/', {
-        templateUrl: '404.html'
-      })
+      // .when('/404/', {
+      //   templateUrl: '404.html'
+      // })
       .otherwise({
         redirectTo: '/404'
       });
