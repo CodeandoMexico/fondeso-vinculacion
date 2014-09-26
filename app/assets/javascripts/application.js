@@ -22,6 +22,9 @@
 
 // Angular app dependencies
 //= require bower_components/angular/angular.js
+//= require angular-rails-templates
+//= require_tree ../templates
+
 //= require bower_components/angular-resource/angular-resource.js
 //= require bower_components/angular-cookies/angular-cookies.js
 //= require bower_components/angular-sanitize/angular-sanitize.js

@@ -50,6 +50,7 @@ gem 'chosen-rails'
 gem 'devise'
 
 gem 'rack-cors'
+gem 'angular-rails-templates'
 
 group :development do
   gem "better_errors"
