@@ -6,14 +6,13 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    // 'ngGrid',
     'questionModule',
     'templates'
   ])
-  .run(['$rootScope', '$http', '$cookies', '$location', 'FondesoUser',  function($rootScope, $http, $cookies, $location, FondesoUser){
+  .run(['$location', function($location){
     console.log($location.url());
   }])
-  .config(['$routeProvider', '$httpProvider', '$locationProvider', function ($routeProvider, $httpProvider, $locationProvider) {
+  .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/questionary/', {
         templateUrl: 'intro.html',
@@ -35,9 +34,6 @@ angular
         controller: 'TieCtrl',
         controllerAs: 'tie'
       })
-      // .when('/404/', {
-      //   templateUrl: '404.html'
-      // })
       .otherwise({
         redirectTo: '/404'
       });
