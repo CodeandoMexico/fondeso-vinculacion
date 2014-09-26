@@ -13,12 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-// require_tree .
-// require jquery
 //= require bootstrap-sprockets
 //= require chosen-jquery
 
-// require bower_components/jquery/dist/jquery.js
 
 // Angular app dependencies
 //= require bower_components/angular/angular.js
