@@ -3,6 +3,16 @@
 </div>
 
 <div class="page__content">
+  <% if flash[:notice].present? %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert].present? %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="question-container">
       <div class="question-header">
