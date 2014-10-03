@@ -17,6 +17,7 @@ angular.module('questionaryApp')
       $scope.sections = Questionary.sections;
       $scope.walkedPath = Questionary.walkedPath;
       $scope.currentSection = null;
+      $scope.startQuestionary = false;
 
       $scope.showResults = function(){
         // check home and business delegations
