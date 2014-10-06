@@ -18,4 +18,18 @@
 @import "base";
 @import "signin";
 @import "fondeso-webapp";
-@import "style.min";
+
+// fondeso design
+@import "vars";
+@import "inuit.css/inuit";
+@import "ui/myicons";
+@import "ui/flexbox";
+@import "ui/general";
+
+@import "ui/forms";
+@import "ui/progress";
+@import "ui/evaluation";
+@import "ui/results";
+
+@import "ui/main";
+@import "ui/palm";

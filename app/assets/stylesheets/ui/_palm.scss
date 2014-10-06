@@ -1,0 +1,55 @@
+/*------------------------------------*\
+    MEDIA QUERY FOR SMARTPHONE
+\*------------------------------------*/
+/**
+* Smartphone styles
+*/
+
+@media only screen and (max-width: $max-width) {
+	.header--logos{
+		img{
+			max-width: 140px;
+		}
+	}
+
+	.header{
+		padding: 20px 10px 0 10px;
+		img{
+			width: 200px;
+		}
+		.icon{
+			right: 10px;
+			top: 45%;
+		}
+	}
+
+	.page{
+		.page__title{
+			padding: 10px 20px;
+			.title__number{
+				top: 12%;
+			}
+		}
+		.page__content{
+			padding: 20px 20px 40px 20px;
+		}
+		.list-item{
+			padding: 10px 20px;
+			&:after{
+				top: 30px;
+			}
+			&.selected{
+				.list-item__content{
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+
+	.footer{
+		text-align: center;
+		img:last-child{
+			position: static;
+		}
+	}
+}

@@ -1,0 +1,273 @@
+/*------------------------------------*\
+    FORMS
+\*------------------------------------*/
+/**
+ * Here we customize inputs.
+ */
+
+// GENERAL INPUTS -----------------------------------------------------------------------------
+input[type=text],
+input[type=tel],
+input[type=number],
+input[type=email],
+input[type=password]{  //costumize all "texty" inputs
+	font-family: inherit;
+	font-size: inherit;
+	line-height:18px;
+	padding: 12px;
+	background-color: $color__module__bg-2;
+	border: none;
+	max-width: 100%;
+	&:hover{
+		background-color: darken($color__module__bg-2, 6);
+	}
+}
+label, .label{
+	display: inline-block;
+}
+
+// SWITCH INPUT -----------------------------------------------------------------------------
+// A checkbox input, that looks like a switch.
+// Always add, right after the checkbox input, a div with class "input--switch" with 2 spans (first one says YES, second NO)
+input.input--switch{
+	width: 80px;
+	height: 36px;
+	z-index: 10;
+	right: 0;
+	@include opacity(0);
+}
+div.input--switch{
+	display: inline-block;
+	font-size: 16px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	background-color: $color__module__bg-2;
+	color: lighten($color__gray--medium, 20);
+	border-radius: 2px;
+	position: relative;
+	@include animation(0.3s);
+	span{
+		display: inline-block;
+		padding: 6px 0;
+		width: 40px;
+		text-align: center;
+		border-radius: 2px;
+		position: relative;
+		z-index: 1;
+		@include animation(0.5s);
+		&:first-child{
+			color: inherit;
+		}
+		&:last-child{
+			color: $color__font--light;
+		}
+	}
+	&:before{
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 40px;
+		width: 40px;
+		height: 100%;
+		border-radius: 2px;
+		background-color: $color__branding;
+		z-index: 0;
+		@include animation(0.5s);
+	}
+}
+input[type="checkbox"]:checked + .input--switch{
+	span{
+		&:first-child{
+			color: $color__font--light;
+		}
+		&:last-child{
+			color: inherit;
+		}
+	}
+	&:before{
+		left: 0;
+	}
+}
+input[type="checkbox"]:hover + .input--switch{
+	background-color: darken($color__module__bg-2, 6);
+	/*&:before{
+		background-color: darken($color__branding, 10);
+	}*/
+}
+
+// SELECT INPUT -----------------------------------------------------------------------------
+// To style a select input, always wrap it around a div with "input--select" class
+/*
+	<label></label>
+    <div.input--select>
+        <select>
+            <option value="0">/option>
+            <option value="1"></option>
+            <option value="2"></option>
+        </select>
+    </div>
+*/
+.input--select{
+	position: relative;
+	background-color: $color__gray--light;
+	@include vendor(border-radius, 2px);
+	&:after{
+    	@extend %icon;
+    	content: $icon-chevron-down;
+    	position: absolute;
+    	right: 12px;
+    	top: 12px;
+    	line-height: 20px;
+    	color: lighten($color__gray--medium, 20);
+    }
+}
+select{
+	max-width: 100%;
+	-webkit-appearance:none;
+    -moz-appearance:none;
+    -moz-appearance:window;
+    border: none;
+    background-color: $color__gray--light;
+    padding: 12px 32px 12px 12px;
+    &:hover{
+		background-color: darken($color__module__bg-2, 6);
+	}
+}
+
+// BUTTON-LIKE RADIO -----------------------------------------------------------------------------
+// A radio input that looks like a button.
+/*
+	<div.button--radio>
+        <input-radio name="radio--###" id="radio-0" value="0"/>
+        <label for="radio-0"></label>
+    </div><!--
+ --><div class="button--radio">
+        <input-radio name="radio--###" id="radio-1" value="1"/>
+        <label for="radio-1"></label>
+    </div>
+*/
+.button--radio{
+	display:inline-block;
+	width: 50%;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	text-align: center;
+	line-height: 18px;
+	input[type="radio"]{
+		@include opacity(0);
+		width: 70px;
+		margin-right: -75px;
+	}
+	label{
+		padding: 12px 0;
+		width: 100%;
+		background-color:  $color__gray--light;
+		color: lighten($color__gray--medium, 20);
+		border-radius: 2px;
+		font-size: 15px;
+		@include animation(0.3s);
+	}
+	&:hover{
+		label{
+			background-color: darken($color__gray--light, 6);
+		}
+	}
+	&:nth-last-child(2){
+		padding-right: 6px;
+	}
+	&:last-child{
+		padding-left: 6px;
+	}
+	input[type="radio"]:checked + label{
+		background-color:  $color__branding;
+		color: $color__font--light;
+	}
+
+}
+
+
+// BUTTONS -----------------------------------------------------------------------------
+// The most used are tha back and forward buttons, durind the evaluation.
+button,
+.button{
+	color: $color__font--light;
+	background-color: $color__branding;
+	border-radius: 2px;
+	border: none;
+	padding: 8px 16px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	line-height: 24px;
+	-webkit-font-smoothing:  antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @include animation(0.2s);
+    &:hover{
+    	background-color: darken($color__branding, 10);
+    }
+    // Buttons have an inactive state, this is applied when you haven't answered the question yet, therefore you can't go on to the next one.
+    &:disabled,
+    &.inactive
+    &.disabled{
+		background-color: lighten($color__branding, 25);
+		cursor: default;
+	}
+}
+
+.button--full{
+	@extend .button;
+	text-align: center;
+	display: block;
+	margin-top: 12px;
+}
+
+/*
+	<div.button__wrapper>
+        <button.button--back></button><!--
+     --><button.button--forward>Siguiente</button>
+    </div>
+*/
+.button__wrapper{
+	width: 100%;
+	position: relative;
+	padding-left: 60px;
+	margin-top: 20px;
+}
+// The back button is smaller than the forward button. It is always 50 px wide.
+.button--back{
+	width: 50px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 8px 0;
+	text-align: center;
+	&:before{
+		@extend %icon;
+		content: $icon-arrow-left;
+		font-size: 24px;
+		position: relative;
+		top: 4px;
+	}
+}
+// The forward button, on the other hand, changed width, its width varies depending on the size of the screen.
+.button--forward{
+	width: 100%;
+	text-transform: uppercase;
+	padding: 8px 0;
+	text-align: center;
+	&:after{
+		@extend %icon;
+		content: $icon-arrow-right;
+		font-size: 24px;
+		margin-left: 6px;
+		position: relative;
+		top: 4px;
+		right: 0;
+		@include animation(0.2s);
+	}
+	// When button is hovered, the arrow moves slightly to the right
+	&:hover{
+		&:after{
+			right: -4px;
+		}
+	}
+}
