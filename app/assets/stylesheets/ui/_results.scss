@@ -1,0 +1,98 @@
+/*------------------------------------*\
+    RESULTS VIEW!
+\*------------------------------------*/
+/**
+* Styling for the evaluation results (basically list of available funds)
+* with following structure:
+*
+* 	<div.page__content.results__list>
+		<div.list-item>  			 - one for each available fund.
+			<div.list-item__title>	
+				<span></span>		 - name of fund.
+				<span></span>		 - institution that provides the fund.
+			</div>
+			<div.list-item__content> - content (description, contact info, etc.) 
+			</div>
+		</div>
+	</div>
+*
+* Each fund available goes in its own list item,
+* Usually, the content (description) of the fund is hidden. When the class "selected" is added to the list-item,
+* the fund is displayed (the animation is pure css, javascript is only needed to toggle the "selected" class)
+*
+*/
+
+.list-item{
+	background-color: $color__module__bg;
+	padding: 20px 40px;
+	position: relative;
+	@include animation-attr(background-color, 0.3s);
+	&:hover{
+		background-color: darken($color__module__bg, 6);
+		span:nth-child(2){
+			color: darken($color__branding, 10);
+		}
+	}
+	&:nth-child(2n){
+		background-color: $color__module__bg-2;
+		&:hover{
+			background-color: darken($color__module__bg-2, 6);
+			span:nth-child(2){
+				color: darken($color__branding, 10);
+			}
+		}
+	}
+
+	.list-item__title{
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 700;
+		span{
+			display: block;
+			&:nth-child(2){
+				color: $color__branding;
+			}
+		}
+		cursor: pointer;
+	}
+	.list-item__content{
+		max-height: 0;
+		background-color: $color__module__bg;
+		margin: 0 -12px;
+		padding: 0 12px;;
+		font-size: 0.9em;
+		overflow-y: hidden;
+		@include animation(0.6s);
+	}
+
+	&:after{ // arrow that points up or down, depending on whether it's displayed or not.
+		@extend %icon;
+		@include animation-vendor(transform, 0.5s);
+		content: $icon-chevron-down;
+		position: absolute;
+		right: 30px;
+		top: 40px;
+		color: lighten($color__gray--medium, 20);
+	}
+
+	&.selected{ // selected class! (when content is displayed!)
+		background-color: $color__gray--medium;
+		.list-item__title{
+			span:first-child{
+				color: $color__module__bg;
+			}
+		}
+		.list-item__content{
+			margin-top: 20px;
+			height: auto;
+			max-height: 1200px;
+			padding: 12px;
+		}
+		&:after{
+			color: lighten($color__gray--medium, 40);
+			@include vendor(transform, rotate(180deg));
+		}
+		&:hover{
+			background-color: $color__gray--medium;
+		}
+	}
+}

@@ -1,0 +1,110 @@
+/*------------------------------------*\
+    MY MIXINS & SILENT CLASSES
+\*------------------------------------*/
+/**
+* Attributes I will be using throughout the whole document.
+*/
+@mixin opacity($opacity-value){ //like the vendor mixin, but for opacity :) to make it work even in IE8!
+    filter:     unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity-value * 100)})");
+    opacity:    $opacity-value;
+    -webkit-opacity: $opacity-value;
+}
+@mixin animation($animation-time){
+    -webkit-transition: all $animation-time ease;
+    -moz-transition: all $animation-time ease;
+    -o-transition: all $animation-time ease;
+    transition: all $animation-time ease;
+}
+@mixin animation-attr($attribute, $animation-time){
+    -webkit-transition: $attribute $animation-time ease;
+    -moz-transition: $attribute $animation-time ease;
+    -ms-transition: $attribute $animation-time ease;
+    -o-transition: $attribute $animation-time ease;
+    transition: $attribute $animation-time ease;
+}
+@mixin animation-vendor($attribute, $animation-time){
+    -webkit-transition: -webkit-#{$attribute} $animation-time ease;
+    -moz-transition: -moz-#{$attribute} $animation-time ease;
+    -ms-transition: -ms-#{$attribute} $animation-time ease;
+    -o-transition: -o-#{$attribute} $animation-time ease;
+    transition: $attribute $animation-time ease;
+}
+
+%title{ //title silent class, won't appear unless extended. Yours to define. 
+
+}
+
+%inherit-font{    //to avoid changes in font, mostly for form items
+    font-family: inherit;
+    font-size:   inherit;
+    color: 		 inherit;
+    font-weight: 300;
+}
+
+%erase-form-styling{           //to start styling from scratch on forms. User agent stylesheets are HELL.
+    @extend %inherit-font;
+    @include vendor(box-sizing, border-box);
+    @include vendor(border-radius, 0);
+    border: none;
+    border-collapse: collapse;
+}
+
+@mixin z-index ($z-index-value){ //z-index is not supported in some devices unless you add the "transform" bit
+    z-index: $z-index-value;
+    -webkit-transform: translate3d(0,0,0);
+}
+%scroll-y{
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+}
+%scroll-x{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+}
+%scroll-xy{
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*------------------------------------*\
+    GENERAL SELECTORS
+\*------------------------------------*/
+
+* {
+    @include vendor(box-sizing, border-box);   //When you set a size for a div, it counts the padding and border as part of that size.
+}
+
+html{
+    height: 100%;
+    width:      100%;
+    -webkit-font-smoothing:  antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $color__background;
+}
+
+body{
+    height:     100%;
+    width:      100%;
+    font-family: 'Muli', sans-serif;
+    color: $color__font;
+
+}
+
+a{  //reset link styling (we don't want it underlined or its color changed unless WE tell it to)
+    text-decoration: none;
+    //color: $color--highlight;
+}
+p{
+    margin-bottom: 12px;
+}
+
+h1,h2,h3,h4,h5{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+h3{
+    font-size: 18px;
+    margin-bottom: 12px;
+}
