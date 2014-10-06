@@ -741,7 +741,6 @@ angular.module('questionaryApp')
     // console.log(questionary);
     questionary.sections['1.B'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
     questionary.sections['1.B'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
-    // var baseUrl = 'http://localhost:3000/profile/';
     var baseUrl = 'http://fondeso.herokuapp.com/profile/';
     questionary.save = null;
 

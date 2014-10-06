@@ -2,7 +2,6 @@
 
 angular.module('questionaryApp')
   .service('FondesoProfile', ['$http', function($http){
-    // var baseUrl = 'http://localhost:3000';
     var baseUrl = 'http://fondeso.herokuapp.com';
     var api = {
       all: function(){
