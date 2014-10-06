@@ -1,0 +1,13 @@
+<div class="page__title">
+  <span class="title__text">{{ tie.sectionTitle }}</span>
+</div>
+
+<!--  here starts the questionary -->
+<div class="page__content">
+  <questionary walked-path="tie.walkedPath" sections="tie.sections" current-section="tie.section" on-finish="tie.showResults()">
+    <!-- <section description="{{currentSection.help}}"> -->
+      <question title="tie.question.title" description="tie.question.help" type="tie.question.type" body="tie.question.body" debug="false">
+      </question>
+    <!-- </section> -->
+  </questionary>
+</div>
