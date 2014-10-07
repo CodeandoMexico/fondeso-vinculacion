@@ -7,8 +7,13 @@
 
 @media only screen and (max-width: $max-width) {
 	.header--logos{
+		text-align: center;
+		margin-bottom: 12px;
 		img{
 			max-width: 140px;
+			&:last-child{
+				position: static;
+			}
 		}
 	}
 
@@ -25,9 +30,17 @@
 
 	.page{
 		.page__title{
-			padding: 10px 20px;
+			padding: 10px 40px 10px 20px;
 			.title__number{
 				top: 12%;
+			}
+			.title__number + .title__text{
+				padding-left: 36px;
+			}
+			.icon{
+				font-size: 28px;
+				right: 10px;
+				top: 10px;
 			}
 		}
 		.page__content{
@@ -48,7 +61,7 @@
 
 	.footer{
 		text-align: center;
-		img:last-child{
+		img:nth-child(3){
 			position: static;
 		}
 	}
