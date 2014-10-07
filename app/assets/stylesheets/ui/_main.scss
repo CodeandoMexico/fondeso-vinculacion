@@ -16,11 +16,13 @@
 */
 
 .header--logos{
-	position: absolute;
+	background-color: $color__module__bg;
 	width: 100%;
+	margin-bottom: 48px;
 	img{
 		max-width: 200px;
 		@include animation(0.5s);
+		vertical-align: middle;
 		&:last-child{
 			position: absolute;
 			right: 0;
@@ -68,7 +70,7 @@
 		color: $color__font--light;
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 700;
-		padding: 20px 40px;
+		padding: 20px 60px 20px 40px;
 		position: relative;
 		.title__number{
 			display: inline-block;
@@ -85,6 +87,17 @@
 		}
 		.title__number + .title__text{
 			padding-left: 48px;
+		}
+		.icon{
+			color: $color__module__bg;
+			font-size: 28px;
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			cursor: pointer;
+			&:hover{
+				@include opacity(0.8);
+			}
 		}
 	}
 	.page__content{
@@ -154,7 +167,7 @@
 	img{
 		max-width: 240px;
 		@include animation(0.5s);
-		&:last-child{
+		&:nth-child(3){
 			position: absolute;
 			right: 0;
 			top: 20px;
