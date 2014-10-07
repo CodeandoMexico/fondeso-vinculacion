@@ -2,7 +2,7 @@
 
 angular.module('questionaryApp')
   .service('FondesoProfile', ['$http', function($http){
-    var baseUrl = 'http://localhost:3000/profile/';
+    var baseUrl = 'http://localhost:3000/';
     // var baseUrl = 'http://fondeso.herokuapp.com';
     var api = {
       all: function(){
@@ -10,7 +10,7 @@ angular.module('questionaryApp')
         return $http.get(url);
       },
       category: function(category, filters, priorities, delegations){
-        var url = baseUrl + category + '/';
+        var url = baseUrl + 'profile/' + category + '/';
         return $http.post(url, {
           filters: filters,
           priorities: priorities,
