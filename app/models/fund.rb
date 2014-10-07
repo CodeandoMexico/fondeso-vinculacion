@@ -5,7 +5,7 @@ class Fund < ActiveRecord::Base
   serialize :special_filters, Array
   serialize :custom_delegation, Array
 
-  store :contact_details, accessors: [ :contact, :address, :phone, :other_phone, :email ], coder: JSON
+  store :contact_details, accessors: [ :contact, :address, :phone, :other_phone, :email, :website ], coder: JSON
 
   validates :friendly_id, presence: true
   validates :name, presence: true

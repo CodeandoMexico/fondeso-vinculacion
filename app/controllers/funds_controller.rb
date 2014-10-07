@@ -69,6 +69,7 @@ class FundsController < ApplicationController
       :phone,
       :other_phone,
       :email,
+      :website,
       characteristics: [],
       deliver_method: [],
       clasification: [],
