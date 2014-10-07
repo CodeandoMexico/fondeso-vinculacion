@@ -3,7 +3,7 @@ module Fondeso
     attr_reader :user
 
     def initialize
-      @user = User.new
+      @user = Fondeso::User.new
     end
 
     def answer_question(question_id, answer)

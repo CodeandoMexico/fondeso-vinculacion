@@ -39,12 +39,17 @@ angular.module('questionaryApp')
 
           // var redirectToProfile = '/profile' + profile.uri;
           // redirect to the results when they come, it should return the category name
+          console.log('profile: ');
+          console.log(profile);
           if ( angular.isArray(profile) ){
+            console.log('believes it is a tie');
             FondesoTie.setProfiles( profile );
             $location.url( resolveTie(profile) );
           }
           else {
+            console.log( redirectToProfile(profile.uri) );
             $location.url( redirectToProfile(profile.uri) );
+            // $location.url( profile.uri );
           }
         }, function (err) {
           // there was an error so let's do something about it

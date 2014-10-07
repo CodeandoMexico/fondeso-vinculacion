@@ -7,11 +7,14 @@ class ProfilesController < ApplicationController
   def answers
     puts '---------------------------------------------- controller logic ----------------------------------------------'
 
+    # puts "gonna check the user"
+    # raise current_user.inspect
     if tie_params.present?
       tie = Fondeso::Answer.new
       # solve the tie first
       tie.extract_question_data_from(tie_params)
       winning_profile = tie.solve_tie_in(profile_params, tie.answers)
+      puts "tie detected"
     else
       # we need to save "everything" to the database
       # parse the data from the questionary
@@ -21,7 +24,9 @@ class ProfilesController < ApplicationController
       answers.extract_question_data_from(questionary_answers)
       # Process the questionary answers. If this returns an array, it's a tie, between those profiles
       winning_profile = answers.process_questionary
+      puts "winner has been chosen"
     end
+    # raise winning_profile.inspect
     render json: { profile: winning_profile, filters: filter_params, priorities: priority_params, delegations: delegation_params }
   end
 
