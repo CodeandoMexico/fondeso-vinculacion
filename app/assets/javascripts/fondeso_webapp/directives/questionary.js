@@ -111,13 +111,13 @@ app.directive('questionary', function(){
       });
       scope.$watch('currentSection', function(newValue, oldValue){
         // console.log(scope.walkedPath.length);
-        var numberOfWalkedSections = scope.walkedPath.length + 1;
-        // console.log(numberOfWalkedSections);
-        // console.log(scope.sections.length);
-        // check if has a next and previous section
-        // scope.navigation.hasNext = angular.isObject(scope.nextSection);
-        scope.navigation.hasPrevious = (numberOfWalkedSections - 1 > 0) ? true : false;
-        // console.log(scope.navigation.hasPrevious);
+        // console.log(newValue);
+        // console.log(scope.walkedPath);
+        if( angular.isDefined(scope.walkedPath) ){
+          var numberOfWalkedSections = scope.walkedPath.length + 1;
+          // check if has a next and previous section
+          scope.navigation.hasPrevious = (numberOfWalkedSections - 1 > 0) ? true : false;
+        }
       }, true);
     }
   }

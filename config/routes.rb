@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   resources :funds
   resources :questionary, only: :index
 
+  get "*path" => "questionary#index"
   root to: "users/sessions#new"
 end

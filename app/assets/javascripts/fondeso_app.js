@@ -32,7 +32,7 @@ angular
         controllerAs: 'tie'
       })
       .otherwise({
-        redirectTo: '/404'
+        redirectTo: '/questionary/'
       });
 
      $locationProvider.html5Mode(true);
