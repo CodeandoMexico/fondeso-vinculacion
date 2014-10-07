@@ -21,7 +21,8 @@ DELEGATIONS = [
 
 SPECIAL_DELEGATIONS = [
   "Delegación Rural",
-  "Cruzada Hambre"
+  "Cruzada Hambre",
+  "Todo el DF"
 ]
 
 RURAL_DELEGATIONS = [
@@ -39,6 +40,25 @@ CRUZADA_HAMBRE = [
   "Gustavo A. Madero",
   "Iztapalapa",
   "Tlalpan",
+]
+
+TODO_EL_DF = [
+  "Álvaro Obregón",
+  "Azcapotzalco",
+  "Benito Juárez",
+  "Coyoacán",
+  "Cuajimalpa de Morelos",
+  "Cuauhtémoc",
+  "Gustavo A. Madero",
+  "Iztacalco",
+  "Iztapalapa",
+  "Magdalena Contreras",
+  "Miguel Hidalgo",
+  "Milpa Alta",
+  "Tláhuac",
+  "Tlalpan",
+  "Venustiano Carranza",
+  "Xochimilco"
 ]
 
 GEOGRAPHIC_OPERATORS = [
