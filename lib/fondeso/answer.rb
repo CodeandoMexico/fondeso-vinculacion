@@ -34,7 +34,8 @@ module Fondeso
         end
       end
       # retrieve the winner profile to the controller
-      questionary.winner_profile
+      # if it's 1 element return the hash directly, otherwise return an array
+      clean_profile_answer(questionary.winner_profile)
     end
 
     def solve_tie_in(profiles, answers)
@@ -48,7 +49,8 @@ module Fondeso
         end
       end
 
-      new_profile_list.count == 1 ? new_profile_list.first : new_profile_list
+      # new_profile_list.count == 1 ? new_profile_list.first : new_profile_list
+      clean_profile_answer(new_profile_list)
     end
 
     protected
@@ -75,6 +77,10 @@ module Fondeso
         hash
       end
       new_hash
+    end
+
+    def clean_profile_answer(profiles)
+      profiles.count == 1 ? profiles.first : profiles
     end
   end
 end

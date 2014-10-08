@@ -1,0 +1,187 @@
+/*------------------------------------*\
+    EVALUATION
+\*------------------------------------*/
+/**
+* Styling for the evaluation screens
+*/
+
+// Every evaulation page has a <p> tag asking you the question,
+// Then (most of them) there instructions are given to tell the user what needs to be done.
+.p--instructions{
+	font-size: 0.9em;
+	line-height: 1.2em;
+	color: $color__gray--medium;
+}
+p + .question--priorities{
+	margin-top: 0;
+}
+
+// Questions that don't need to be full width.
+/*
+	<div .question--small.smaller>
+    </div><!--
+ --><div.question--small>
+    </div>
+
+* If there is an enter between the buttons, it should be commented!    
+*/
+.question--small{
+	display: inline-block;
+	width: 55%;
+	//margin-bottom: 12px;
+	&.smaller{
+		width: 45%;
+		padding-right: 12px;
+	}
+}
+
+// Questions with a checkbox that looks like a switch
+/*
+* The rest of the styling is in the _forms SCSS.
+	<div.question--switch>
+        <label></label>
+        <input-checkbox.input--switch/>
+        <div.input--switch><span>S&Iacute;</span><span>NO</span></div>
+    </div>
+*/
+.question--switch{
+	position: relative;
+	margin: 12px 0;
+	min-height: 48px;
+	padding-right: 90px;
+	label{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.input--switch{
+		position: absolute;
+		right: 0;
+		top: 6px;
+	}
+}
+
+// Options that look like buttons.
+.question--button{
+	position: relative;
+	background-color: lighten($color__module__bg-2,2);
+	vertical-align: middle;
+	padding: 12px;
+	margin: 0 ;
+}
+
+/*
+	<div.question--priorities>
+    	<input number />
+    	<label></label>
+    </div>
+*/
+.question--priorities{
+	@extend .question--button;
+	@include display-flex();
+	@include align-content(center);
+	margin-top: 12px;
+	input[type="number"]{
+		width: 50px;
+		height: 50px;
+		background-color: darken($color__module__bg-2,5);
+		@include align-self(center);
+		margin-right: 12px;
+		@include vendor(border-radius, 10px);
+	}
+	label{
+		@include align-self(center);
+		@include flex();
+	}
+}
+
+
+/*
+	<div.question--option>
+        <input radio/>
+        <label></label>
+    </div>
+*/
+.question--option{
+	margin-bottom: 12px;
+	position: relative;
+	input[type="radio"]{
+		@include opacity(0);
+		position: absolute;
+	}
+	label{
+		display: block;
+		@extend .question--button;
+		@include animation(0.2s);
+		&:hover{
+			background-color: darken($color__module__bg-2,5);
+		}
+	}
+	input[type="radio"]:checked + label{
+		background-color: $color__branding;
+	}
+}
+
+
+/*
+	<div.question--checkbox>
+        <input checkbox/>
+        <label></label>
+    </div>
+*/
+.question--checkbox{
+	margin-bottom: 12px;
+	position: relative;
+	input[type="checkbox"]{
+		@include opacity(0);
+		position: absolute;
+	}
+	label{
+		&:before{
+			@extend %icon;
+			color: $color__module__bg;
+			content: "";
+			width: 24px;
+			height: 24px;
+			@include vendor(border-radius, 12px);
+			border: 2px solid lighten($color__gray--medium, 20);
+			position: absolute;
+			top: 12px;
+			left: 12px;
+			line-height: 20px;
+			text-align: center;
+		}
+		padding-left: 42px;
+		display: block;
+		@extend .question--button;
+		@include animation(0.2s);
+		&:hover{
+			background-color: darken($color__module__bg-2,5);
+		}
+	}
+	input[type="checkbox"]:checked + label{
+		background-color: $color__branding;
+		&:before{
+			border: 2px solid $color__module__bg;
+			content: $icon-check;
+		}
+	}
+}
+
+.question--input{
+	width: 100%;
+}
+
+
+.question-header{
+	margin-top: 12px;
+	margin-bottom: 6px;
+	p{
+		margin-bottom: 0;
+	}
+}
+.question--large p{
+	margin-top: 12px;
+	margin-bottom: 6px;
+}
+
+

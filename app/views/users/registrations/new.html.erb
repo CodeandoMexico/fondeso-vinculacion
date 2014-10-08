@@ -1,0 +1,51 @@
+<div class="page__title">
+  <span class="title__text">APP FONDESO</span>
+</div>
+
+<div class="page__content">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :name %><br />
+          <%= f.text_field :name, autofocus: true, class: "question--input" %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "question--input" %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "question--input" %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "question--input" %></div>
+        </div>
+      </div>
+    </div>
+
+  <!-- <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div> -->
+  <div><%= f.submit "CREAR CUENTA", class: "button--full" %></div>
+  <% end %>
+</div>
+
+<%= render "users/shared/links" %>

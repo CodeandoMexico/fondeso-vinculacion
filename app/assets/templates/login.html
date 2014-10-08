@@ -1,0 +1,29 @@
+<div class="page__title">
+  <span class="title__text">APP FONDESO</span>
+</div>
+
+<div class="page__content">
+  <form name="loginForm" ng-submit="session.logIn( session.user, loginForm.$valid )" novalidate>
+    <span class="text-error" ng-show="errors.submitted">Correo y/o contrase&ntilde;a incorrecto(s)</span>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <input type="email" class="question--input" placeholder="correo electr&oacute;nico" ng-model="session.user.email"  ng-required="true" />
+        </div>
+      </div>
+    </div>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <input type="password" class="question--input" placeholder="contrase&ntilde;a" ng-model="session.user.password" ng-minlength="6"  ng-required="true" />
+        </div>
+      </div>
+    </div>
+    <button class="button--full" type="submit">INICIAR SESI&Oacute;N</button>
+  </form>
+</div>
+
+<div class="page__content">
+  <p>o si a&uacute;n no tienes cuenta...</p>
+  <a class="button--full" href="/#/usuario/crear/">REG&Iacute;STRATE</a>
+</div>

@@ -1,0 +1,48 @@
+<div class="page__title">
+  <span class="title__text">APP FONDESO</span>
+</div>
+
+<div class="page__content">
+  <% if flash[:notice].present? %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert].present? %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "question--input" %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "question--input" %></div>
+        </div>
+      </div>
+    </div>
+
+
+    <% if devise_mapping.rememberable? -%>
+      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <% end -%>
+
+    <div><%= f.submit "ENTRAR", class: "button--full" %></div>
+  <% end %>
+</div>
+
+<div class="page__content">
+  <p>o si a&uacute;n no tienes cuenta...</p>
+  <%= render "users/shared/links" %>
+  <!-- <a class="button--full" href="/#/usuario/crear/">REG&Iacute;STRATE</a> -->
+</div>

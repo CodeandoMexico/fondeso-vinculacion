@@ -1,0 +1,186 @@
+// FONDESO ICONS!
+// This icon-font was made for Fondeso App.
+
+@charset "UTF-8";
+
+@import "myicons-variables";
+/*------------------------------------*\
+    FONTFACE
+\*------------------------------------*/
+/**
+ * Call the font. The order of the font-face call is important (The best rendered are called first)
+ */
+@font-face {
+  font-family: 'MyIcons';
+  src: font-url("fondeso-icons.eot");
+  src: font-url("fondeso-icons.eot?#iefix")  format("embedded-opentype"),
+       font-url("fondeso-icons.svg#myicons") format("svg"),
+       font-url("fondeso-icons.ttf")  format("truetype"),
+       font-url("fondeso-icons.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+      font-family: ‘MyIcons’;
+      src: font-url("fondeso-icons.svg#myicons") format("svg")
+  }
+}
+
+/*------------------------------------*\
+    CLASSES
+\*------------------------------------*/
+/**
+ * Call the font
+ */
+// Base Class Definition
+// -------------------------
+
+.#{$icon-css-prefix} {
+  display:     inline-block;
+  font-family: MyIcons;
+  font-style:  normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.#{$icon-css-prefix}-fw {
+  width: (18em / 14);
+  text-align: center;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  display: inline;
+  width:   auto;
+  height:  auto;
+  line-height:      normal;
+  vertical-align:   baseline;
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat:   repeat;
+  margin-top: 0;
+}
+
+%icon{
+  display:     inline-block;
+  font-family: MyIcons;
+  font-style:  normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width:   auto;
+  height:  auto;
+  line-height:      normal;
+  vertical-align:   baseline;
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat:   repeat;
+  margin-top: 0;
+}
+
+/* Icons use the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+
+.#{$icon-css-prefix}-arrow-down:before {
+  content: $icon-arrow-down;
+}
+.#{$icon-css-prefix}-arrow-left:before {
+  content: $icon-arrow-left;
+}
+.#{$icon-css-prefix}-arrow-right:before {
+  content: $icon-arrow-right;
+}
+.#{$icon-css-prefix}-arrow-up:before {
+  content: $icon-arrow-up;
+}
+.#{$icon-css-prefix}-asterisk:before {
+  content: $icon-asterisk;
+}
+.#{$icon-css-prefix}-check:before {
+  content: $icon-check;
+}
+.#{$icon-css-prefix}-chevron-down:before {
+  content: $icon-chevron-down;
+}
+.#{$icon-css-prefix}-chevron-left:before {
+  content: $icon-chevron-left;
+}
+.#{$icon-css-prefix}-chevron-right:before {
+  content: $icon-chevron-right;
+}
+.#{$icon-css-prefix}-chevron-up:before {
+  content: $icon-chevron-up;
+}
+.#{$icon-css-prefix}-circle-o:before {
+  content: $icon-circle-o;
+}
+.#{$icon-css-prefix}-circle:before {
+  content: $icon-circle;
+}
+.#{$icon-css-prefix}-close:before {
+  content: $icon-close;
+}
+.#{$icon-css-prefix}-info:before {
+  content: $icon-info;
+}
+.#{$icon-css-prefix}-minus:before {
+  content: $icon-minus;
+}
+.#{$icon-css-prefix}-plus:before {
+  content: $icon-plus;
+}
+.#{$icon-css-prefix}-triangle:before {
+  content: $icon-triangle;
+}
+.#{$icon-css-prefix}-twitter:before {
+  content: $icon-twitter;
+}
+.#{$icon-css-prefix}-facebook:before {
+  content: $icon-facebook;
+}
+
+/*------------------------------------*\
+    ICON STYLING
+\*------------------------------------*/
+/**
+ * Style icons
+ */
+
+// Bordered & Pulled
+// -------------------------
+
+.#{$icon-css-prefix}-border {
+  padding: .2em .25em .15em;
+  border:  solid .08em $icon-border-color;
+  border-radius: .1em;
+}
+
+.pull-right { float: right; }
+.pull-left  { float: left; }
+
+.#{$icon-css-prefix} {
+  &.pull-left  { margin-right: .3em; }
+  &.pull-right { margin-left:  .3em; }
+}
+
+/* makes the font 33% larger relative to the icon container */
+.#{$icon-css-prefix}-lg {
+  font-size:   (4em / 3);
+  line-height: (3em / 4);
+  vertical-align: -15%;
+}
+.#{$icon-css-prefix}-2x { font-size: 2em; }
+.#{$icon-css-prefix}-3x { font-size: 3em; }
+.#{$icon-css-prefix}-4x { font-size: 4em; }
+.#{$icon-css-prefix}-5x { font-size: 5em; }
+
+/*------------------------------------*\
+    ICON ROTATION
+\*------------------------------------*/
+/**
+ * Style icons
+ */
