@@ -12,11 +12,11 @@
  */
 @font-face {
   font-family: 'MyIcons';
-  src: url("fondeso-icons.eot");
-  src: url("fondeso-icons.eot?#iefix")  format("embedded-opentype"),
-       url("fondeso-icons.svg#myicons") format("svg"),
-       url("fondeso-icons.ttf")  format("truetype"),
-       url("fondeso-icons.woff") format("woff");
+  src: font-url("fondeso-icons.eot");
+  src: font-url("fondeso-icons.eot?#iefix")  format("embedded-opentype"),
+       font-url("fondeso-icons.svg#myicons") format("svg"),
+       font-url("fondeso-icons.ttf")  format("truetype"),
+       font-url("fondeso-icons.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +24,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
       font-family: ‘MyIcons’;
-      src: url("../fonts/fondeso-icons.svg#myicons") format("svg")
+      src: font-url("fondeso-icons.svg#myicons") format("svg")
   }
 }
 
