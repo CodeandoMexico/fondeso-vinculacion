@@ -7,5 +7,18 @@ FactoryGirl.define do
     clasification { ["", "Necesidad - Startup", "Tradicional - Startup", "Tradicional - Crecimiento"] }
     characteristics { ["", "Activo fijo"] }
     deliver_method { ["", "Bolsa de trabajo/Empleabilidad"] }
+
+    # Here goes a list of all the different filter, to create custom funds
+    factory :native_fund do
+      special_filters { ["", "Indígenas"] }
+    end
+
+    factory :elderly_fund do
+      special_filters { ["", "Tercera Edad"] }
+    end
+
+    factory :women_fund do
+      special_filters { ["", "Sexo"] }
+    end
   end
 end
