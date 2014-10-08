@@ -40,7 +40,6 @@ gem 'spring',        group: :development
 
 gem 'cucumber-rails', require: false, group: :test
 gem 'database_cleaner', group: :test
-gem 'rspec-rails', group: [:test, :development]
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
@@ -52,9 +51,15 @@ gem 'devise'
 gem 'rack-cors'
 gem 'angular-rails-templates'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem "factory_girl_rails"
 end
 
 group :production do

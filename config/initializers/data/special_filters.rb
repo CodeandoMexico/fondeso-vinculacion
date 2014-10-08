@@ -32,6 +32,8 @@ FILTER_KEYS = [
   "CON",
   "TUR",
   "ATI",
+  "LEG",
+  "SEG",
   "IND",
   "TIC"
 ]

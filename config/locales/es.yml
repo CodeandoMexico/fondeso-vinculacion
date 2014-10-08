@@ -7,6 +7,7 @@ es:
         fund: Programa
       attributes:
         fund:
+          friendly_id: "id"
           name: "nombre"
           institution: "institución"
           description: "descripción"
@@ -20,6 +21,8 @@ es:
         models:
           fund:
             attributes:
+              friendly_id:
+                blank: "El %{attribute} del programa no puede estar vacío."
               name:
                 blank: "El %{attribute} del programa no puede estar vacío."
               institution:
