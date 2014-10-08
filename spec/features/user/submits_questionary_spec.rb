@@ -20,11 +20,6 @@ feature 'When a user submits an answered questionary' do
     expect(Fund.search_with_profile_and_filters(category, filters_activated, priority_params, delegation_params).length).to eq 3
   end
 
-
-  # def questionary_answers
-  #   Fund.search_with_profile_and_filters(category, filters_not_activated, priority_params, delegation_params)
-  # end
-
   def filter_params
     submitted_questionary["filters"]
   end
