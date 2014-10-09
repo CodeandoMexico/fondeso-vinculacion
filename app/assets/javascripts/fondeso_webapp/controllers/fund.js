@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('questionaryApp')
-  .controller('FundCtrl', ['$scope', '$routeParams', '$location', 'FondesoProfile', 'FondesoFilter', 'FondesoPriority', 'FondesoDelegation', function ($scope, $routeParams, $location, FondesoProfile, FondesoFilter, FondesoPriority, FondesoDelegation) {
+  .controller('FundCtrl', ['$scope', '$routeParams', '$location', '$window', 'FondesoProfile', 'FondesoFilter', 'FondesoPriority', 'FondesoDelegation', function ($scope, $routeParams, $location, $window, FondesoProfile, FondesoFilter, FondesoPriority, FondesoDelegation) {
     var category = $routeParams.category; // save value for later
     $scope.funds = null;
     $scope.fundSelected = [];
@@ -26,6 +26,10 @@ angular.module('questionaryApp')
       // $scope.fundSelected = $scope.funds[index];
       $scope.fundSelected[index] = !$scope.fundSelected[index];
     };
+
+    $scope.printFunds = function(){
+      $window.print();
+    }
 
     // private
     var setFunds = function(funds) {
