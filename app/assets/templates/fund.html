@@ -2,7 +2,8 @@
   <span class="title__text">Programas Recomendados</span>
 </div>
 <div class="page__content results__list">
-  <div ng-repeat="fund in funds" class="list-item" ng-class="{selected: fundSelected===fund}">
+  <!-- <div ng-repeat="fund in funds" class="list-item" ng-class="{selected: fundSelected===fund}"> -->
+  <div ng-repeat="fund in funds" class="list-item" ng-class="{selected: fundSelected[$index]}">
     <div class="list-item__title" ng-click="selectFund($index)">
       <span class="list-item__title-1">{{ fund.name }}</span>
       <span class="list-item__title-2">{{ fund.institution }}</span>

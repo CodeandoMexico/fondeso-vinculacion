@@ -4,6 +4,7 @@ angular.module('questionaryApp')
   .controller('FundCtrl', ['$scope', '$routeParams', '$location', 'FondesoProfile', 'FondesoFilter', 'FondesoPriority', 'FondesoDelegation', function ($scope, $routeParams, $location, FondesoProfile, FondesoFilter, FondesoPriority, FondesoDelegation) {
     var category = $routeParams.category; // save value for later
     $scope.funds = null;
+    $scope.fundSelected = [];
 
     // look if there is a category in the url, if not, return all the funds
     if(angular.isDefined(category)){
@@ -22,11 +23,15 @@ angular.module('questionaryApp')
 
     // helpers
     $scope.selectFund = function (index) {
-      $scope.fundSelected = $scope.funds[index];
+      // $scope.fundSelected = $scope.funds[index];
+      $scope.fundSelected[index] = !$scope.fundSelected[index];
     };
 
     // private
     var setFunds = function(funds) {
       $scope.funds = funds;
+      angular.forEach(funds, function ( value ) {
+        $scope.fundSelected.push( true );
+      })
     };
   }]);
