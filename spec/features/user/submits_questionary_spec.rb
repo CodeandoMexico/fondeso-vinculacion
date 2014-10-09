@@ -1,23 +1,210 @@
 require 'spec_helper'
 
 feature 'When a user submits an answered questionary' do
-  attr_reader :category, :fund_for_natives, :fund_for_women, :fund_for_elderly
+  attr_reader :category,
+              :fund_for_women,
+              :fund_for_rural,
+              :fund_for_young,
+              :fund_for_elderly,
+              :fund_for_artisan,
+              :fund_for_corner_store,
+              :fund_for_college,
+              :fund_for_export,
+              :fund_for_manufacture,
+              :fund_for_industrial_property,
+              :fund_for_construction,
+              :fund_for_turism,
+              :fund_for_access_to_it,
+              :fund_for_native,
+              :fund_for_tic,
+              :fund_for_two_filter
 
   before do
     user = FactoryGirl.create :user
     @category = 'necesidad-startup'
 
-    @fund_for_natives = FactoryGirl.create :native_fund
+    # @fund_for_native = FactoryGirl.create :native_fund
+    # @fund_for_women = FactoryGirl.create :women_fund
+    # @fund_for_elderly = FactoryGirl.create :elderly_fund
+
     @fund_for_women = FactoryGirl.create :women_fund
+    @fund_for_rural = FactoryGirl.create :rural_fund
+    @fund_for_young = FactoryGirl.create :young_fund
     @fund_for_elderly = FactoryGirl.create :elderly_fund
+    @fund_for_artisan = FactoryGirl.create :artisan_fund
+    @fund_for_corner_store = FactoryGirl.create :corner_store_fund
+    @fund_for_college = FactoryGirl.create :college_fund
+    @fund_for_export = FactoryGirl.create :export_fund
+    @fund_for_manufacture = FactoryGirl.create :manufacture_fund
+    @fund_for_industrial_property = FactoryGirl.create :industrial_property_fund
+    @fund_for_construction = FactoryGirl.create :construction_fund
+    @fund_for_turism = FactoryGirl.create :turism_fund
+    @fund_for_access_to_it = FactoryGirl.create :access_to_it_fund
+    @fund_for_native = FactoryGirl.create :native_fund
+    @fund_for_tic = FactoryGirl.create :tic_fund
+    @fund_for_two_filter = FactoryGirl.create :two_filter_fund
   end
 
   scenario 'with all filters turned off it should return a fund' do
-    expect(Fund.search_with_profile_and_filters(category, filters_not_activated, priority_params, delegation_params).length).to eq 0
+    expect(fetch_funds_with(filters_not_activated).length).to eq 0
   end
 
   scenario 'with all filters turned off it should return a fund' do
-    expect(Fund.search_with_profile_and_filters(category, filters_activated, priority_params, delegation_params).length).to eq 3
+    expect(fetch_funds_with(filters_activated).length).to eq 16
+  end
+
+  scenario 'with only women filter activated' do
+    expect(fetch_funds_with(only_women_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only rural filter activated' do
+    expect(fetch_funds_with(only_rural_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only young filter activated' do
+    expect(fetch_funds_with(only_young_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only elderly filter activated' do
+    expect(fetch_funds_with(only_elderly_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only artisan filter activated' do
+    expect(fetch_funds_with(only_artisan_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only corner store filter activated' do
+    expect(fetch_funds_with(only_corner_store_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only college filter activated' do
+    expect(fetch_funds_with(only_college_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only export filter activated' do
+    expect(fetch_funds_with(only_export_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only manufacture filter activated' do
+    expect(fetch_funds_with(only_manufacture_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only native industrial property activated' do
+    expect(fetch_funds_with(only_industrial_property_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only construction filter activated' do
+    expect(fetch_funds_with(only_construction_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only turism filter activated' do
+    expect(fetch_funds_with(only_turism_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only access to it filter activated' do
+    expect(fetch_funds_with(only_access_to_it_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only native filter activated' do
+    expect(fetch_funds_with(only_native_filter_activated).length).to eq 1
+  end
+
+  scenario 'with only tic filter activated' do
+    expect(fetch_funds_with(only_tic_filter_activated).length).to eq 1
+  end
+
+  scenario 'with mixed filters activated' do
+    expect(fetch_funds_with(mixed_filters_activated).length).to eq 3
+  end
+
+  scenario 'with mixed filters activated but there are no funds that fullfill this case' do
+    expect(fetch_funds_with(mixed_filters_but_there_are_no_funds).length).to eq 2
+  end
+
+  # test helper methods
+
+  def only_women_filter_activated
+    fetch_new_filters_with_true_values("MUJ")
+  end
+
+  def only_rural_filter_activated
+    fetch_new_filters_with_true_values("RUR")
+  end
+
+  def only_young_filter_activated
+    fetch_new_filters_with_true_values("JOV")
+  end
+
+  def only_elderly_filter_activated
+    fetch_new_filters_with_true_values("TER")
+  end
+
+  def only_artisan_filter_activated
+    fetch_new_filters_with_true_values("ART")
+  end
+
+  def only_corner_store_filter_activated
+    fetch_new_filters_with_true_values("TAB")
+  end
+
+  def only_college_filter_activated
+    fetch_new_filters_with_true_values("BAC")
+  end
+
+  def only_export_filter_activated
+    fetch_new_filters_with_true_values("EXP")
+  end
+
+  def only_manufacture_filter_activated
+    fetch_new_filters_with_true_values("MAN")
+  end
+
+  def only_industrial_property_filter_activated
+    fetch_new_filters_with_true_values("PIN")
+  end
+
+  def only_construction_filter_activated
+    fetch_new_filters_with_true_values("CON")
+  end
+
+  def only_turism_filter_activated
+    fetch_new_filters_with_true_values("TUR")
+  end
+
+  def only_access_to_it_filter_activated
+    fetch_new_filters_with_true_values("ATI")
+  end
+
+  def only_native_filter_activated
+    fetch_new_filters_with_true_values("IND")
+  end
+
+  def only_tic_filter_activated
+    fetch_new_filters_with_true_values("TIC")
+  end
+
+  def mixed_filters_activated
+    fetch_new_filters_with_true_values(["MUJ", "IND"])
+  end
+
+  def mixed_filters_but_there_are_no_funds
+    fetch_new_filters_with_true_values(["TUR", "IND"])
+  end
+
+  # main helper methods
+
+  def fetch_new_filters_with_true_values(filters)
+    new_filters = filters_not_activated
+    if filters.kind_of?(Array)
+      filters.each { |f| new_filters[f] = true }
+    else
+      new_filters[filters] = true
+    end
+    new_filters
+  end
+
+  def fetch_funds_with(filters)
+    Fund.search_with_profile_and_filters(category, filters, priority_params, delegation_params)
   end
 
   def filter_params

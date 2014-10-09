@@ -8,7 +8,16 @@
       <span class="list-item__title-2">{{ fund.institution }}</span>
     </div>
     <div class="list-item__content">
-      {{ fund.description }}
+      <p>{{ fund.description }}</p>
+      <!-- <p><b>Caracter&iacute;sticas:</b>Incentivos fiscales.</p> -->
+      <p><b class="contact-info">Informes</b>
+         <p ng-show="fund.contact_details.contact.length > 0"><b>Contacto: </b> {{ fund.contact_details.contact }}</p>
+         <p ng-show="fund.contact_details.phone.length > 0"><b>Tel&eacute;fono(s): </b> {{ fund.contact_details.phone }}</p>
+         <p ng-show="fund.contact_details.other_phone.length > 0"><b>Otro Tel&eacute;fono(s): </b> {{ fund.contact_details.other_phone }}</p>
+         <p ng-show="fund.contact_details.email.length > 0"><b>Correo: </b> {{ fund.contact_details.email }}</p>
+         <p ng-show="fund.contact_details.address.length > 0"><b>Direcci&oacute;n: </b> {{ fund.contact_details.address }}</p>
+         <p ng-show="fund.contact_details.website.length > 0"><b>Sitio web: </b> <a ng-href="{{ fund.contact_details.website }}" target="_blank">{{ fund.contact_details.website }}</a></p>
+     </p>
     </div>
   </div>
 </div>
