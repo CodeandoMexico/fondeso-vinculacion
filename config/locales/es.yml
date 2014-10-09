@@ -36,15 +36,17 @@ es:
               clasification:
                 blank: "La %{attribute} a la cual pertenece el programa no puede estar vacía."
           user:
-            name:
-              blank: "El nombre no puede estar vacío"
-            email:
-              taken: "Este correo ya existe"
-            password:
-              blank: "la contraseña no puede estar vacía"
-            password_confirmation:
-              confirmation: "Las contraseñas no coinciden"
-
+            attributes:
+              name:
+                blank: "El nombre no puede estar vacío"
+              email:
+                blank: "El correo no puede estar vacío"
+                taken: "Este correo ya existe"
+              password:
+                blank: "La contraseña no puede estar vacía"
+              password_confirmation:
+                blank: "Confirma tu contraseña"
+                confirmation: "Las contraseñas no coinciden"
           admin:
             attributes:
               name:
@@ -55,7 +57,6 @@ es:
                 blank: "la contraseña no puede estar vacía"
               password_confirmation:
                 confirmation: "Las contraseñas no coinciden"
-
   layouts:
     application:
       sign_out: "Cerrar sesión"
@@ -69,3 +70,18 @@ es:
     index:
       edit: "Editar"
       delete: "Borrar"
+  users:
+    sessions:
+      new:
+        email: "Correo electrónico"
+        password: "Contraseña"
+        remember_me: "Recuérdame"
+    registrations:
+      new:
+        name: "Nombre"
+        email: "Correo electrónico"
+        password: "Contraseña"
+        password_confirmation: "Confirma tu contraseña"
+    shared:
+      links:
+        sign_up: "REGÍSTRATE"
