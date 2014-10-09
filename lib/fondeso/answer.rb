@@ -80,7 +80,11 @@ module Fondeso
     end
 
     def clean_profile_answer(profiles)
-      profiles.count == 1 ? profiles.first : profiles
+      if profiles.kind_of?(Array)
+        profiles.count == 1 ? profiles.first : profiles
+      else
+        profiles
+      end
     end
   end
 end
