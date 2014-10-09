@@ -212,6 +212,12 @@
 	}
 }
 
+@media print {
+  .no-print, .no-print * {
+      display: none !important;
+  }
+}
+
 .overlay{
 	position: fixed;
 	top: 0;
