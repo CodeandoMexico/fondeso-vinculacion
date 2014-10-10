@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= t("brand") %></title>
+  <%= stylesheet_link_tag    'fondeso-app', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'fondeso_fund_list', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body ng-app="fundList">
+    <div class="header--logos">
+      <%= image_tag "fondeso/logos-sedeco-cdmx.png" %>
+      <%= image_tag "fondeso/header-logo.png" %>
+      <%= image_tag "fondeso/logo-cdmx.png" %>
+    </div>
+
+    <div class="page" ng-controller="FundCtrl">
+      <div id="content" ng-view>
+        <%= yield %>
+      </div>
+    </div>
+
+    <div class="bar--social">
+      <a target="_blank" href="http://www.facebook.com/FONDESO"><i class="icon icon-facebook"></i><span>/FONDESO</span></a>
+      <a target="_blank" href="http://twitter.com/fondesoCDMX"><i class="icon icon-twitter"></i><span>@FondesoCDMX</span></a>
+      <a target="_blank" href="http://www.fondeso.df.gob.mx">http://www.fondeso.df.gob.mx</a>
+    </div>
+    <div class="footer">
+      <%= image_tag "fondeso/logo-usaid.png" %>
+      <%= image_tag "fondeso/logo-codeando.png" %>
+      <%= image_tag "fondeso/logo-fondeso.png" %>
+      <div class="footer__links">
+        <span>T&eacute;rminos y Condiciones</span>
+        <span>Aviso de Privacidad</span>
+      </div>
+    </div>
+</body>
+</html>

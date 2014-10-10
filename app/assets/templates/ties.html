@@ -2,6 +2,15 @@
   <span class="title__text">{{ tie.sectionTitle }}</span>
 </div>
 
+<form id="answerForm" action="/profile/" method="post">
+  <input type="hidden" id="authenticity_token" name="authenticity_token" value="">
+  <input type="hidden" id="answers" name="answers" value="">
+  <input type="hidden" id="category_name" name="category_name" value="">
+  <input type="hidden" id="filters" name="filters" value="">
+  <input type="hidden" id="priorities" name="priorities" value="">
+  <input type="hidden" id="delegations" name="delegations" value="">
+</form>
+
 <!--  here starts the questionary -->
 <div class="page__content">
   <questionary walked-path="tie.walkedPath" sections="tie.sections" current-section="tie.section" on-finish="tie.showResults()">

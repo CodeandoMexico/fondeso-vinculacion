@@ -18,14 +18,6 @@ angular
         templateUrl: 'main.html',
         controller: 'MainCtrl'
       })
-      .when('/profile/', {
-        templateUrl: 'fund.html',
-        controller: 'FundCtrl'
-      })
-      .when('/profile/:category/', {
-        templateUrl: 'fund.html',
-        controller: 'FundCtrl'
-      })
       .when('/tie/', {
         templateUrl: 'ties.html',
         controller: 'TieCtrl',

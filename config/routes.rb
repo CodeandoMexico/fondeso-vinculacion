@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   end
 
   match 'profile/submit', to: 'profiles#answers', via: [:post, :options]
-  match 'profile/:category_name', to: 'profiles#show', via: [:post, :options]
+  # match 'profile/:category_name', to: 'profiles#show', via: [:post, :options]
+  match 'profile/', to: 'profiles#create', via: [:post, :options]
+  match 'profile/', to: 'profiles#destroy', via: [:delete]
 
+  resources :profiles, only: [:index]
   resources :funds
   resources :questionary, only: :index
 
