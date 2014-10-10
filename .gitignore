@@ -22,3 +22,6 @@
 .ruby-version
 .rvmrc
 .ruby-gemset
+
+# Ignore application configuration
+/config/application.yml
