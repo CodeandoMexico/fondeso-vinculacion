@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  layout "fondesofundlist"
+
   def show
     # raise current_user.inspect
     # puts category_params

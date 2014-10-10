@@ -3,15 +3,17 @@
   <i name="print" class="no-print icon icon-info" ng-click="printFunds()"></i>
 </div>
 <div class="page__content results__list">
-  <!-- <div ng-repeat="fund in funds" class="list-item" ng-class="{selected: fundSelected===fund}"> -->
-  <div ng-repeat="fund in funds" class="list-item" ng-class="{selected: fundSelected[$index]}">
-    <div class="list-item__title" ng-click="selectFund($index)">
+
+  <% @funds.each_with_index do |f, idx| %>
+    <%= content_tag( :div, nil, class: "fund-data", data: { fund: f }) %>
+  <% end %>
+  <div ng-repeat="fund in funds" class="list-item" ng-class="{ selected: fundSelected[$index] }">
+    <div class="list-item__title" ng-click="clickOnFund($index)">
       <span class="list-item__title-1">{{ fund.name }}</span>
       <span class="list-item__title-2">{{ fund.institution }}</span>
     </div>
     <div class="list-item__content">
       <p>{{ fund.description }}</p>
-      <!-- <p><b>Caracter&iacute;sticas:</b>Incentivos fiscales.</p> -->
       <p><b class="contact-info">Informes</b>
          <p ng-show="fund.contact_details.contact.length > 0"><b>Contacto: </b> {{ fund.contact_details.contact }}</p>
          <p ng-show="fund.contact_details.phone.length > 0"><b>Tel&eacute;fono(s): </b> {{ fund.contact_details.phone }}</p>
