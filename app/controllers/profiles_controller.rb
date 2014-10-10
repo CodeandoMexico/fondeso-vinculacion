@@ -38,12 +38,9 @@ class ProfilesController < ApplicationController
       winning_profile = tie.solve_tie_in(profile_params, tie.answers)
       puts "tie detected"
     else
-      # we need to save "everything" to the database
-      # parse the data from the questionary
-      # questionary_answers = params[:answers]
-
       answers = Fondeso::Answer.new
       answers.extract_question_data_from(answer_params)
+
       # Process the questionary answers. If this returns an array, it's a tie, between those profiles
       winning_profile = answers.process_questionary
       puts "winner has been chosen"
@@ -54,7 +51,6 @@ class ProfilesController < ApplicationController
   private
 
   def category_params
-    # params.permit(:category_name)
     params[:category_name]
   end
 
