@@ -1,6 +1,9 @@
 <div class="page__title">
   <span class="title__text">Programas Recomendados</span>
   <i name="print" class="no-print icon icon-info" ng-click="printFunds()"></i>
+  <%= link_to profile_path, method: :delete, data: { confirm: "¿Seguro que deseas borrar este cuestionario?" } do %>
+    <i name="print" class="no-print icon icon-close"></i>
+  <% end %>
 </div>
 <div class="page__content results__list">
 

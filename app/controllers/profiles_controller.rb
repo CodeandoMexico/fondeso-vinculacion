@@ -30,6 +30,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user.update(questionary: nil)
+      redirect_to questionary_index_path
+    else
+      redirect_to profiles_path
+    end
+  end
+
   def answers
     if tie_params.present?
       tie = Fondeso::Answer.new

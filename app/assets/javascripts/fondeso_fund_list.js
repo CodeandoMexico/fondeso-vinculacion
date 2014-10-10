@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery_ujs
 
 // Angular app dependencies
 //= require bower_components/angular/angular.js
