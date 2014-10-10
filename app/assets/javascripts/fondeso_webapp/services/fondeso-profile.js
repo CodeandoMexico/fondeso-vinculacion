@@ -9,9 +9,10 @@ angular.module('questionaryApp')
         var url = baseUrl + 'funds.json/';
         return $http.get(url);
       },
-      category: function(category, filters, priorities, delegations){
+      category: function(category, answers, filters, priorities, delegations){
         var url = baseUrl + 'profile/' + category + '/';
         return $http.post(url, {
+          answers: answers,
           filters: filters,
           priorities: priorities,
           delegations: delegations

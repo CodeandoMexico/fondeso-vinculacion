@@ -13,42 +13,45 @@ angular.module('questionaryApp')
     'FondesoDelegation',
     'FondesoTie',
     function ($scope, $location, $anchorScroll, Questionary, FondesoSpecialCase, FondesoFilter, FondesoProfile, FondesoPriority, FondesoDelegation, FondesoTie) {
-      // types of questions are: text, number, radio, checkbox
       $scope.sections = Questionary.sections;
       $scope.walkedPath = Questionary.walkedPath;
       $scope.currentSection = null;
       $scope.startQuestionary = false;
 
+
       $scope.showResults = function(){
-        // check home and business delegations
+        // check delegations, priorities and filters
         FondesoDelegation.getDelegations($scope.sections, $scope.walkedPath);
-
-        // check the priorities
         FondesoPriority.getPriorities($scope.sections, $scope.walkedPath);
-
-        // check all filters
         FondesoFilter.checkAllFilters($scope.sections, $scope.walkedPath);
+
 
         // submit the data to the service and see if it was successful
         Questionary.submit($scope.walkedPath, FondesoFilter.filters, FondesoPriority.priorities, FondesoDelegation.delegations).then(function(res){
           console.log(res);
           var profile = res.data.profile;
-          // var filters = res.data.filters;
-          // var priorities = res.data.priorities;
-          // var delegations = res.data.delegations;
+
+          // update all inputs variables
+          document.getElementById("answers").value            = angular.toJson( $scope.walkedPath );
+          document.getElementById("filters").value            = angular.toJson( FondesoFilter.filters );
+          document.getElementById("priorities").value         = angular.toJson( FondesoPriority.priorities );
+          document.getElementById("delegations").value        = angular.toJson( FondesoDelegation.delegations );
+          document.getElementById("category_name").value      = angular.toJson( profile );
+          document.getElementById("authenticity_token").value = angular.element("meta[name='csrf-token']").attr("content");
 
           // var redirectToProfile = '/profile' + profile.uri;
           // redirect to the results when they come, it should return the category name
           console.log('profile: ');
           console.log(profile);
           if ( angular.isArray(profile) ){
-            console.log('believes it is a tie');
+            // console.log('believes it is a tie');
             FondesoTie.setProfiles( profile );
             $location.url( resolveTie(profile) );
           }
           else {
-            console.log( redirectToProfile(profile.uri) );
-            $location.url( redirectToProfile(profile.uri) );
+            // console.log( redirectToProfile(profile.uri) );
+            document.getElementById("answerForm").submit();
+            // $location.url( redirectToProfile(profile.uri) );
             // $location.url( profile.uri );
           }
         }, function (err) {

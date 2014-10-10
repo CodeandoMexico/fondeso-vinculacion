@@ -91,7 +91,7 @@
 		.icon{
 			color: $color__module__bg;
 			font-size: 28px;
-			position: absolute;
+			// position: absolute;
 			right: 20px;
 			top: 20px;
 			cursor: pointer;
@@ -210,6 +210,12 @@
 			position: static;
 		}
 	}
+}
+
+@media print {
+  .no-print, .no-print * {
+      display: none !important;
+  }
 }
 
 .overlay{
