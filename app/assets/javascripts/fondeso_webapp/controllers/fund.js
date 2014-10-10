@@ -1,14 +1,15 @@
 'use strict';
 
-angular.module('questionaryApp')
-  .controller('FundCtrl', ['$scope', '$routeParams', '$location', '$window', 'FondesoProfile', 'FondesoFilter', 'FondesoPriority', 'FondesoDelegation', function ($scope, $routeParams, $location, $window, FondesoProfile, FondesoFilter, FondesoPriority, FondesoDelegation) {
+// angular.module('questionaryApp')
+angular.module('fundList', [])
+  .controller('FundCtrl', ['$scope', '$routeParams', '$location', '$window', 'FondesoProfile', 'FondesoFilter', 'FondesoPriority', 'FondesoDelegation', 'Questionary', function ($scope, $routeParams, $location, $window, FondesoProfile, FondesoFilter, FondesoPriority, FondesoDelegation, Questionary) {
     var category = $routeParams.category; // save value for later
     $scope.funds = null;
     $scope.fundSelected = [];
 
     // look if there is a category in the url, if not, return all the funds
     if(angular.isDefined(category)){
-      FondesoProfile.category(category, FondesoFilter.filters, FondesoPriority.priorities, FondesoDelegation.delegations).then(function(res){
+      FondesoProfile.category(category, Questionary.walkedPath, FondesoFilter.filters, FondesoPriority.priorities, FondesoDelegation.delegations).then(function(res){
         setFunds(res.data);
       }, function(err){
         console.log(err);

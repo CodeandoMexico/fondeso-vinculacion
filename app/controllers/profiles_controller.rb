@@ -1,14 +1,22 @@
 class ProfilesController < ApplicationController
   def show
-    puts '---------------------------------------------- funds & filters ----------------------------------------------'
-    render json: Fund.search_with_profile_and_filters(category_params[:category_name], filter_params, priority_params, delegation_params)
+    # raise current_user.inspect
+    # puts category_params
+    puts '------------------------------ Hello ------------------------------'
+    # raise current_user.inspect
+    # authenticity_token = sanitize params[:authenticity_token]
+    answers = sanitize params[:answers]
+    category_name = sanitize params[:category_name]
+    filters = sanitize params[:filters]
+    priorities = sanitize params[:priorities]
+    delegations = sanitize params[:delegations]
+
+    @funds = Fund.search_with_profile_and_filters(category_name["uri"], filters, priorities, delegations)
+    # raise @funds.inspect
+    # render json: Fund.search_with_profile_and_filters(category_params[:category_name], filter_params, priority_params, delegation_params)
   end
 
   def answers
-    puts '---------------------------------------------- controller logic ----------------------------------------------'
-
-    # puts "gonna check the user"
-    # raise current_user.inspect
     if tie_params.present?
       tie = Fondeso::Answer.new
       # solve the tie first
@@ -18,22 +26,22 @@ class ProfilesController < ApplicationController
     else
       # we need to save "everything" to the database
       # parse the data from the questionary
-      questionary_answers = params[:answers]
+      # questionary_answers = params[:answers]
 
       answers = Fondeso::Answer.new
-      answers.extract_question_data_from(questionary_answers)
+      answers.extract_question_data_from(answer_params)
       # Process the questionary answers. If this returns an array, it's a tie, between those profiles
       winning_profile = answers.process_questionary
       puts "winner has been chosen"
     end
-    # raise winning_profile.inspect
     render json: { profile: winning_profile, filters: filter_params, priorities: priority_params, delegations: delegation_params }
   end
 
   private
 
   def category_params
-    params.permit(:category_name)
+    # params.permit(:category_name)
+    params[:category_name]
   end
 
   def filter_params
@@ -56,6 +64,10 @@ class ProfilesController < ApplicationController
     )
   end
 
+  def answer_params
+    params[:answers]
+  end
+
   def priority_params
     params.require(:priorities) if params[:priorities].present?
   end
@@ -69,5 +81,9 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params[:profiles]
+  end
+
+  def sanitize(parameters)
+    JSON.parse(parameters)
   end
 end
