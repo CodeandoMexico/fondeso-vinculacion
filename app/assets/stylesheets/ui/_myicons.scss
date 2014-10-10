@@ -85,63 +85,31 @@
 /* Icons use the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
 
-.#{$icon-css-prefix}-arrow-down:before {
-  content: $icon-arrow-down;
-}
-.#{$icon-css-prefix}-arrow-left:before {
-  content: $icon-arrow-left;
-}
-.#{$icon-css-prefix}-arrow-right:before {
-  content: $icon-arrow-right;
-}
-.#{$icon-css-prefix}-arrow-up:before {
-  content: $icon-arrow-up;
-}
-.#{$icon-css-prefix}-asterisk:before {
-  content: $icon-asterisk;
-}
-.#{$icon-css-prefix}-check:before {
-  content: $icon-check;
-}
-.#{$icon-css-prefix}-chevron-down:before {
-  content: $icon-chevron-down;
-}
-.#{$icon-css-prefix}-chevron-left:before {
-  content: $icon-chevron-left;
-}
-.#{$icon-css-prefix}-chevron-right:before {
-  content: $icon-chevron-right;
-}
-.#{$icon-css-prefix}-chevron-up:before {
-  content: $icon-chevron-up;
-}
-.#{$icon-css-prefix}-circle-o:before {
-  content: $icon-circle-o;
-}
-.#{$icon-css-prefix}-circle:before {
-  content: $icon-circle;
-}
-.#{$icon-css-prefix}-close:before {
-  content: $icon-close;
-}
-.#{$icon-css-prefix}-info:before {
-  content: $icon-info;
-}
-.#{$icon-css-prefix}-minus:before {
-  content: $icon-minus;
-}
-.#{$icon-css-prefix}-plus:before {
-  content: $icon-plus;
-}
-.#{$icon-css-prefix}-triangle:before {
-  content: $icon-triangle;
-}
-.#{$icon-css-prefix}-twitter:before {
-  content: $icon-twitter;
-}
-.#{$icon-css-prefix}-facebook:before {
-  content: $icon-facebook;
-}
+.#{$icon-css-prefix}-triangle-up:before { content: $icon-triangle-up;}
+.#{$icon-css-prefix}-gear:before { content: $icon-gear;}
+.#{$icon-css-prefix}-print:before { content: $icon-print;}
+.#{$icon-css-prefix}-power:before { content: $icon-power;}
+.#{$icon-css-prefix}-trash:before { content: $icon-trash;}
+.#{$icon-css-prefix}-door:before { content: $icon-door;}
+.#{$icon-css-prefix}-twitter:before { content: $icon-twitter;}
+.#{$icon-css-prefix}-facebook:before { content: $icon-facebook;}
+.#{$icon-css-prefix}-triangle:before { content: $icon-triangle;}
+.#{$icon-css-prefix}-arrow-down:before { content: $icon-arrow-down;}
+.#{$icon-css-prefix}-arrow-left:before { content: $icon-arrow-left;}
+.#{$icon-css-prefix}-arrow-right:before { content: $icon-arrow-right;}
+.#{$icon-css-prefix}-arrow-up:before { content: $icon-arrow-up;}
+.#{$icon-css-prefix}-asterisk:before { content: $icon-asterisk;}
+.#{$icon-css-prefix}-check:before { content: $icon-check;}
+.#{$icon-css-prefix}-chevron-down:before { content: $icon-chevron-down;}
+.#{$icon-css-prefix}-chevron-left:before { content: $icon-chevron-left;}
+.#{$icon-css-prefix}-chevron-right:before { content: $icon-chevron-right;}
+.#{$icon-css-prefix}-chevron-up:before { content: $icon-chevron-up;}
+.#{$icon-css-prefix}-circle-o:before { content: $icon-circle-o;}
+.#{$icon-css-prefix}-circle:before { content: $icon-circle;}
+.#{$icon-css-prefix}-close:before { content: $icon-close;}
+.#{$icon-css-prefix}-info:before { content: $icon-info;}
+.#{$icon-css-prefix}-minus:before { content: $icon-minus;}
+.#{$icon-css-prefix}-plus:before { content: $icon-plus;}
 
 /*------------------------------------*\
     ICON STYLING

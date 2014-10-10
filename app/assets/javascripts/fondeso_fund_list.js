@@ -10,6 +10,7 @@ angular.module('fundList', [])
   .controller('FundCtrl', ['$scope', '$window', function ($scope, $window) {
     $scope.funds = [];
     $scope.fundSelected = [];
+    $scope.menuIsOpen = false;
     console.log('initialized fund list');
 
     var div = angular.element('.fund-data');
