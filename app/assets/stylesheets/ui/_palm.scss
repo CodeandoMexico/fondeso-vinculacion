@@ -59,6 +59,13 @@
 		}
 	}
 
+	.menu--open .dropdown-menu{
+		&:before{
+			right: 19px;
+			font-size: 10px;
+			top: -9px;
+		}
+	}
 	.footer{
 		text-align: center;
 		img:nth-child(3){
