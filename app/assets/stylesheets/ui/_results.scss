@@ -7,11 +7,11 @@
 *
 * 	<div.page__content.results__list>
 		<div.list-item>  			 - one for each available fund.
-			<div.list-item__title>	
+			<div.list-item__title>
 				<span></span>		 - name of fund.
 				<span></span>		 - institution that provides the fund.
 			</div>
-			<div.list-item__content> - content (description, contact info, etc.) 
+			<div.list-item__content> - content (description, contact info, etc.)
 			</div>
 		</div>
 	</div>
@@ -83,7 +83,7 @@
 	}
 
 	&.selected{ // selected class! (when content is displayed!)
-		background-color: $color__gray--medium;
+		background-color: $color__gray--medium-dark;
 		.list-item__title{
 			span:first-child{
 				color: $color__module__bg;
@@ -100,7 +100,7 @@
 			@include vendor(transform, rotate(180deg));
 		}
 		&:hover{
-			background-color: $color__gray--medium;
+			background-color: $color__gray--medium-dark;
 		}
 	}
 }
