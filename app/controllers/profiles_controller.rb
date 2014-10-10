@@ -1,21 +1,33 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   layout "fondesofundlist"
 
-  def show
-    # raise current_user.inspect
-    # puts category_params
-    puts '------------------------------ Hello ------------------------------'
-    # raise current_user.inspect
-    # authenticity_token = sanitize params[:authenticity_token]
-    answers = sanitize params[:answers]
-    category_name = sanitize params[:category_name]
-    filters = sanitize params[:filters]
-    priorities = sanitize params[:priorities]
-    delegations = sanitize params[:delegations]
+  def index
+    if current_user.questionary.present?
+      answers = current_user.answers
+      category = current_user.category
+      filters = current_user.filters
+      priorities = current_user.priorities
+      delegations = current_user.delegations
 
-    @funds = Fund.search_with_profile_and_filters(category_name["uri"], filters, priorities, delegations)
-    # raise @funds.inspect
-    # render json: Fund.search_with_profile_and_filters(category_params[:category_name], filter_params, priority_params, delegation_params)
+      @funds = Fund.search_with_profile_and_filters(category["uri"], filters, priorities, delegations)
+    else
+      redirect_to questionary_index_path
+    end
+  end
+
+  def create
+    current_user.answers = sanitize params[:answers]
+    current_user.category = sanitize params[:category_name]
+    current_user.filters = sanitize params[:filters]
+    current_user.priorities = sanitize params[:priorities]
+    current_user.delegations = sanitize params[:delegations]
+
+    if current_user.save
+      redirect_to profiles_path
+    else
+      redirect_to questionary_index_path
+    end
   end
 
   def answers

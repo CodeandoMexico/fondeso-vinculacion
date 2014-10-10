@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
   match 'profile/submit', to: 'profiles#answers', via: [:post, :options]
   # match 'profile/:category_name', to: 'profiles#show', via: [:post, :options]
-  match 'profile/', to: 'profiles#show', via: [:post, :options]
+  match 'profile/', to: 'profiles#create', via: [:post, :options]
 
+  resources :profiles, only: [:index]
   resources :funds
   resources :questionary, only: :index
 
