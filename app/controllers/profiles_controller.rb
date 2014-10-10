@@ -24,6 +24,7 @@ class ProfilesController < ApplicationController
     current_user.delegations = sanitize params[:delegations]
 
     if current_user.save
+      UserMailer.questionary_submitted(current_user).deliver
       redirect_to profiles_path
     else
       redirect_to questionary_index_path

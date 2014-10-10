@@ -47,17 +47,22 @@ gem 'devise'
 
 gem 'rack-cors'
 gem 'angular-rails-templates'
+gem 'figaro', '>= 1.0'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
+group :test do
+  gem 'launchy'
+end
+
 group :development do
   gem 'thin'
   gem "better_errors"
   gem "binding_of_caller"
-  gem "factory_girl_rails"
+  gem 'letter_opener'
 end
 
 group :staging, :production do
