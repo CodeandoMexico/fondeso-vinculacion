@@ -4,6 +4,9 @@
   <%= link_to profile_path, method: :delete, data: { confirm: "¿Seguro que deseas borrar este cuestionario?" } do %>
     <i name="print" class="no-print icon icon-close"></i>
   <% end %>
+  <%= link_to destroy_user_session_path, method: :delete do %>
+    <i name="print" class="no-print icon icon-close"></i>
+  <% end %>
 </div>
 <div class="page__content results__list">
 
