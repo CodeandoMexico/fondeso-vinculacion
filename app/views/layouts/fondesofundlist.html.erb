@@ -6,14 +6,15 @@
   <%= javascript_include_tag 'fondeso_fund_list', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="fundList">
+<body ng-app="fundList" ng-controller="FundCtrl" ng-class="{ 'menu--open': menuIsOpen }">
+    <div class="overlay"></div>
     <div class="header--logos">
       <%= image_tag "fondeso/logos-sedeco-cdmx.png" %>
       <%= image_tag "fondeso/header-logo.png" %>
       <%= image_tag "fondeso/logo-cdmx.png" %>
     </div>
 
-    <div class="page" ng-controller="FundCtrl">
+    <div class="page">
       <div id="content" ng-view>
         <%= yield %>
       </div>

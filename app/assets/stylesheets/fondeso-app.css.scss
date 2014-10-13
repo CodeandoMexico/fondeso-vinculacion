@@ -187,8 +187,6 @@
 }
 
 @media print {
-.no-print {
-    display:none;
-  }
-.printable { display: block; }
+  .no-print { display:none; }
+  .printable { display: block; }
 }
