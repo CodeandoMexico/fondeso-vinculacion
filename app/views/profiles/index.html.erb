@@ -1,15 +1,13 @@
 <div class="page__title">
   <span class="title__text">Programas Recomendados</span>
-  <i name="print" class="no-print icon icon-print" ng-click="printFunds()"></i>
-  <%= link_to profile_path, method: :delete, data: { confirm: "¿Seguro que deseas borrar este cuestionario?" } do %>
-    <i name="print" class="no-print icon icon-trash"></i>
-  <% end %>
-  <%= link_to destroy_user_session_path, method: :delete do %>
-    <i name="print" class="no-print icon icon-door"></i>
-  <% end %>
+  <i class="icon  icon-gear no-print" ng-click="menuIsOpen=!menuIsOpen"></i>
+  <ul class="dropdown-menu no-print">
+      <li> <a href="" class="item" ng-click="printFunds()">Imprimir</a></li>
+      <li><%= link_to "Borrar cuestionario", profile_path, method: :delete, data: { confirm: "¿Seguro que deseas borrar este cuestionario?" }, class: "item" %></li>
+      <li><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "item" %></li>
+  </ul>
 </div>
 <div class="page__content results__list">
-
   <% @funds.each_with_index do |f, idx| %>
     <%= content_tag( :div, nil, class: "fund-data", data: { fund: f }) %>
   <% end %>
