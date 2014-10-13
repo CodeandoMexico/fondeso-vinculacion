@@ -71,7 +71,8 @@ class Fund < ActiveRecord::Base
       # they're both delegations, now we have to determine if they both are the same or different
       # if they are the same it's an 'AND', or else, it's an 'OR'
 
-      if home_delegation == business_delegation
+      # if home_delegation == business_delegation
+      if geographic_operator == DELEGATION_AND_SELECTOR
        return fund_and_user_home_AND_business_are_in_the_same_delegation?({
           home: home_delegation,
           business: business_delegation,
