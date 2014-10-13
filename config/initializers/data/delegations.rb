@@ -61,7 +61,6 @@ TODO_EL_DF = [
   "Xochimilco"
 ]
 
-GEOGRAPHIC_OPERATORS = [
-  "Filtra por negocio \"y\" domicilio (en caso de haber una delegación en estos campos)",
-  "Filtra por negocio \"ó\" domicilio (en caso de haber una delegación en estos campos)"
-]
+DELEGATION_OR_SELECTOR = "Filtra por negocio \"ó\" domicilio (en caso de haber una delegación en estos campos)"
+DELEGATION_AND_SELECTOR = "Filtra por negocio \"y\" domicilio (en caso de haber una delegación en estos campos)"
+GEOGRAPHIC_OPERATORS = [DELEGATION_OR_SELECTOR, DELEGATION_AND_SELECTOR]
