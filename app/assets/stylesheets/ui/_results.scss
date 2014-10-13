@@ -28,9 +28,15 @@
 	position: relative;
 	@include animation-attr(background-color, 0.3s);
 	&:hover{
-		background-color: darken($color__module__bg, 6);
+		// background-color: darken($color__module__bg, 6);
+		background-color: $color__gray--medium-dark;
 		span:nth-child(2){
 			color: darken($color__branding, 10);
+		}
+		.list-item__title{
+			span:first-child{
+				color: $color__module__bg;
+			}
 		}
 	}
 	&:nth-child(2n){
@@ -83,10 +89,11 @@
 	}
 
 	&.selected{ // selected class! (when content is displayed!)
-		background-color: $color__gray--medium-dark;
+		// background-color: $color__gray--medium-dark;
+		background-color: $color__module__bg;
 		.list-item__title{
 			span:first-child{
-				color: $color__module__bg;
+				// color: $color__module__bg;
 			}
 		}
 		.list-item__content{

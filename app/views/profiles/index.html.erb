@@ -8,7 +8,6 @@
   </ul>
 </div>
 <div class="page__content results__list">
-
   <% @funds.each_with_index do |f, idx| %>
     <%= content_tag( :div, nil, class: "fund-data", data: { fund: f }) %>
   <% end %>
