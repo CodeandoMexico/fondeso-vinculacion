@@ -1,5 +1,4 @@
 DELEGATIONS = [
-  "No hay restricción por delegación",
   "Álvaro Obregón",
   "Azcapotzalco",
   "Benito Juárez",
