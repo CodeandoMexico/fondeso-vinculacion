@@ -61,8 +61,6 @@ class FundsController < ApplicationController
       :institution,
       :description,
       :priority,
-      :home_delegation,
-      :business_delegation,
       :geographic_operator,
       :contact,
       :address,
@@ -70,11 +68,13 @@ class FundsController < ApplicationController
       :other_phone,
       :email,
       :website,
+      home_delegation: [],
+      business_delegation: [],
       characteristics: [],
       deliver_method: [],
       clasification: [],
       special_filters: [],
-      custom_delegation: [],
+      custom_delegation: []
     )
   end
 
