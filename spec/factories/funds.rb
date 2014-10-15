@@ -7,6 +7,10 @@ FactoryGirl.define do
     clasification { ["", "Necesidad - Startup", "Tradicional - Startup", "Tradicional - Crecimiento"] }
     characteristics { ["", "Activo fijo"] }
     deliver_method { ["", "Bolsa de trabajo/Empleabilidad"] }
+    geographic_operator "Filtra por negocio \"ó\" domicilio (en caso de haber una delegación en estos campos)"
+    home_delegation { [""] }
+    business_delegation { [""] }
+
 
     # Here goes a list of all the different filter, to create custom funds
     factory :women_fund do
@@ -81,5 +85,36 @@ FactoryGirl.define do
       special_filters { ["", "Sexo", "Indígenas"] }
     end
 
+    # geographic operators factories
+
+    factory :home_only_cuajimalpa_fund do
+        home_delegation { ["", "Cuajimalpa de Morelos"] }
+        business_delegation { [""] }
+        geographic_operator "Filtra por negocio \"ó\" domicilio (en caso de haber una delegación en estos campos)"
+    end
+
+    factory :business_only_cuajimalpa_fund do
+        home_delegation { [""] }
+        business_delegation { ["", "Cuajimalpa de Morelos"] }
+        geographic_operator "Filtra por negocio \"ó\" domicilio (en caso de haber una delegación en estos campos)"
+    end
+
+    factory :home_AND_business_cuajimalpa_fund do
+        home_delegation { ["", "Cuajimalpa de Morelos"] }
+        business_delegation { ["", "Cuajimalpa de Morelos"] }
+        geographic_operator "Filtra por negocio \"y\" domicilio (en caso de haber una delegación en estos campos)"
+    end
+
+    factory :home_OR_business_cuajimalpa_fund do
+        home_delegation { ["", "Cuajimalpa de Morelos"] }
+        business_delegation { ["", "Cuajimalpa de Morelos"] }
+        geographic_operator "Filtra por negocio \"ó\" domicilio (en caso de haber una delegación en estos campos)"
+    end
+
+    factory :multiple_home_and_business_delegations_fund do
+        home_delegation { ["", "Cuajimalpa de Morelos", "Álvaro Obregón"] }
+        business_delegation { ["Benito Juárez", "Coyoacán"] }
+        geographic_operator "Filtra por negocio \"ó\" domicilio (en caso de haber una delegación en estos campos)"
+    end
   end
 end

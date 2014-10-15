@@ -45,7 +45,11 @@ class Fund < ActiveRecord::Base
   end
 
   def delegation?(delegation)
-    delegation != "No hay restricción por delegación" && delegation.present?
+    # delegation != "No hay restricción por delegación" && delegation.present?
+    cleaned_delegations(delegation).map.each do |d|
+      return true if DELEGATIONS.include?(d)
+    end
+    false
   end
 
   def is_in_rural_delegation?
@@ -64,13 +68,14 @@ class Fund < ActiveRecord::Base
     is_in_rural_delegation? || is_in_cruzada_hambre? || is_in_df?
   end
 
-  def responds_to_delegation_filters?(delegations)
+  def responds_to_delegation_filters?(user_delegations)
     # puts "#{home_delegation}, #{business_delegation}: #{delegation?(business_delegation)}"
+    # raise self
     if has_special_geographic_filter?
       # the special geographic filter are: cruzada del hambre, delegaciones rurales
-      return fund_and_user_are_in_cruzada_por_el_hambre?(delegations) || fund_and_user_are_in_rural_delegation?(delegations) || fund_and_user_are_in_df?(delegations)
+      return fund_and_user_are_in_cruzada_por_el_hambre?(user_delegations) || fund_and_user_are_in_rural_delegation?(user_delegations) || fund_and_user_are_in_df?(user_delegations)
     elsif delegation?(home_delegation) && delegation?(business_delegation)
-      # they're both delegations, now we have to determine if they both are the same or different
+      # they're both user_delegations, now we have to determine if they both are the same or different
       # if they are the same it's an 'AND', or else, it's an 'OR'
 
       # if home_delegation == business_delegation
@@ -78,28 +83,43 @@ class Fund < ActiveRecord::Base
        return fund_and_user_home_AND_business_are_in_the_same_delegation?({
           home: home_delegation,
           business: business_delegation,
-        }, delegations)
+        }, user_delegations)
       else
         return fund_and_user_home_OR_business_are_in_the_same_delegation?({
            home: home_delegation,
            business: business_delegation,
-         }, delegations)
+         }, user_delegations)
       end
     elsif delegation?(home_delegation)
-      return home_delegation == delegations[:home]
+      # raise user_delegations.inspect
+      # puts "#{self.name} touched home #{home_delegation} #{user_delegations} #{user_delegations['home']} #{cleaned_delegations(home_delegation).include?(user_delegations[:home])}"
+      # raise user_delegations.inspect
+      return cleaned_delegations(home_delegation).include?(user_delegations["home"])
     elsif delegation?(business_delegation)
-      return business_delegation == delegations[:business]
+      # puts "#{self.name} touched buisness #{business_delegation} #{user_delegations} #{user_delegations[:business]} #{cleaned_delegations(business_delegation).include?(user_delegations[:business])}"
+      return cleaned_delegations(business_delegation).include?(user_delegations["business"])
     else
+      # puts "#{self.name} last"
+      # raise user_delegations.inspect
       # this means there is not a geographic a restriciton in the fund
       return true
     end
+  end
+
+  def cleaned_delegations(delegations)
+    delegations.select { |d| d.present? }
   end
 
 
   def self.search_with_profile_and_filters(user_profile_name, questionary_activated_filters, priorities, delegations)
     # this can and should be optimized, it's because we're using serialize on the classification
     funds = all.select do |fund|
-      # puts "responds to delegations? #{fund.responds_to_delegation_filters?(delegations)}"
+      # print "#{fund_has_user_profile(fund, user_profile_name)} "
+      # print "#{fund_responds_to_filters(fund, questionary_activated_filters)} "
+      # print "#{fund.responds_to_delegation_filters?(delegations)}\n"
+      # puts "#{fund_has_user_profile(fund, user_profile_name) &&
+      # fund_responds_to_filters(fund, questionary_activated_filters) &&
+      # fund.responds_to_delegation_filters?(delegations)}"
 
       fund_has_user_profile(fund, user_profile_name) &&
       fund_responds_to_filters(fund, questionary_activated_filters) &&
@@ -228,11 +248,15 @@ class Fund < ActiveRecord::Base
   end
 
   def fund_and_user_home_AND_business_are_in_the_same_delegation?(fund_delegations, user_delegations)
-    fund_delegations[:home] == user_delegations[:home] && fund_delegations[:business] == user_delegations[:business]
+    fund_home_delegations = fund_delegations[:home].select{ |d| d.present? }
+    fund_business_delegations = fund_delegations[:business].select{ |d| d.present? }
+    fund_home_delegations.include?(user_delegations["home"]) && fund_business_delegations.include?(user_delegations["business"])
   end
 
   def fund_and_user_home_OR_business_are_in_the_same_delegation?(fund_delegations, user_delegations)
-    fund_delegations[:home] == user_delegations[:home] || fund_delegations[:business] == user_delegations[:business]
+    fund_home_delegations = fund_delegations[:home].select{ |d| d.present? }
+    fund_business_delegations = fund_delegations[:business].select{ |d| d.present? }
+    fund_home_delegations.include?(user_delegations["home"]) || fund_business_delegations.include?(user_delegations["business"])
   end
 
   def fund_and_user_are_in_cruzada_por_el_hambre?(delegations)
