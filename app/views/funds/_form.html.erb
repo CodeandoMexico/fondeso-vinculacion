@@ -93,7 +93,7 @@
   <div class="form-group">
     <%= f.label :home_delegation, "Domicilio", class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= f.select :home_delegation, options_for_select(DELEGATIONS, selected=@fund.home_delegation), {}, { class: "chosen-select" } %>
+      <%= f.select :home_delegation, options_for_select(DELEGATIONS, selected=@fund.home_delegation), {}, { multiple: true, class: "chosen-select" } %>
     </div>
   </div>
 
@@ -103,11 +103,11 @@
       <%= f.select :geographic_operator, options_for_select(GEOGRAPHIC_OPERATORS, selected=@fund.geographic_operator), {}, { class: "chosen-select" } %>
     </div>
   </div>
-  
+
   <div class="form-group">
     <%= f.label :business_delegation, "Negocio", class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= f.select :business_delegation, options_for_select(DELEGATIONS, selected=@fund.business_delegation), {}, { class: "chosen-select" } %>
+      <%= f.select :business_delegation, options_for_select(DELEGATIONS, selected=@fund.business_delegation), {}, { multiple: true, class: "chosen-select" } %>
     </div>
   </div>
 
