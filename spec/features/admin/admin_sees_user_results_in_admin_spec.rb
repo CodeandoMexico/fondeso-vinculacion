@@ -1,12 +1,19 @@
 require 'spec_helper'
 
 feature 'When the admin enters the system' do
-  attr_reader :user_with_submitted_questionary, :admin
+  attr_reader :fund, :user_with_submitted_questionary, :admin
 
   before do
+    @fund = FactoryGirl.create :fund
     @user_with_submitted_questionary = FactoryGirl.create :user_with_submitted_questionary
     @admin = FactoryGirl.create :admin
     sign_in admin
+  end
+
+  it 'he should see be able to see all the funds' do
+    click_link 'Programas'
+    expect(current_path).to eq funds_path
+    expect(page).to have_content fund.name
   end
 
   it 'he should see be able to see the users results' do
