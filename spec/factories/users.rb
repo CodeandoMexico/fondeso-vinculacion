@@ -4,6 +4,10 @@ FactoryGirl.define do
     sequence(:email) {|n| "correo#{n}@codeandomexico.org" }
     password "password"
     password_confirmation "password"
+    number_of_recommended_funds 0
+    profile_created_at Date.today
+    profile_updated_at Date.today
+
 
     factory :user_with_submitted_questionary do
       # answers answer_params
@@ -43,8 +47,8 @@ FactoryGirl.define do
          }
       ] }
       delegations { {
-         "home"=>"",
-         "business"=>""
+         "home"=>"Azcapotzalco",
+         "business"=>"Azcapotzalco"
       } }
     end
   end

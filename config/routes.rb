@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   match 'profile/', to: 'profiles#create', via: [:post, :options]
   match 'profile/', to: 'profiles#destroy', via: [:delete]
 
+  namespace :dashboard do
+    resources :users, only: :index
+  end
   resources :profiles, only: [:index]
   resources :funds
   resources :questionary, only: :index
