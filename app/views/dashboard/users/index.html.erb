@@ -1,0 +1,24 @@
+<h3>Usuarios</h3>
+<table class="table">
+  <tr>
+    <th><strong>Email</strong></th>
+    <th><strong>Del. Domicilio</strong></th>
+    <th><strong>Del. Negocio</strong></th>
+    <th><strong>Perfil</strong></th>
+    <th><strong># Programas recomendados</strong></th>
+    <th><strong>Fecha de respuesta</strong></th>
+    <th><strong class="custom-tooltip" data-toggle="tooltip" data-original-title="Esta fecha se actualiza si el n&uacute;mero de programas recomendados cambi&oacute; cuando el usuario inici&oacute; sesi&oacute;n para ver sus resultados del cuestionario">Fecha de actualización <span class="glyphicon glyphicon-question-sign"></span></strong></th>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.email %></td>
+    <td><%= pretty_delegation_format(user, :home) %></td>
+    <td><%= pretty_delegation_format(user, :business) %></td>
+    <td><%= pretty_user_profile(user) %></td>
+    <td><%= pretty_data(user.number_of_recommended_funds) %></td>
+    <td><%= pretty_data(user.profile_created_at) %></td>
+    <td><%= pretty_data(user.profile_updated_at) %></td>
+  </tr>
+<% end %>
+</table>
+<%= paginate @users %>

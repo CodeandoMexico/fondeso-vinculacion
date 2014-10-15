@@ -29,3 +29,9 @@
 //= require bower_components/angular-ui-sortable/sortable.js
 
 //= require_tree .
+
+$(document).ready(function() {
+  $(".custom-tooltip").tooltip({
+    placement: "top"
+  });
+});
