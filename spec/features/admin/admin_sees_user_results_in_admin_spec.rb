@@ -21,6 +21,9 @@ feature 'When the admin enters the system' do
     expect(page).to have_content user_with_submitted_questionary.email
     expect(page).to have_content user_with_submitted_questionary.delegations[:home]
     expect(page).to have_content user_with_submitted_questionary.delegations[:business]
+    expect(page).to have_content user_with_submitted_questionary.number_of_recommended_funds
+    expect(page).to have_content user_with_submitted_questionary.profile_created_at
+    expect(page).to have_content user_with_submitted_questionary.profile_updated_at
   end
 
   def sign_in(user)

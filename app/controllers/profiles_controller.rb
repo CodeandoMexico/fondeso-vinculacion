@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
       delegations = current_user.delegations
 
       @funds = Fund.search_with_profile_and_filters(category["uri"], filters, priorities, delegations)
+      current_user.update_his_information(@funds)
     else
       redirect_to questionary_index_path
     end
