@@ -43,8 +43,8 @@ FactoryGirl.define do
          }
       ] }
       delegations { {
-         "home"=>"",
-         "business"=>""
+         "home"=>"Azcapotzalco",
+         "business"=>"Azcapotzalco"
       } }
     end
   end
