@@ -18,11 +18,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    current_user.answers = sanitize params[:answers]
-    current_user.category = sanitize params[:category_name]
-    current_user.filters = sanitize params[:filters]
-    current_user.priorities = sanitize params[:priorities]
-    current_user.delegations = sanitize params[:delegations]
+    prepare_user_submission_with params
 
     if current_user.save
       UserMailer.questionary_submitted(current_user).deliver
@@ -59,6 +55,18 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+  def prepare_user_submission_with(params)
+
+    current_user.answers = sanitize params[:answers]
+    special_case = sanitize params[:special_case]
+
+    current_user.category = special_case.present? ? special_case : sanitize(params[:category_name])
+
+    current_user.filters = sanitize params[:filters]
+    current_user.priorities = sanitize params[:priorities]
+    current_user.delegations = sanitize params[:delegations]
+  end
 
   def category_params
     params[:category_name]
