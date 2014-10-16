@@ -1,6 +1,8 @@
 module Fondeso
   module Data
     PROFILES = [
+      { name: "professional-does-not-exist", profile_id: "p0", uri:"profesionista-aunnoexiste" },
+      { name: "need-does-not-exist", profile_id: "n0", uri:"necesidad-aunnoexiste" },
       { name: "need-startup", profile_id: "n1", uri:"necesidad-startup" },
       { name: "traditional-startup", profile_id: "t1", uri:"tradicional-startup" },
       { name: "traditional-growing", profile_id: "t2", uri:"tradicional-crecimiento" },

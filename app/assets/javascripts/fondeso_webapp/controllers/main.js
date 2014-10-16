@@ -75,12 +75,16 @@ angular.module('questionaryApp')
         // is it a necessity profile and is on the correct section?
         if( FondesoSpecialCase.checkForNecessityProfile($scope.sections, newValue) ){
           // we've got to redirect this to the necessity funds
-          $location.url( redirectToProfile('necesidad-startup') );
+          // $location.url( redirectToProfile('necesidad-startup') );
+          document.getElementById("special_case").value = angular.toJson( { uri: 'necesidad-aunnoexiste'} );
+          return $scope.showResults();
         }
 
         // is it a professional profile and is on the correct section?
         if( FondesoSpecialCase.checkForProfessionalProfile($scope.sections, newValue) ){
-          alert('Se detectó un perfil de profesionista');
+          // alert('Se detectó un perfil de profesionista');
+          document.getElementById("special_case").value = angular.toJson( { uri: 'profesionista-aunnoexiste'} );
+          return $scope.showResults();
         }
       }, true);
 
