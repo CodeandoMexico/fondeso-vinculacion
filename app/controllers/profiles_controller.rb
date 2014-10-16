@@ -58,11 +58,10 @@ class ProfilesController < ApplicationController
 
   def prepare_user_submission_with(params)
 
+    special_case = params[:special_case]
+
     current_user.answers = sanitize params[:answers]
-    special_case = sanitize params[:special_case]
-
-    current_user.category = special_case.present? ? special_case : sanitize(params[:category_name])
-
+    current_user.category = special_case.blank? ? sanitize(params[:category_name]) : sanitize(special_case)
     current_user.filters = sanitize params[:filters]
     current_user.priorities = sanitize params[:priorities]
     current_user.delegations = sanitize params[:delegations]
