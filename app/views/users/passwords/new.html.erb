@@ -1,12 +1,30 @@
-<h2>Forgot your password?</h2>
+<div class="page__title">
+  <span class="title__text">¿Olvidaste tu contraseña?</span>
+</div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="page__content">
+  <% if flash[:notice].present? %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert].present? %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %></div>
+        </div>
+      </div>
+    </div>
 
-<%= render "users/shared/links" %>
+    <div><%= f.submit "Mándame las instrucciones", class: "button--full" %></div>
+  <% end %>
+</div>

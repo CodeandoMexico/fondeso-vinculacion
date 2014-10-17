@@ -76,6 +76,7 @@ es:
         email: "Correo electrónico"
         password: "Contraseña"
         remember_me: "Recuérdame"
+        forgot_your_password: "Olvidé mi contraseña"
     registrations:
       new:
         name: "Nombre"
