@@ -1,16 +1,41 @@
-<h2>Change your password</h2>
+<div class="page__title">
+  <span class="title__text">Solicitud de contraseña nueva</span>
+</div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<div class="page__content">
+  <% if flash[:notice].present? %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert].present? %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-  <div><%= f.label :password, "New password" %><br />
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %></div>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :password, "Nueva contraseña" %><br />
+            <%= f.password_field :password, autofocus: true, autocomplete: "off" %></div>
+        </div>
+      </div>
+    </div>
 
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
+    <div class="question-container">
+      <div class="question-header">
+        <div class="question-body">
+          <div><%= f.label :password_confirmation, "Confirma tu nueva contraseña" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+        </div>
+      </div>
+    </div>
 
-<%= render "users/shared/links" %>
+    <div><%= f.submit "Cambia mi contraseña", class: "button--full" %></div>
+  <% end %>
+
+</div>
