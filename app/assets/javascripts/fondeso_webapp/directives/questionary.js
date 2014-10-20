@@ -34,9 +34,9 @@ app.directive('questionary', function(){
       currentSection: '=',
       walkedPath: '=',
       onFinish: '&',
-      onChange: '&'
+      // onChange: '&'
     },
-    controller: ['$scope', function($scope){
+    controller: ['$scope', '$window', function($scope, $window){
       // initialize variables
       if(angular.isDefined( $scope.firstSection )){
         $scope.currentSection = $scope.sections[$scope.firstSection];
@@ -47,6 +47,12 @@ app.directive('questionary', function(){
         hasNext: false,
         hasPrevious: false
       };
+
+      $scope.scrollToTop = function(){
+        console.log('scrolling top');
+        $window.scrollTo(0, 0);
+      };
+      $scope.scrollToTop();
       // $scope.previousSection = null;
 
       // create helpers
@@ -80,6 +86,7 @@ app.directive('questionary', function(){
           console.log($scope.currentSection);
           $scope.onFinish();
         }
+        $scope.scrollToTop();
       };
       $scope.moveToPreviousSection = function(){
         // if there's a next section we should go there
@@ -92,6 +99,7 @@ app.directive('questionary', function(){
         else{
           console.log('disappear previous button')
         }
+        $scope.scrollToTop();
       };
     }],
     link: function(scope){

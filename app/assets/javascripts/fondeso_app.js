@@ -9,9 +9,6 @@ angular
     'questionModule',
     'templates'
   ])
-  .run(['$location', function($location){
-    console.log($location.url());
-  }])
   .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/questionary/', {
