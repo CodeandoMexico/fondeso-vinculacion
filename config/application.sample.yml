@@ -10,7 +10,7 @@
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
-APP_NAME: la aplicación de fondeso
+APP_NAME: "\"Fondeso: tu empresa es nuestro proyecto\""
 # Mailing
 MAILER_ADDRESS_FONDESO: dudas@fondeso.df.gob.mx
 SMTP_CONFIG_USERNAME:
