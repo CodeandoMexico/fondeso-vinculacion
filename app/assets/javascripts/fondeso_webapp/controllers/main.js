@@ -16,6 +16,7 @@ angular.module('questionaryApp')
       $scope.walkedPath = Questionary.walkedPath;
       $scope.currentSection = null;
       $scope.startQuestionary = false;
+      $scope.progressBar = 1;
 
       $scope.showResults = function(){
         // check delegations, priorities and filters
@@ -79,6 +80,11 @@ angular.module('questionaryApp')
           document.getElementById("special_case").value = angular.toJson( { uri: 'profesionista-aunnoexiste'} );
           return $scope.showResults();
         }
+
+      }, true);
+
+      $scope.$watch('currentSection', function() {
+        updateProgressBar();
       }, true);
 
       // private
@@ -90,6 +96,38 @@ angular.module('questionaryApp')
       function resolveTie(profiles) {
         FondesoTie.setProfiles(profiles);
         return '/tie/';
+      }
+
+      function updateProgressBar() {
+        if($scope.currentSection !== null && $scope.currentSection.identifier.indexOf('.B') === -1){
+          console.log($scope.currentSection.identifier);
+          var totalNumberOfSections = $scope.currentSection.identifier.indexOf('.C') !== -1 ? 9 : 18;
+        }
+        else {
+          var totalNumberOfSections = 1;
+        }
+
+        $scope.progressBar = new Array(totalNumberOfSections);
+        $scope.classOptions = {
+          'progress-1': $scope.walkedPath.length == 0,
+          'progress-2': $scope.walkedPath.length == 1,
+          'progress-3': $scope.walkedPath.length == 2,
+          'progress-4': $scope.walkedPath.length == 3,
+          'progress-5': $scope.walkedPath.length == 4,
+          'progress-6': $scope.walkedPath.length == 5,
+          'progress-7': $scope.walkedPath.length == 6,
+          'progress-8': $scope.walkedPath.length == 7,
+          'progress-9': $scope.walkedPath.length == 8,
+          'progress-10': $scope.walkedPath.length == 9,
+          'progress-11': $scope.walkedPath.length == 10,
+          'progress-12': $scope.walkedPath.length == 11,
+          'progress-13': $scope.walkedPath.length == 12,
+          'progress-14': $scope.walkedPath.length == 13,
+          'progress-15': $scope.walkedPath.length == 14,
+          'progress-16': $scope.walkedPath.length == 15,
+          'progress-17': $scope.walkedPath.length == 16,
+          'progress-18': $scope.walkedPath.length == 17,
+        };
       }
     }
   ]);
