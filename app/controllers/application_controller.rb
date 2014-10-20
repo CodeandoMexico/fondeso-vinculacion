@@ -3,11 +3,16 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   respond_to :html, :json
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_webapp
 
   protected
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) << :name
+    end
+
+    def configure_webapp
+      @app_title = ENV["APP_NAME"]
     end
 
     def layout_by_resource
