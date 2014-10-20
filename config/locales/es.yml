@@ -44,6 +44,7 @@ es:
                 taken: "Este correo ya existe"
               password:
                 blank: "La contraseña no puede estar vacía"
+                too_short: "La contraseña es muy corta"
               password_confirmation:
                 blank: "Confirma tu contraseña"
                 confirmation: "Las contraseñas no coinciden"

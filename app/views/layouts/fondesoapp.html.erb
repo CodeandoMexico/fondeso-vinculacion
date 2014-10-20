@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= t("brand") %></title>
+  <title><%= @app_title %></title>
   <%= stylesheet_link_tag    'fondeso-app', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -15,7 +15,6 @@
 
     <div class="page">
       <div id="content" ng-view>
-        <%= yield %>
       </div>
     </div>
 
