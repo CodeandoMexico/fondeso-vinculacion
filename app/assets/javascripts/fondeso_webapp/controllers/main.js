@@ -4,7 +4,6 @@ angular.module('questionaryApp')
   .controller('MainCtrl', [
     '$scope',
     '$location',
-    '$anchorScroll',
     'Questionary',
     'FondesoSpecialCase',
     'FondesoFilter',
@@ -12,12 +11,11 @@ angular.module('questionaryApp')
     'FondesoPriority',
     'FondesoDelegation',
     'FondesoTie',
-    function ($scope, $location, $anchorScroll, Questionary, FondesoSpecialCase, FondesoFilter, FondesoProfile, FondesoPriority, FondesoDelegation, FondesoTie) {
+    function ($scope, $location, Questionary, FondesoSpecialCase, FondesoFilter, FondesoProfile, FondesoPriority, FondesoDelegation, FondesoTie) {
       $scope.sections = Questionary.sections;
       $scope.walkedPath = Questionary.walkedPath;
       $scope.currentSection = null;
       $scope.startQuestionary = false;
-
 
       $scope.showResults = function(){
         // check delegations, priorities and filters
@@ -58,11 +56,6 @@ angular.module('questionaryApp')
           // there was an error so let's do something about it
           console.log('There was an error' + err);
         });
-      };
-
-      $scope.onSectionChange = function(){
-        $location.hash('top');
-        $anchorScroll();
       };
 
       // watcher for special cases
