@@ -13,13 +13,23 @@ class ApplicationController < ActionController::Base
 
     def configure_webapp
       @app_title = ENV["APP_NAME"]
+      if params[:action] == "landing" && current_user
+        redirect_to questionary_index_path
+      end
     end
 
     def layout_by_resource
-      if devise_controller? && resource_name == :user || "landing" || "terms_and_conditions" || "privacy"
+      if (devise_controller? && resource_name == :user) || whitelist_actions
         "fondesosession"
       else
         "application"
       end
+    end
+
+    private
+
+    def whitelist_actions
+      whitelist = %w[ landing terms_and_conditions privacy ]
+      whitelist.include? params[:action]
     end
 end
