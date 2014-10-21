@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :configure_webapp
 
+  def landing
+    if params[:action] == "landing" && current_user
+      redirect_to questionary_index_path
+    end
+  end
+
   protected
 
     def configure_permitted_parameters
@@ -13,9 +19,6 @@ class ApplicationController < ActionController::Base
 
     def configure_webapp
       @app_title = ENV["APP_NAME"]
-      if params[:action] == "landing" && current_user
-        redirect_to questionary_index_path
-      end
     end
 
     def layout_by_resource
@@ -26,7 +29,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    private
+  private
 
     def whitelist_actions
       whitelist = %w[ landing terms_and_conditions privacy ]
