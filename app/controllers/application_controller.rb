@@ -16,10 +16,19 @@ class ApplicationController < ActionController::Base
     end
 
     def layout_by_resource
-      if devise_controller? && resource_name == :user || "terms_and_conditions" || "privacy"
+      # raise devise_controller?.inspect
+      # raise params.inspect
+      if (devise_controller? && resource_name == :user) || whitelist_actions
         "fondesosession"
       else
         "application"
       end
+    end
+
+    private
+
+    def whitelist_actions
+      whitelist = %w[ terms_and_conditions privacy ]
+      whitelist.include? params[:action]
     end
 end
