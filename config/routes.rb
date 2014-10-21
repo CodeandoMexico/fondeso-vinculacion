@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   # match 'profile/:category_name', to: 'profiles#show', via: [:post, :options]
   match 'profile/', to: 'profiles#create', via: [:post, :options]
   match 'profile/', to: 'profiles#destroy', via: [:delete]
+  match 'terms-and-conditions/', to: 'application#terms_and_conditions', via: :get
+  match 'privacy/', to: 'application#privacy', via: :get
 
   namespace :dashboard do
     resources :users, only: :index
