@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     def layout_by_resource
-      if devise_controller? && resource_name == :user
+      if devise_controller? && resource_name == :user || "terms_and_conditions" || "privacy"
         "fondesosession"
       else
         "application"
