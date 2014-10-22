@@ -2,20 +2,24 @@
 
 angular.module('questionaryApp')
   .controller('MainCtrl', [
+    '$rootScope',
     '$scope',
     '$location',
     'Questionary',
+    'ProgressBar',
     'FondesoSpecialCase',
     'FondesoFilter',
     'FondesoProfile',
     'FondesoPriority',
     'FondesoDelegation',
     'FondesoTie',
-    function ($scope, $location, Questionary, FondesoSpecialCase, FondesoFilter, FondesoProfile, FondesoPriority, FondesoDelegation, FondesoTie) {
+    function ($rootScope, $scope, $location, Questionary, ProgressBar, FondesoSpecialCase, FondesoFilter, FondesoProfile, FondesoPriority, FondesoDelegation, FondesoTie) {
+      $rootScope.progressBar = ProgressBar;
       $scope.sections = Questionary.sections;
       $scope.walkedPath = Questionary.walkedPath;
       $scope.currentSection = null;
       $scope.startQuestionary = false;
+      $scope.progressBar = 1;
 
       $scope.showResults = function(){
         // check delegations, priorities and filters
@@ -79,6 +83,11 @@ angular.module('questionaryApp')
           document.getElementById("special_case").value = angular.toJson( { uri: 'profesionista-aunnoexiste'} );
           return $scope.showResults();
         }
+
+      }, true);
+
+      $scope.$watch('currentSection', function() {
+        updateProgressBar();
       }, true);
 
       // private
@@ -90,6 +99,19 @@ angular.module('questionaryApp')
       function resolveTie(profiles) {
         FondesoTie.setProfiles(profiles);
         return '/tie/';
+      }
+
+      function updateProgressBar() {
+        var totalNumberOfSections = undefined;
+        if ($scope.currentSection !== null && $scope.currentSection.identifier.indexOf('.B') === -1){
+          totalNumberOfSections = $scope.currentSection.identifier.indexOf('.C') !== -1 ? 9 : 18;
+        }
+        else {
+          totalNumberOfSections = 1;
+        }
+
+        var numberOfWalkedSections = $scope.walkedPath.length;
+        ProgressBar.setProgress( numberOfWalkedSections, totalNumberOfSections );
       }
     }
   ]);

@@ -49,7 +49,6 @@ app.directive('questionary', function(){
       };
 
       $scope.scrollToTop = function(){
-        console.log('scrolling top');
         $window.scrollTo(0, 0);
       };
       $scope.scrollToTop();
