@@ -104,7 +104,7 @@ angular.module('questionaryApp')
       function updateProgressBar() {
         var totalNumberOfSections = undefined;
         if ($scope.currentSection !== null && $scope.currentSection.identifier.indexOf('.B') === -1){
-          totalNumberOfSections = $scope.currentSection.identifier.indexOf('.C') !== -1 ? 9 : 18;
+          totalNumberOfSections = $scope.currentSection.identifier.indexOf('.C') !== -1 ? 8 : 17;
         }
         else {
           totalNumberOfSections = 1;
