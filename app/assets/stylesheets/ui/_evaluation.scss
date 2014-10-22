@@ -176,12 +176,13 @@ p + .question--priorities{
 	margin-top: 12px;
 	margin-bottom: 6px;
 	p{
-		margin-bottom: 0;
+		margin-bottom: 10;
+	}
+	p:first-child {
+		font-size: 20px;
 	}
 }
 .question--large p{
 	margin-top: 12px;
 	margin-bottom: 6px;
 }
-
-
