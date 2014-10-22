@@ -13,6 +13,12 @@
       <%= image_tag "fondeso/logo-cdmx.png" %>
     </div>
 
+    <div class="page__progress">
+      <div class="progress__wrapper">
+        <div class="progress__bar" ng-style="{ 'width': progressBar.progress }"></div>
+      </div>
+    </div>
+
     <div class="page">
       <div id="content" ng-view>
       </div>
