@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
    validates_presence_of :name
 
    def has_answered_a_questionary?
-      questionary.present?
+      profile_created_at.present?
    end
 
    def update_his_information(funds)
@@ -18,4 +18,44 @@ class User < ActiveRecord::Base
        update_attributes(profile_created_at: Date.today, profile_updated_at: Date.today, number_of_recommended_funds: funds.count)
      end
    end
+
+   def to_a
+     current = [name, email]
+     if has_answered_a_questionary?
+       current.push(
+         delegations[:home],
+         delegations[:business],
+         category[:uri],
+         number_of_recommended_funds,
+         profile_created_at,
+         profile_updated_at
+       )
+     else
+       current.push( nil, nil, nil, nil, nil, nil )
+     end
+   end
+
+   def self.to_csv
+     CSV.generate do |csv|
+
+       csv << export_headers
+       all.each do |user|
+         csv << user.to_a
+       end
+     end
+   end
+
+   private
+     def self.export_headers
+       [
+        "Nombre",
+        "Email",
+        "Delegación domicilio",
+        "Delegación negocio",
+        "Perfil",
+        "Número de fondos recomendado",
+        "Fecha de creación de cuestionario",
+        "Fecha de actualización de cuestionario"
+       ]
+     end
 end
