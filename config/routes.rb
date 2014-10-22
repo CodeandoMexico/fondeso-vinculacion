@@ -8,22 +8,20 @@ Rails.application.routes.draw do
     devise_for :admins, controllers: { sessions: 'admins/sessions' }
   end
 
-  devise_scope :user do
-    get "/" => "users/sessions#new"
-  end
-
   match 'profile/submit', to: 'profiles#answers', via: [:post, :options]
-  # match 'profile/:category_name', to: 'profiles#show', via: [:post, :options]
   match 'profile/', to: 'profiles#create', via: [:post, :options]
   match 'profile/', to: 'profiles#destroy', via: [:delete]
+  match 'terms-and-conditions/', to: 'application#terms_and_conditions', via: :get
+  match 'privacy/', to: 'application#privacy', via: :get
 
   namespace :dashboard do
     resources :users, only: :index
   end
+
   resources :profiles, only: [:index]
   resources :funds
   resources :questionary, only: :index
 
   get "*path" => "questionary#index"
-  root to: "users/sessions#new"
+  root to: "application#landing"
 end

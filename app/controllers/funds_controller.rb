@@ -11,9 +11,7 @@ class FundsController < ApplicationController
           @funds = Fund.all.order('created_at DESC').page(params[:page])
         end
       }
-      format.json {
-        render json: Fund.all
-      }
+      format.json { render json: Fund.all }
     end
   end
 
