@@ -127,6 +127,16 @@
 	}
 }
 
+// When the page is the terms and condition, a few things change because there's so much text.
+.page--terms{
+	max-width: $max-width + 50px;
+	p{
+		font-size: 0.9em;
+	}
+}
+
+
+// Footer bar with social links
 .bar--social{
 	position: relative;
 	background-color: lighten($color__background,10);
