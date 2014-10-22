@@ -19,7 +19,7 @@ app.run(['$templateCache', function($templateCache){
   $templateCache.put('prioritize-input.html','<div class="prioritization-container"><div class="question--priorities" ng-repeat="opt in body.options"><input type="number" min="1" max="3" class="form-control input-sm prioritize-number" ng-model="opt.priority" unique-priority="body.options"><label>{{opt.label}}</label></div></div>');
 
   // errors template
-  $templateCache.put('errors.html', '<div class="error-container"><span class="text-error" ng-show="questionForm.$invalid">Por favor revisa tu respuesta.</span></div>');
+  $templateCache.put('errors.html', '<div class="error-container"><span class="text-error" ng-show="questionForm.$invalid && questionForm.$dirty">Por favor revisa tu respuesta.</span></div>');
 }]);
 
 app.directive('questionary', function(){
@@ -245,10 +245,10 @@ app.directive('uniquePriority', function(){
 
       scope.$watch('uniquePriority', function(newValue, oldValue){
         // on initializing we don't want this validation to occur
-        // if(angular.equals(newValue, oldValue)) {
-        //   ctrl.$setValidity('required', false);
-        //   return;
-        // };
+        if(newValue === oldValue) {
+          ctrl.$setValidity('required', false);
+          return;
+        };
         // console.log('type: ' + (typeof ctrl.$viewValue))
         // console.log('watch of: '+ ctrl.$viewValue);
         checkForUniquePriorities(newValue);
