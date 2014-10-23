@@ -34,7 +34,7 @@ app.directive('questionary', function(){
       currentSection: '=',
       walkedPath: '=',
       onFinish: '&',
-      // onChange: '&'
+      onChange: '&'
     },
     controller: ['$scope', '$window', function($scope, $window){
       // initialize variables
@@ -59,13 +59,13 @@ app.directive('questionary', function(){
         $scope.walkedPath.push($scope.currentSection); // let's save where we've been through
         $scope.currentSection = $scope.nextSection; // go to the next section
         $scope.nextSection = $scope.sections[$scope.currentSection.next]; // get the next section
-        // $scope.onChange(); // execute custom code after
+        $scope.onChange(); // execute custom code after
       }
 
       function oneStepBackward(){
         $scope.nextSection = $scope.currentSection;
         $scope.currentSection = $scope.walkedPath.pop();
-        // $scope.onChange(); // execute custom code after
+        $scope.onChange(); // execute custom code after
       }
 
       // console.log('current section');

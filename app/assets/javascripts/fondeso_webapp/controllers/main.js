@@ -21,6 +21,8 @@ angular.module('questionaryApp')
       $scope.startQuestionary = false;
       $scope.progressBar = 1;
 
+      $scope.saveProgress = Questionary.saveProgress;
+
       $scope.showResults = function(){
         // check delegations, priorities and filters
         FondesoDelegation.getDelegations($scope.sections, $scope.walkedPath);

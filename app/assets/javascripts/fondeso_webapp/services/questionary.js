@@ -2,6 +2,7 @@
 
 angular.module('questionaryApp')
   .service('Questionary', ['$http', function Questionary($http) {
+
     var delegationQuestion = {
       title    : 'Delegación',
       help     : 'Selecciona uno de los valores',
@@ -29,6 +30,11 @@ angular.module('questionaryApp')
       }
     };
 
+    // var baseUrl = 'http://localhost:3000/profile/';
+    var questionaryUrl = 'http://localhost:3000/questionary/';
+    var baseUrl = 'http://fondeso.herokuapp.com/profile/';
+    // var questionaryUrl = 'http://fondeso.herokuapp.com/questionary/';
+
     var questionary = {
       walkedPath: [],
       walkedPathHasSection: function (lookId, path) {
@@ -39,6 +45,33 @@ angular.module('questionaryApp')
           }
         }
         return false;
+      },
+      saveProgress: function(){
+        console.log('guardando progreso');
+        var url = questionaryUrl;
+        var authenticity_token = angular.element("meta[name='csrf-token']").attr("content");
+        var postData = {
+          authenticity_token: authenticity_token,
+          answers: this.walkedPath
+        };
+
+        // console.log(url);
+        // console.log(this.walkedPath);
+        return $http.post(url, angular.toJson(postData));
+      },
+      submit: function(answers, filters, priorities, delegations, profiles, tieAnswers) {
+        var url = baseUrl + 'submit';
+
+        var postData = {
+          answers: answers,
+          filters: filters,
+          priorities: priorities,
+          delegations: delegations,
+          profiles: profiles,
+          tie: tieAnswers
+        };
+
+        return $http.post(url, angular.toJson(postData));
       },
       sections: {
         '1.B': {
@@ -488,47 +521,6 @@ angular.module('questionaryApp')
             }
           ]
         },
-        // '5.A.1': {
-        //   identifier : '5.A Sección de desempate',
-        //   grouped    : false,
-        //   next       : '5.A.2',
-        //   questions : [
-        //     {
-        //       title  : 'Las siguientes frases describen diferentes tipos de empresas, elige la opción que más se identifique con tu empresa.',
-        //       help   : 'Selecciona la respuesta con la que más te identificas.',
-        //       type   : 'radio',
-        //       body     : {
-        //         selected_value    : 'a',
-        //         options  : [
-        //           { value: 'a', label: 'Mi empresa es pequeña, las ganancias que obtengo me alcanzan apenas para los gastos básicos, si tuviera la oportunidad buscaría recursos de otra manera' },
-        //           { value: 'b', label: 'Mi empresa es igual a muchas otras y/o lo que vendo también lo venden muchos otros, pero aun así puedo obtener ganancias' },
-        //           { value: 'c', label: 'Lo que más me gusta de mi negocio, independientemente de las ganancias que tenga, es que me permite hacer lo que más me gusta y ser independiente' },
-        //           { value: 'd', label: 'Una parte central de mi empresa es desarrollar la creatividad y/o la expresión artística' },
-        //           { value: 'e', label: 'El objetivo central de mi empresa es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente' },
-        //           { value: 'f', label: 'Mi empresa tiene el potencial para crecer rápidamente porque es innovadora' }
-        //         ]
-        //       }
-        //     },
-        //   ]
-        // },
-        // '5.A.2': {
-        //   identifier : '5.A Sección de desempate',
-        //   grouped    : false,
-        //   questions : [
-        //     {
-        //       title  : 'Las siguientes frases describen el estado de desarrollo de distintas empresas, elige la opción que más se identifique con tu proyecto',
-        //       help   : 'Escribe el valor de la respuesta',
-        //       type   : 'radio',
-        //       body     : {
-        //         selected_value    : 'a',
-        //         options  : [
-        //           { value: 'a', label: 'Mi proyecto se encuentra en una etapa inicial o de formación / tiene una estructura administrativa pequeña en donde yo tomo todas las decisiones del día a día'},
-        //           { value: 'b', label: 'Mi proyecto se ha consolidado en su mercado, competimos directamente con las empresas líderes de ese mercado / tiene una estructura administrativa y de decisión compleja y/o con procedimientos formalizados'},
-        //           ]
-        //       }
-        //     }
-        //   ]
-        // },
         '2.C.1': {
           identifier : '2.C Perfiles',
           grouped    : false,
@@ -711,54 +703,12 @@ angular.module('questionaryApp')
             },
           ]
         },
-        // '5.C': {
-        //   identifier : '5.C Sección de desempate',
-        //   grouped    : false,
-        //   questions : [
-        //     {
-        //       id     : '5.C.1',
-        //       title  : 'Las siguientes frases describen diferentes motivos o maneras de iniciar una empresa, elige la opción que más se identifique con tu proyecto.',
-        //       help   : 'Escribe el valor de la respuesta',
-        //       type   : 'radio',
-        //       body   : {
-        //         selected_value : 'a',
-        //         options: [
-        //           { value: 'a', label: 'El principal motivo para iniciar mi empresa es tener recursos para cubrir los gastos básicos. Si tuviera la oportunidad buscaría recursos de otra manera.' },
-        //           { value: 'b', label: 'Mi empresa será similar a muchas otras y mi producto ya se vende, pero aun así puedo obtener ganancias.' },
-        //           { value: 'c', label: 'Mi negocio me permitirá hacer lo que más me gusta y ser independiente.' },
-        //           { value: 'd', label: 'Lo que quiero es desarrollar mi creatividad y/o expresión artística.' },
-        //           { value: 'e', label: 'El objetivo central de mi proyecto es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente.' },
-        //           { value: 'f', label: 'Tengo una idea innovadora con el potencial de ser exitosa y rentable.'}
-        //         ]
-        //       }
-        //     },
-        //   ]
-        // },
       }
     };
 
     // appending nesting questions, for testing purposes
-    // console.log(questionary);
     questionary.sections['1.B'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
     questionary.sections['1.B'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
-    // var baseUrl = 'http://localhost:3000/profile/';
-    var baseUrl = 'http://fondeso.herokuapp.com/profile/';
-    questionary.save = null;
-
-    questionary.submit = function(answers, filters, priorities, delegations, profiles, tieAnswers) {
-      var url = baseUrl + 'submit';
-
-      var postData = {
-        answers: answers,
-        filters: filters,
-        priorities: priorities,
-        delegations: delegations,
-        profiles: profiles,
-        tie: tieAnswers
-      };
-
-      return $http.post(url, angular.toJson(postData));
-    };
 
     return questionary;
   }]);

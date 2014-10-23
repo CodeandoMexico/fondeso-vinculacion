@@ -7,4 +7,11 @@ class QuestionaryController < ApplicationController
       redirect_to profiles_path
     end
   end
+
+  def save
+    current_user.questionary = params[:answers]
+    current_user.save
+    
+    render nothing: true
+  end
 end
