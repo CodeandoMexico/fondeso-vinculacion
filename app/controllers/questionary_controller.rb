@@ -3,15 +3,15 @@ class QuestionaryController < ApplicationController
   layout "fondesoapp"
 
   def index
-    if current_user.questionary.present?
+    if current_user.has_answered_a_questionary?
       redirect_to profiles_path
     end
   end
 
   def save
-    current_user.questionary = params[:answers]
+    current_user.answers = params[:answers]
     current_user.save
-    
+
     render nothing: true
   end
 end

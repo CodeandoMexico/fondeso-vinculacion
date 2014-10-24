@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   layout "fondesofundlist"
 
   def index
-    if current_user.questionary.present?
+    if current_user.has_a_saved_questionary?
       answers = current_user.answers
       category = current_user.category
       filters = current_user.filters

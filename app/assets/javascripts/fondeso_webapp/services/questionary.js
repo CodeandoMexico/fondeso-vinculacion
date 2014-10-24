@@ -31,9 +31,9 @@ angular.module('questionaryApp')
     };
 
     // var baseUrl = 'http://localhost:3000/profile/';
-    var questionaryUrl = 'http://localhost:3000/questionary/';
     var baseUrl = 'http://fondeso.herokuapp.com/profile/';
-    // var questionaryUrl = 'http://fondeso.herokuapp.com/questionary/';
+    // var questionaryUrl = 'http://localhost:3000/questionary/';
+    var questionaryUrl = 'http://fondeso.herokuapp.com/questionary/';
 
     var questionary = {
       walkedPath: [],
@@ -76,6 +76,7 @@ angular.module('questionaryApp')
       sections: {
         '1.B': {
           identifier : '1.B Características Sociodemográficas',
+          current    : '1.B',
           next       : '2.C.1',
           help       : 'Contesta las siguientes preguntas sobre ti y selecciona la respuesta con la que más te identificas.',
           grouped    : true,
@@ -162,6 +163,7 @@ angular.module('questionaryApp')
         },
         '2.A.1': {
           identifier : '2.A Perfiles',
+          current    : '2.A.1',
           next       : '2.A.2',
           grouped    : false,
           questions : [
@@ -185,6 +187,7 @@ angular.module('questionaryApp')
         },
         '2.A.2': {
           identifier : '2.A Perfiles',
+          current    : '2.A.2',
           next       : '2.A.3',
           grouped    : false,
           questions : [
@@ -208,6 +211,7 @@ angular.module('questionaryApp')
         },
         '2.A.3': {
           identifier : '2.A Perfiles',
+          current    : '2.A.3',
           next       : '2.A.4',
           grouped    : false,
           questions : [
@@ -235,6 +239,7 @@ angular.module('questionaryApp')
         },
         '2.A.4': {
           identifier : '2.A Perfiles',
+          current    : '2.A.4',
           next       : '2.A.5',
           grouped    : false,
           questions : [
@@ -252,6 +257,7 @@ angular.module('questionaryApp')
         },
         '2.A.5': {
           identifier : '2.A Perfiles',
+          current    : '2.A.5',
           next       : '2.A.6',
           grouped    : false,
           questions : [
@@ -269,6 +275,7 @@ angular.module('questionaryApp')
         },
         '2.A.6': {
           identifier : '2.A Perfiles',
+          current    : '2.A.6',
           next       : '2.A.7',
           grouped    : false,
           questions : [
@@ -290,6 +297,7 @@ angular.module('questionaryApp')
         },
         '2.A.7': {
           identifier : '2.A Perfiles',
+          current    : '2.A.7',
           next       : '2.A.8',
           grouped    : false,
           questions : [
@@ -310,6 +318,7 @@ angular.module('questionaryApp')
         },
         '2.A.8': {
           identifier : '2.A Perfiles',
+          current    : '2.A.8',
           next       : '3.A.1',
           grouped    : false,
           questions : [
@@ -331,6 +340,7 @@ angular.module('questionaryApp')
         '3.A.1': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.1',
           next       : '3.A.2',
           questions : [
             {
@@ -348,6 +358,7 @@ angular.module('questionaryApp')
         '3.A.2': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.2',
           next       : '3.A.3',
           questions : [
             {
@@ -374,6 +385,7 @@ angular.module('questionaryApp')
         '3.A.3': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.3',
           next       : '3.A.4',
           questions : [
             {
@@ -396,6 +408,7 @@ angular.module('questionaryApp')
         '3.A.4': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.4',
           next       : '3.A.5',
           questions : [
             {
@@ -417,6 +430,7 @@ angular.module('questionaryApp')
         '3.A.5': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.5',
           next       : '3.A.6',
           questions : [
             {
@@ -437,6 +451,7 @@ angular.module('questionaryApp')
         '3.A.6': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.6',
           next       : '3.A.7',
           questions : [
             {
@@ -458,6 +473,7 @@ angular.module('questionaryApp')
         '3.A.7': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.7',
           next       : '3.A.8',
           questions : [
             {
@@ -478,6 +494,7 @@ angular.module('questionaryApp')
         '3.A.8': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.8',
           next       : '4.A',
           questions : [
             {
@@ -498,6 +515,7 @@ angular.module('questionaryApp')
         '4.A': {
           identifier : '4.A Prioridades / Problemas',
           grouped    : false,
+          current    : '4.A',
           // next       : '5.A.1',
           questions : [
             {
@@ -524,6 +542,7 @@ angular.module('questionaryApp')
         '2.C.1': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.1',
           next       : '2.C.2',
           questions : [
             {
@@ -547,6 +566,7 @@ angular.module('questionaryApp')
         '2.C.2': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.2',
           next: '2.C.3',
           questions : [
             {
@@ -570,6 +590,7 @@ angular.module('questionaryApp')
         '2.C.3': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.3',
           next       : '2.C.4',
           questions : [
             {
@@ -592,6 +613,7 @@ angular.module('questionaryApp')
         '2.C.4': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.4',
           next: '2.C.5',
           questions : [
             {
@@ -612,6 +634,7 @@ angular.module('questionaryApp')
         '2.C.5': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.5',
           next: '2.C.6',
           questions : [
             {
@@ -640,6 +663,7 @@ angular.module('questionaryApp')
         '2.C.6': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.6',
           next: '2.C.7',
           questions : [
             {
@@ -661,6 +685,7 @@ angular.module('questionaryApp')
         '2.C.7': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.7',
           next: '4.C',
           questions : [
             {
@@ -682,6 +707,7 @@ angular.module('questionaryApp')
         '4.C': {
           identifier : '4.C Prioridades / Problemas',
           grouped    : false,
+          current    : '4.C',
           // next: '5.C',
           questions : [
             {
@@ -702,7 +728,7 @@ angular.module('questionaryApp')
               }
             },
           ]
-        },
+        }
       }
     };
 

@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
    validates_presence_of :name
 
+   def has_a_saved_questionary?
+      questionary.present?
+   end
+
    def has_answered_a_questionary?
       profile_created_at.present?
    end

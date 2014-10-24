@@ -14,14 +14,6 @@ angular.module('questionaryApp')
     'FondesoDelegation',
     'FondesoTie',
     function ($rootScope, $scope, $location, Questionary, ProgressBar, FondesoSpecialCase, FondesoFilter, FondesoProfile, FondesoPriority, FondesoDelegation, FondesoTie) {
-      $rootScope.progressBar = ProgressBar;
-      $scope.sections = Questionary.sections;
-      $scope.walkedPath = Questionary.walkedPath;
-      $scope.currentSection = null;
-      $scope.startQuestionary = false;
-      $scope.progressBar = 1;
-
-      $scope.saveProgress = Questionary.saveProgress;
 
       $scope.showResults = function(){
         // check delegations, priorities and filters
@@ -115,5 +107,34 @@ angular.module('questionaryApp')
         var numberOfWalkedSections = $scope.walkedPath.length;
         ProgressBar.setProgress( numberOfWalkedSections, totalNumberOfSections );
       }
+
+      function initializeQuestionary() {
+        var previousQuestionary = angular.element( angular.element('#questionary-data') ).data().answers;
+        // console.log('previous');
+        // console.log( angular.fromJson(previousQuestionary) );
+        // console.log(previousQuestionary);
+
+        $scope.sections = Questionary.sections;
+        $scope.walkedPath = Questionary.walkedPath;
+        $scope.currentSection = null;
+        $rootScope.progressBar = ProgressBar;
+        $scope.saveProgress = Questionary.saveProgress;
+
+
+        if ( angular.isObject(previousQuestionary) ) {
+          $scope.walkedPath = previousQuestionary;
+          $scope.currentSection = $scope.walkedPath.pop();
+        }
+
+        // console.log($scope.walkedPath);
+        // console.log($scope.currentSection);
+
+
+        // $scope.startQuestionary = false;
+        // $scope.progressBar = 1;
+      }
+
+      initializeQuestionary();
+
     }
   ]);

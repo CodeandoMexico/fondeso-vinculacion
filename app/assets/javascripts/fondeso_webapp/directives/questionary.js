@@ -38,7 +38,16 @@ app.directive('questionary', function(){
     },
     controller: ['$scope', '$window', function($scope, $window){
       // initialize variables
-      if(angular.isDefined( $scope.firstSection )){
+      if ( $scope.walkedPath.length > 0 ) {
+        $scope.nextSection = $scope.sections[$scope.currentSection.next];
+        angular.forEach($scope.walkedPath, function(section){
+          // console.log(section);
+          console.log($scope.sections[section.current]);
+          $scope.sections[section.current] = section;
+          console.log($scope.sections[section.current]);
+        });
+      }
+      else if (angular.isDefined( $scope.firstSection )){
         $scope.currentSection = $scope.sections[$scope.firstSection];
         $scope.nextSection = $scope.sections[$scope.currentSection.next];
       }
@@ -172,12 +181,14 @@ app.directive('question', ['$rootScope','$compile', function ($rootScope, $compi
     },
     link: function(scope, element, attrs){
       var selectWatcher = scope.$watch('type', function(newValue, oldValue){
-        // console.log()
-        // if(newValue === oldValue) return;
-        // change the initial value to the object
         if(newValue == 'select' && (scope.body.selected_value === 'null' || angular.isUndefined(scope.body.selected_value))){
           scope.body.selected_value = scope.body.options[0];
-          // console.log(scope.body.selected_value);
+        } else if ( newValue === 'select' && angular.isDefined( scope.body.selected_value )) {
+          angular.forEach(scope.body.options, function(opt){
+            if( opt.value === scope.body.selected_value.value){
+              scope.body.selected_value = opt;
+            }
+          });
         }
       });
       var answerWatcher = scope.$watch('body.selected_value', function(newValue, oldValue){
@@ -244,10 +255,12 @@ app.directive('uniquePriority', function(){
 
       scope.$watch('uniquePriority', function(newValue, oldValue){
         // on initializing we don't want this validation to occur
-        if(newValue === oldValue) {
-          ctrl.$setValidity('required', false);
-          return;
-        };
+        // console.log(newValue);
+        // console.log(oldValue);
+        // if(newValue === oldValue) {
+        //   ctrl.$setValidity('required', false);
+        //   return;
+        // };
         // console.log('type: ' + (typeof ctrl.$viewValue))
         // console.log('watch of: '+ ctrl.$viewValue);
         checkForUniquePriorities(newValue);
