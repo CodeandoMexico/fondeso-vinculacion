@@ -21,6 +21,10 @@ class Fund < ActiveRecord::Base
       where('name ILIKE ? OR institution ILIKE ?', "%#{value}%", "%#{value}%")
   end
 
+  def self.total
+    all.count
+  end
+
   def has_complete_information?
     characteristics.length > 1 && deliver_method.length > 1 && clasification.length > 1
   end
