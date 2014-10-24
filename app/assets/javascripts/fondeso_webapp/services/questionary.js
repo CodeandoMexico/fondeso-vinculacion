@@ -2,6 +2,7 @@
 
 angular.module('questionaryApp')
   .service('Questionary', ['$http', function Questionary($http) {
+
     var delegationQuestion = {
       title    : 'Delegación',
       help     : 'Selecciona uno de los valores',
@@ -29,6 +30,11 @@ angular.module('questionaryApp')
       }
     };
 
+    // var baseUrl = 'http://localhost:3000/profile/';
+    var baseUrl = 'http://fondeso.herokuapp.com/profile/';
+    // var questionaryUrl = 'http://localhost:3000/questionary/';
+    var questionaryUrl = 'http://fondeso.herokuapp.com/questionary/';
+
     var questionary = {
       walkedPath: [],
       walkedPathHasSection: function (lookId, path) {
@@ -40,9 +46,37 @@ angular.module('questionaryApp')
         }
         return false;
       },
+      saveProgress: function(){
+        console.log('guardando progreso');
+        var url = questionaryUrl;
+        var authenticity_token = angular.element("meta[name='csrf-token']").attr("content");
+        var postData = {
+          authenticity_token: authenticity_token,
+          answers: this.walkedPath
+        };
+
+        // console.log(url);
+        // console.log(this.walkedPath);
+        return $http.post(url, angular.toJson(postData));
+      },
+      submit: function(answers, filters, priorities, delegations, profiles, tieAnswers) {
+        var url = baseUrl + 'submit';
+
+        var postData = {
+          answers: answers,
+          filters: filters,
+          priorities: priorities,
+          delegations: delegations,
+          profiles: profiles,
+          tie: tieAnswers
+        };
+
+        return $http.post(url, angular.toJson(postData));
+      },
       sections: {
         '1.B': {
           identifier : '1.B Características Sociodemográficas',
+          current    : '1.B',
           next       : '2.C.1',
           help       : 'Contesta las siguientes preguntas sobre ti y selecciona la respuesta con la que más te identificas.',
           grouped    : true,
@@ -129,6 +163,7 @@ angular.module('questionaryApp')
         },
         '2.A.1': {
           identifier : '2.A Perfiles',
+          current    : '2.A.1',
           next       : '2.A.2',
           grouped    : false,
           questions : [
@@ -152,6 +187,7 @@ angular.module('questionaryApp')
         },
         '2.A.2': {
           identifier : '2.A Perfiles',
+          current    : '2.A.2',
           next       : '2.A.3',
           grouped    : false,
           questions : [
@@ -175,6 +211,7 @@ angular.module('questionaryApp')
         },
         '2.A.3': {
           identifier : '2.A Perfiles',
+          current    : '2.A.3',
           next       : '2.A.4',
           grouped    : false,
           questions : [
@@ -202,6 +239,7 @@ angular.module('questionaryApp')
         },
         '2.A.4': {
           identifier : '2.A Perfiles',
+          current    : '2.A.4',
           next       : '2.A.5',
           grouped    : false,
           questions : [
@@ -219,6 +257,7 @@ angular.module('questionaryApp')
         },
         '2.A.5': {
           identifier : '2.A Perfiles',
+          current    : '2.A.5',
           next       : '2.A.6',
           grouped    : false,
           questions : [
@@ -236,6 +275,7 @@ angular.module('questionaryApp')
         },
         '2.A.6': {
           identifier : '2.A Perfiles',
+          current    : '2.A.6',
           next       : '2.A.7',
           grouped    : false,
           questions : [
@@ -257,6 +297,7 @@ angular.module('questionaryApp')
         },
         '2.A.7': {
           identifier : '2.A Perfiles',
+          current    : '2.A.7',
           next       : '2.A.8',
           grouped    : false,
           questions : [
@@ -277,6 +318,7 @@ angular.module('questionaryApp')
         },
         '2.A.8': {
           identifier : '2.A Perfiles',
+          current    : '2.A.8',
           next       : '3.A.1',
           grouped    : false,
           questions : [
@@ -298,6 +340,7 @@ angular.module('questionaryApp')
         '3.A.1': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.1',
           next       : '3.A.2',
           questions : [
             {
@@ -315,6 +358,7 @@ angular.module('questionaryApp')
         '3.A.2': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.2',
           next       : '3.A.3',
           questions : [
             {
@@ -341,6 +385,7 @@ angular.module('questionaryApp')
         '3.A.3': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.3',
           next       : '3.A.4',
           questions : [
             {
@@ -363,6 +408,7 @@ angular.module('questionaryApp')
         '3.A.4': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.4',
           next       : '3.A.5',
           questions : [
             {
@@ -384,6 +430,7 @@ angular.module('questionaryApp')
         '3.A.5': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.5',
           next       : '3.A.6',
           questions : [
             {
@@ -404,6 +451,7 @@ angular.module('questionaryApp')
         '3.A.6': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.6',
           next       : '3.A.7',
           questions : [
             {
@@ -425,6 +473,7 @@ angular.module('questionaryApp')
         '3.A.7': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.7',
           next       : '3.A.8',
           questions : [
             {
@@ -445,6 +494,7 @@ angular.module('questionaryApp')
         '3.A.8': {
           identifier : '3.A Etapas',
           grouped    : false,
+          current    : '3.A.8',
           next       : '4.A',
           questions : [
             {
@@ -465,6 +515,7 @@ angular.module('questionaryApp')
         '4.A': {
           identifier : '4.A Prioridades / Problemas',
           grouped    : false,
+          current    : '4.A',
           // next       : '5.A.1',
           questions : [
             {
@@ -488,50 +539,10 @@ angular.module('questionaryApp')
             }
           ]
         },
-        // '5.A.1': {
-        //   identifier : '5.A Sección de desempate',
-        //   grouped    : false,
-        //   next       : '5.A.2',
-        //   questions : [
-        //     {
-        //       title  : 'Las siguientes frases describen diferentes tipos de empresas, elige la opción que más se identifique con tu empresa.',
-        //       help   : 'Selecciona la respuesta con la que más te identificas.',
-        //       type   : 'radio',
-        //       body     : {
-        //         selected_value    : 'a',
-        //         options  : [
-        //           { value: 'a', label: 'Mi empresa es pequeña, las ganancias que obtengo me alcanzan apenas para los gastos básicos, si tuviera la oportunidad buscaría recursos de otra manera' },
-        //           { value: 'b', label: 'Mi empresa es igual a muchas otras y/o lo que vendo también lo venden muchos otros, pero aun así puedo obtener ganancias' },
-        //           { value: 'c', label: 'Lo que más me gusta de mi negocio, independientemente de las ganancias que tenga, es que me permite hacer lo que más me gusta y ser independiente' },
-        //           { value: 'd', label: 'Una parte central de mi empresa es desarrollar la creatividad y/o la expresión artística' },
-        //           { value: 'e', label: 'El objetivo central de mi empresa es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente' },
-        //           { value: 'f', label: 'Mi empresa tiene el potencial para crecer rápidamente porque es innovadora' }
-        //         ]
-        //       }
-        //     },
-        //   ]
-        // },
-        // '5.A.2': {
-        //   identifier : '5.A Sección de desempate',
-        //   grouped    : false,
-        //   questions : [
-        //     {
-        //       title  : 'Las siguientes frases describen el estado de desarrollo de distintas empresas, elige la opción que más se identifique con tu proyecto',
-        //       help   : 'Escribe el valor de la respuesta',
-        //       type   : 'radio',
-        //       body     : {
-        //         selected_value    : 'a',
-        //         options  : [
-        //           { value: 'a', label: 'Mi proyecto se encuentra en una etapa inicial o de formación / tiene una estructura administrativa pequeña en donde yo tomo todas las decisiones del día a día'},
-        //           { value: 'b', label: 'Mi proyecto se ha consolidado en su mercado, competimos directamente con las empresas líderes de ese mercado / tiene una estructura administrativa y de decisión compleja y/o con procedimientos formalizados'},
-        //           ]
-        //       }
-        //     }
-        //   ]
-        // },
         '2.C.1': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.1',
           next       : '2.C.2',
           questions : [
             {
@@ -555,6 +566,7 @@ angular.module('questionaryApp')
         '2.C.2': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.2',
           next: '2.C.3',
           questions : [
             {
@@ -578,6 +590,7 @@ angular.module('questionaryApp')
         '2.C.3': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.3',
           next       : '2.C.4',
           questions : [
             {
@@ -600,6 +613,7 @@ angular.module('questionaryApp')
         '2.C.4': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.4',
           next: '2.C.5',
           questions : [
             {
@@ -620,6 +634,7 @@ angular.module('questionaryApp')
         '2.C.5': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.5',
           next: '2.C.6',
           questions : [
             {
@@ -648,6 +663,7 @@ angular.module('questionaryApp')
         '2.C.6': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.6',
           next: '2.C.7',
           questions : [
             {
@@ -669,6 +685,7 @@ angular.module('questionaryApp')
         '2.C.7': {
           identifier : '2.C Perfiles',
           grouped    : false,
+          current    : '2.C.7',
           next: '4.C',
           questions : [
             {
@@ -690,6 +707,7 @@ angular.module('questionaryApp')
         '4.C': {
           identifier : '4.C Prioridades / Problemas',
           grouped    : false,
+          current    : '4.C',
           // next: '5.C',
           questions : [
             {
@@ -710,55 +728,13 @@ angular.module('questionaryApp')
               }
             },
           ]
-        },
-        // '5.C': {
-        //   identifier : '5.C Sección de desempate',
-        //   grouped    : false,
-        //   questions : [
-        //     {
-        //       id     : '5.C.1',
-        //       title  : 'Las siguientes frases describen diferentes motivos o maneras de iniciar una empresa, elige la opción que más se identifique con tu proyecto.',
-        //       help   : 'Escribe el valor de la respuesta',
-        //       type   : 'radio',
-        //       body   : {
-        //         selected_value : 'a',
-        //         options: [
-        //           { value: 'a', label: 'El principal motivo para iniciar mi empresa es tener recursos para cubrir los gastos básicos. Si tuviera la oportunidad buscaría recursos de otra manera.' },
-        //           { value: 'b', label: 'Mi empresa será similar a muchas otras y mi producto ya se vende, pero aun así puedo obtener ganancias.' },
-        //           { value: 'c', label: 'Mi negocio me permitirá hacer lo que más me gusta y ser independiente.' },
-        //           { value: 'd', label: 'Lo que quiero es desarrollar mi creatividad y/o expresión artística.' },
-        //           { value: 'e', label: 'El objetivo central de mi proyecto es contribuir para mejorar la situación de un grupo de la población y/o el medio ambiente.' },
-        //           { value: 'f', label: 'Tengo una idea innovadora con el potencial de ser exitosa y rentable.'}
-        //         ]
-        //       }
-        //     },
-        //   ]
-        // },
+        }
       }
     };
 
     // appending nesting questions, for testing purposes
-    // console.log(questionary);
     questionary.sections['1.B'].questions[3].body.options[1].question = angular.copy(delegationQuestion);
     questionary.sections['1.B'].questions[4].body.options[1].question = angular.copy(delegationQuestion);
-    // var baseUrl = 'http://localhost:3000/profile/';
-    var baseUrl = 'http://fondeso.herokuapp.com/profile/';
-    questionary.save = null;
-
-    questionary.submit = function(answers, filters, priorities, delegations, profiles, tieAnswers) {
-      var url = baseUrl + 'submit';
-
-      var postData = {
-        answers: answers,
-        filters: filters,
-        priorities: priorities,
-        delegations: delegations,
-        profiles: profiles,
-        tie: tieAnswers
-      };
-
-      return $http.post(url, angular.toJson(postData));
-    };
 
     return questionary;
   }]);

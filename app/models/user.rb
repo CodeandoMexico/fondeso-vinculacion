@@ -10,12 +10,16 @@ class User < ActiveRecord::Base
     all.count
   end
 
-  def self.total_answered_questionaries
-    all.select{ |u| u.has_answered_a_questionary? }.count
+  def has_a_saved_questionary?
+    questionary.present?
   end
 
   def has_answered_a_questionary?
     profile_created_at.present?
+  end
+
+  def self.total_answered_questionaries
+    all.select{ |u| u.has_answered_a_questionary? }.count
   end
 
   def update_his_information(funds)
