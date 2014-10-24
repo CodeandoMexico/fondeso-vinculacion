@@ -12,6 +12,7 @@ class FundsController < ApplicationController
         end
       }
       format.json { render json: Fund.all }
+      format.csv { send_data Fund.to_csv }
     end
   end
 

@@ -15,7 +15,7 @@
 
   <!--  here starts the questionary -->
   <div class="page__content">
-    <questionary first-section="1.B" walked-path="walkedPath" sections="sections" current-section="currentSection" on-finish="showResults()">
+    <questionary first-section="1.B" walked-path="walkedPath" sections="sections" current-section="currentSection" on-finish="showResults()" on-change="saveProgress()">
 
       <!--  Only for first questionary section -->
 
@@ -53,7 +53,9 @@
         </question>
 
         <div class="question--large">
-             <p for="radio--indigenous">¿Hablas alg&uacute;n dialecto ind&iacute;gena?</p>
+             <div class="question-header">
+               <p for="radio--indigenous">¿Hablas alg&uacute;n dialecto ind&iacute;gena?</p>
+             </div>
              <div class="button--radio">
                  <input type="radio" id="radio--indigenous-yes" name="radio--indigenous" value="{{currentSection.questions[5].body.options[0].value}}" ng-model="currentSection.questions[5].body.selected_value"/>
                  <label for="radio--indigenous-yes">{{currentSection.questions[5].body.options[0].label}}</label>

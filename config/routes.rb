@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   match 'terms-and-conditions/', to: 'application#terms_and_conditions', via: :get
   match 'privacy/', to: 'application#privacy', via: :get
 
+  match 'questionary/', to: 'questionary#save', via: :post
+
   namespace :dashboard do
     resources :users, only: :index
   end

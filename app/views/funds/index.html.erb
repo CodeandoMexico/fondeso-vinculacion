@@ -1,4 +1,17 @@
-<h3>Programas</h3>
+<h3 style="display:inline;">Programas</h3>
+<%= link_to "[exportar]", funds_path(format: "csv") %>
+
+<!--  KPI's -->
+<div class="kpi-container row">
+  <div class="col-md-3 col-lg-3">
+    <div class="panel panel-default">
+      <div class="kpi-content panel-body">
+        <strong>Registros: </strong><span><%= Fund.total %></span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-sm-11 col-md-10">
     <%= form_tag funds_path, method: "get", class: "" do %>
