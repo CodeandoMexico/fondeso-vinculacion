@@ -4,6 +4,7 @@
   <ul class="dropdown-menu no-print">
       <li> <a href="" class="item" ng-click="printFunds()">Imprimir</a></li>
       <li><%= link_to "Borrar cuestionario", profile_path, method: :delete, data: { confirm: "¿Seguro que deseas borrar este cuestionario?" }, class: "item" %></li>
+      <li><%= link_to "Borrar cuenta", user_registration_path, method: :delete, data: { confirm: "¿Seguro que deseas borrar esta cuenta? Una vez borrada se perderá tu cuestionario, resultados y otra información que hayas proporcionado." }, class: "item" %></li>
       <li><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "item" %></li>
   </ul>
 </div>

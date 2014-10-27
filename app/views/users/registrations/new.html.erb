@@ -9,7 +9,7 @@
     <div class="question-container">
       <div class="question-header">
         <div class="question-body">
-          <div><%= f.label :name, t(".name") %><br />
+          <div><%= f.label :name, t(".name") %> <span>*</span><br />
           <%= f.text_field :name, autofocus: true, class: "question--input" %></div>
         </div>
       </div>
@@ -18,7 +18,7 @@
     <div class="question-container">
       <div class="question-header">
         <div class="question-body">
-          <div><%= f.label :email, t(".email")  %><br />
+          <div><%= f.label :email, t(".email")  %> <span>*</span><br />
           <%= f.email_field :email, autofocus: true, class: "question--input" %></div>
         </div>
       </div>
@@ -27,7 +27,7 @@
     <div class="question-container">
       <div class="question-header">
         <div class="question-body">
-          <div><%= f.label :password, t(".password") %><br />
+          <div><%= f.label :password, t(".password") %> <span>*</span><br />
             <%= f.password_field :password, autocomplete: "off", class: "question--input" %></div>
         </div>
       </div>
@@ -36,7 +36,7 @@
     <div class="question-container">
       <div class="question-header">
         <div class="question-body">
-          <div><%= f.label :password_confirmation, t(".password_confirmation") %><br />
+          <div><%= f.label :password_confirmation, t(".password_confirmation") %> <span>*</span><br />
             <%= f.password_field :password_confirmation, autocomplete: "off", class: "question--input" %></div>
         </div>
       </div>
