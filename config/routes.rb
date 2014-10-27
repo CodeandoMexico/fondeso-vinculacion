@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   match 'profile/submit', to: 'profiles#answers', via: [:post, :options]
   match 'profile/', to: 'profiles#create', via: [:post, :options]
   match 'profile/', to: 'profiles#destroy', via: [:delete]
-  match 'terms-and-conditions/', to: 'application#terms_and_conditions', via: :get
-  match 'privacy/', to: 'application#privacy', via: :get
+  match 'terminos-y-condiciones/', to: 'application#terms_and_conditions', via: :get, as: 'terms_and_conditions'
+  match 'privacidad/', to: 'application#privacy', via: :get, as: 'privacy'
 
   match 'questionary/', to: 'questionary#save', via: :post
 
@@ -20,9 +20,9 @@ Rails.application.routes.draw do
     resources :users, only: :index
   end
 
-  resources :profiles, only: [:index]
-  resources :funds
-  resources :questionary, only: :index
+  resources :profiles, only: [:index], path: 'perfiles'
+  resources :funds, path: 'programas'
+  resources :questionary, only: :index, path: 'cuestionario'
 
   get "*path" => "questionary#index"
   root to: "application#landing"

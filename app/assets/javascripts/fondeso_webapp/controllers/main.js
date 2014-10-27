@@ -92,7 +92,7 @@ angular.module('questionaryApp')
 
       function resolveTie(profiles) {
         FondesoTie.setProfiles(profiles);
-        return '/tie/';
+        return '/empate/';
       }
 
       function updateProgressBar() {

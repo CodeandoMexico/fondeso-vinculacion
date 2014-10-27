@@ -11,17 +11,17 @@ angular
   ])
   .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/questionary/', {
+      .when('/cuestionario/', {
         templateUrl: 'main.html',
         controller: 'MainCtrl'
       })
-      .when('/tie/', {
+      .when('/empate/', {
         templateUrl: 'ties.html',
         controller: 'TieCtrl',
         controllerAs: 'tie'
       })
       .otherwise({
-        redirectTo: '/questionary/'
+        redirectTo: '/cuestionario/'
       });
 
      $locationProvider.html5Mode(true);
