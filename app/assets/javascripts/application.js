@@ -35,3 +35,12 @@ $(document).ready(function() {
     placement: "top"
   });
 });
+
+
+angular
+  .module('landing',[])
+  .controller('landingCtrl', ['$scope', '$window', function($scope, $window){
+    $scope.goToQuestionary = function(){
+      $window.location.href = 'questionary/';
+    };
+  }]);
