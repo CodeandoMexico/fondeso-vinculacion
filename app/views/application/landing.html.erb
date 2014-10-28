@@ -6,7 +6,7 @@
     <h3>¡Bienvenido!</h3>
     <p>Esta aplicaci&oacute;n la realizamos para ayudarte a encontrar programas que se ajusten a tus necesidades.</p>
     <p>Para empezar, necesitamos registrar algunos datos y asociarte con programas recomendados &oacute; inicia sesión si ya creaste tu cuenta previamente.</p>
-    <input type="checkbox" name="agree_terms_and_conditions" ng-model="acceptTerms" ng-init="acceptTerms=false"> <%= link_to "He leído y acepto los términos", privacy_path, target: "_blank" %>
+    <input type="checkbox" name="agree_terms_and_conditions" ng-model="acceptTerms" ng-init="acceptTerms=false"> <%= link_to "He leído y acepto la leyenda de privacidad", privacy_path, target: "_blank" %>
     <span><button class="button--full" ng-disabled="!acceptTerms" ng-click="goToQuestionary()">ENTRAR</button></span>
   </div>
 </div>
