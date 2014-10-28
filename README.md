@@ -30,7 +30,7 @@ Nos encanta saber lo que otros desarrolladores hacen con el código, nos puedes 
 
 ##Contribuye
 
-Queremos que este proyecto sea el resultado de un esfuerzo de la comunidad. Usted puede colaborar con [código](https://github.com/CodeandoMexico/fondeso-vinculacion/pulls), [ideas](https://github.com/CodeandoMexico/fondeso-vinculacion/issues) and [bugs](https://github.com/CodeandoMexico/fondeso-vinculacion/issues).
+Queremos que este proyecto sea el resultado de un esfuerzo de la comunidad. Usted puede colaborar con [código](https://github.com/CodeandoMexico/fondeso-vinculacion/pulls), [ideas](https://github.com/CodeandoMexico/fondeso-vinculacion/issues) y [bugs](https://github.com/CodeandoMexico/fondeso-vinculacion/issues).
 
 ##Core Team
 
