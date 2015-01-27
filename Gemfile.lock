@@ -284,6 +284,7 @@ DEPENDENCIES
   launchy
   letter_opener
   pg
+  puma
   rack-cors
   rails (= 4.1.1)
   rails_12factor
