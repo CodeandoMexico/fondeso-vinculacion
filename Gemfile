@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+ruby '2.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
+
+gem 'rake'
+
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -49,6 +53,11 @@ gem 'rack-cors'
 gem 'angular-rails-templates'
 gem 'figaro', '>= 1.0'
 
+# capistrano
+gem 'capistrano', group: :development
+gem 'capistrano-rvm'
+
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -63,6 +72,9 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'letter_opener'
+
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-bundler', '~> 1.1'
 end
 
 group :staging, :production do
