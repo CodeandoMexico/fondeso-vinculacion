@@ -57,6 +57,9 @@ gem 'figaro', '>= 1.0'
 gem 'capistrano', group: :development
 gem 'capistrano-rvm'
 
+gem 'dotenv'
+gem 'dotenv-deployment', require: 'dotenv/deployment'
+
 
 group :development, :test do
   gem 'rspec-rails'
