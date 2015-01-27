@@ -53,10 +53,6 @@ gem 'rack-cors'
 gem 'angular-rails-templates'
 gem 'figaro', '>= 1.0'
 
-# capistrano
-gem 'capistrano', group: :development
-gem 'capistrano-rvm'
-
 gem 'dotenv'
 gem 'dotenv-deployment', require: 'dotenv/deployment'
 
@@ -76,8 +72,12 @@ group :development do
   gem "binding_of_caller"
   gem 'letter_opener'
 
+  # capistrano
+  gem 'capistrano', group: :development
+  gem 'capistrano-rvm'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-bundler', '~> 1.1'
+  gem 'capistrano3-puma',   require: false
 end
 
 group :staging, :production do
