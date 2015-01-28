@@ -12,7 +12,7 @@ set :puma_workers,    0
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deploy/public_html/emprendecdmx_webapp'
+set :deploy_to, "/home/deploy/public_html/#{fetch(:application)}"
 
 set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
 set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
